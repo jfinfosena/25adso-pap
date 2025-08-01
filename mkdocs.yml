@@ -1,0 +1,77 @@
+site_name: Programación Avanzada Python Backend - FastAPI
+site_url: https://jfinfosena.github.io/25pap/
+site_author: jhonfvg
+
+theme:
+  name: material
+  language: es  
+  icon:
+    logo: octicons/code-16    
+  features:    
+    - navigation.tabs.sticky 
+    - navigation.tabs
+    - navigation.top
+    # - toc.integrate
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - navigation.indexes
+  palette:    
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode        
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      accent: lime
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+        alternate_style: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  generator: false  
+
+copyright: 2025 &copy; by JFVG
+
+nav:
+  - Inicio: index.md  
+  - Contenido:    
+      - content/p1.md    
+      - content/p2.md    
+      
+
+  # - Proyecto Integrador: 
+  #     - pi/p1.md     
+
+plugins:
+  - search
+  # - blog
+  - glightbox
+
+

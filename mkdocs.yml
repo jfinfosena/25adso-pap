@@ -67,8 +67,10 @@ nav:
       - content/p3.md    
       
 
-  # - Proyecto Integrador: 
-  #     - pi/p1.md     
+  - Tutoriales: 
+      - tutorial/p1.md     
+      - tutorial/p2.md     
+      - tutorial/p3.md     
 
 plugins:
   - search

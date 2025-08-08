@@ -65,12 +65,13 @@ nav:
       - content/p1.md    
       - content/p2.md    
       - content/p3.md    
-      
+      - content/p4.md 
 
   - Tutoriales: 
       - tutorial/p1.md     
       - tutorial/p2.md     
       - tutorial/p3.md     
+      - tutorial/p4.md     
 
 plugins:
   - search

@@ -66,6 +66,10 @@ nav:
       - content/p2.md    
       - content/p3.md    
       - content/p4.md 
+      - content/p5.md 
+
+  - Actividades: 
+      - activities/p1.md         
 
   - Tutoriales: 
       - tutorial/p1.md     

@@ -1,0 +1,206 @@
+A continuación, se presentan 20 preguntas, una para cada grupo, basadas en la aplicación FastAPI con tres entidades (User, Product, Order) descrita en el documento proporcionado. Las preguntas están diseñadas para cubrir diferentes aspectos del código, desde conceptos básicos hasta avanzados, fomentando la comprensión técnica, el análisis crítico y la propuesta de mejoras. Cada pregunta incluye un objetivo claro para guiar el aprendizaje y la discusión.
+
+---
+
+### Pregunta 1 (Grupo 1): Configuración de la Base de Datos
+**Pregunta**: En `src/database.py`, se utiliza SQLite como base de datos. Explica qué es el `DATABASE_URL` y cómo se configura para usar MySQL en lugar de SQLite. Detalla los cambios necesarios en el código y las dependencias adicionales requeridas.  
+**Objetivo**: Comprender la configuración de bases de datos y los requisitos para diferentes motores.
+
+---
+
+### Pregunta 2 (Grupo 2): Modelo de Relaciones
+**Pregunta**: En el modelo `Order` (`src/models/order.py`), se definen relaciones con `User` y `Product` usando `relationship`. Explica cómo SQLAlchemy maneja estas relaciones y qué significa el parámetro `ForeignKey`. Proporciona un ejemplo de consulta SQLAlchemy para obtener todas las órdenes con los nombres de los usuarios y productos asociados.  
+**Objetivo**: Profundizar en el uso de relaciones y consultas en SQLAlchemy.
+
+---
+
+### Pregunta 3 (Grupo 3): Validación con Pydantic
+**Pregunta**: Los esquemas Pydantic en `src/schemas/` validan los datos de entrada. Modifica el esquema `UserCreate` para agregar una validación que asegure que el `email` tenga un formato válido (por ejemplo, contenga "@" y un dominio). Explica cómo Pydantic maneja esta validación y cómo se integra con FastAPI.  
+**Objetivo**: Aprender sobre validación avanzada con Pydantic.
+
+---
+
+### Pregunta 4 (Grupo 4): Estructura Modular
+**Pregunta**: La aplicación está dividida en módulos (`routers`, `schemas`, `models`). ¿Cuáles son las ventajas de esta estructura frente a una monolítica? Propón una nueva carpeta o módulo que podría añadirse para mejorar la organización y explica su propósito.  
+**Objetivo**: Analizar el diseño modular y su impacto en la mantenibilidad.
+
+---
+
+### Pregunta 5 (Grupo 5): Manejo de Excepciones
+**Pregunta**: En los endpoints `GET` de los routers, se usa `HTTPException` para manejar recursos no encontrados. ¿Qué otras excepciones podrían ocurrir al interactuar con la base de datos? Propón una mejora en el endpoint `POST /api/users/` para manejar el caso de un `username` o `email` duplicado.  
+**Objetivo**: Comprender el manejo de errores y la integridad de datos.
+
+---
+
+### Pregunta 6 (Grupo 6): Dependencias en FastAPI
+**Pregunta**: Explica cómo funciona la inyección de dependencias con `Depends(get_db)` en los routers. Diseña una nueva dependencia que verifique si un usuario tiene permisos de administrador antes de acceder a un endpoint. Describe cómo integrarla en el router de productos.  
+**Objetivo**: Explorar el sistema de dependencias y su extensibilidad.
+
+---
+
+### Pregunta 7 (Grupo 7): Creación de Endpoints
+**Pregunta**: Crea un nuevo endpoint en `src/routers/orders.py` que permita listar todas las órdenes de un usuario específico (por `user_id`). Incluye el nombre del usuario y del producto en la respuesta. Explica cómo manejarías el caso en que el usuario no exista.  
+**Objetivo**: Practicar la creación de endpoints con relaciones.
+
+---
+
+### Pregunta 8 (Grupo 8): Inicialización de Tablas
+**Pregunta**: En `src/main.py`, se usa `Base.metadata.create_all(bind=engine)` para crear las tablas. Explica qué hace esta línea y qué pasaría si las tablas ya existen. Propón una forma de verificar la existencia de tablas antes de crearlas y explica por qué podría ser útil.  
+**Objetivo**: Entender la inicialización de la base de datos y las mejores prácticas.
+
+---
+
+### Pregunta 9 (Grupo 9): Pruebas con Swagger UI
+**Pregunta**: Describe cómo usar Swagger UI (`http://127.0.0.1:8000/docs`) para probar el endpoint `POST /api/orders/`. Explica qué datos enviar, qué respuestas esperar (incluyendo códigos HTTP) y cómo interpretar los errores.  
+**Objetivo**: Familiarizarse con las herramientas de prueba de APIs.
+
+---
+
+### Pregunta 10 (Grupo 10): Rendimiento y Escalabilidad
+**Pregunta**: La aplicación usa SQLite, que no es ideal para entornos de producción con alta concurrencia. Propón tres mejoras para hacer la aplicación más escalable (por ejemplo, cambio de base de datos, caching, etc.) y explica cómo se implementarían.  
+**Objetivo**: Pensar en la escalabilidad y optimización.
+
+---
+
+### Pregunta 11 (Grupo 11): Seguridad en la API
+**Pregunta**: La aplicación no incluye autenticación. Diseña un esquema básico de autenticación JWT para proteger los endpoints de creación (`POST`). Explica cómo integrarlo en el router de usuarios y qué dependencias serían necesarias.  
+**Objetivo**: Introducir conceptos de seguridad en APIs.
+
+---
+
+### Pregunta 12 (Grupo 12): Consultas Avanzadas
+**Pregunta**: Escribe una consulta SQLAlchemy para obtener todos los productos con un precio superior a un valor dado (por ejemplo, 100). Modifica el router `products.py` para agregar un endpoint `GET /api/products/expensive/` que implemente esta consulta.  
+**Objetivo**: Practicar consultas avanzadas y la creación de endpoints.
+
+---
+
+### Pregunta 13 (Grupo 13): Relaciones Bidireccionales
+**Pregunta**: En el modelo `Order`, se definen relaciones con `User` y `Product`. ¿Qué cambios serían necesarios para permitir que un usuario pueda consultar todas sus órdenes directamente desde el modelo `User`? Implementa la relación bidireccional y explica su impacto.  
+**Objetivo**: Comprender relaciones bidireccionales en SQLAlchemy.
+
+---
+
+### Pregunta 14 (Grupo 14): Manejo de Sesiones
+**Pregunta**: En `src/database.py`, la función `get_db` maneja sesiones de base de datos. Explica por qué se usa un generador (`yield`) y qué beneficios aporta este enfoque. ¿Qué pasaría si no se cierra la sesión correctamente?  
+**Objetivo**: Entender la gestión de sesiones en FastAPI y SQLAlchemy.
+
+---
+
+### Pregunta 15 (Grupo 15): Documentación Automática
+**Pregunta**: FastAPI genera documentación automática en `/docs`. Explica cómo FastAPI crea esta documentación y cómo se pueden personalizar las descripciones de los endpoints (por ejemplo, agregar detalles al endpoint `POST /api/products/`). Implementa un ejemplo.  
+**Objetivo**: Explorar la documentación automática y su personalización.
+
+---
+
+### Pregunta 16 (Grupo 16): Validación de Claves Foráneas
+**Pregunta**: En el endpoint `POST /api/orders/`, no se valida si el `user_id` o `product_id` existen antes de crear la orden. Propón una mejora en el código para verificar la existencia de estos IDs y lanzar una excepción si no son válidos.  
+**Objetivo**: Mejorar la integridad de datos en las operaciones de la API.
+
+---
+
+### Pregunta 17 (Grupo 17): Testing Unitario
+**Pregunta**: Diseña un caso de prueba unitario para el endpoint `GET /api/users/{user_id}` usando `pytest` y la biblioteca `TestClient` de FastAPI. Explica qué aspectos del endpoint estás probando y cómo manejarías un caso de error.  
+**Objetivo**: Introducir el concepto de pruebas unitarias en FastAPI.
+
+---
+
+### Pregunta 18 (Grupo 18): Manejo de Concurrencia
+**Pregunta**: Si múltiples usuarios intentan crear órdenes simultáneamente, podrían surgir problemas de concurrencia. Explica qué es la concurrencia en bases de datos y propón una estrategia (por ejemplo, transacciones) para garantizar la integridad de los datos en el endpoint `POST /api/orders/`.  
+**Objetivo**: Comprender la concurrencia y su manejo en aplicaciones.
+
+---
+
+### Pregunta 19 (Grupo 19): Optimización de Consultas
+**Pregunta**: Analiza el endpoint `GET /api/orders/{order_id}`. Si la base de datos crece significativamente, las consultas podrían volverse lentas. Propón una mejora para optimizar la consulta, como agregar índices a las tablas, y explica cómo implementarlo en el modelo `Order`.  
+**Objetivo**: Aprender sobre optimización de bases de datos.
+
+---
+
+### Pregunta 20 (Grupo 20): Despliegue en Producción
+**Pregunta**: Describe los pasos necesarios para desplegar esta aplicación FastAPI en un servidor de producción (por ejemplo, usando Docker y un servidor como Uvicorn). Explica qué configuraciones adicionales (como variables de entorno) serían necesarias para un despliegue seguro.  
+**Objetivo**: Entender el proceso de despliegue y las consideraciones de producción.
+
+---
+
+## Instrucciones para los Grupos
+1. **Investigación**: Cada grupo debe analizar el código proporcionado y consultar la documentación oficial de FastAPI, SQLAlchemy, Pydantic u otras herramientas relevantes.
+2. **Exposición**: Presentar la respuesta en un máximo de 5 minutos, explicando la solución, mostrando ejemplos de código (si aplica) y respondiendo preguntas de los demás grupos.
+3. **Entregable**: Un documento breve (máximo 1 página) con la respuesta escrita, incluyendo cualquier código o diagramas propuestos.
+4. **Colaboración**: Los grupos pueden usar herramientas como GitHub, Notion o diagramas para compartir su trabajo.
+5. **Recursos**: Consultar la documentación oficial de FastAPI (https://fastapi.tiangolo.com/), SQLAlchemy (https://docs.sqlalchemy.org/), y Pydantic (https://docs.pydantic.dev/) para obtener información adicional.
+
+Estas preguntas están diseñadas para cubrir una amplia gama de temas, desde fundamentos hasta conceptos avanzados, promoviendo el aprendizaje práctico y la discusión técnica. ¡Éxito en las exposiciones!
+
+
+A continuación, se presentan 10 preguntas adicionales para 10 grupos, basadas exclusivamente en la información proporcionada sobre la aplicación FastAPI con tres entidades (User, Product, Order). Estas preguntas se centran en analizar, comprender y explicar el código existente sin proponer nuevas características o modificaciones. Cada pregunta incluye un objetivo claro para fomentar la comprensión técnica y la discusión.
+
+---
+
+### Pregunta 21 (Grupo 21): Propósito de `Base` en SQLAlchemy
+**Pregunta**: En `src/database.py`, se define `Base = declarative_base()`. Explica qué es `Base` en el contexto de SQLAlchemy y cómo se utiliza en los modelos de `User`, `Product` y `Order`. ¿Por qué es necesario para la creación de las tablas?  
+**Objetivo**: Comprender el rol de la clase base en SQLAlchemy y su relación con los modelos.
+
+---
+
+### Pregunta 22 (Grupo 22): Uso de `SessionLocal` en la Base de Datos
+**Pregunta**: En `src/database.py`, se define `SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)`. Explica qué hace `sessionmaker` y por qué se configuran `autocommit=False` y `autoflush=False`. ¿Qué papel juega `SessionLocal` en la función `get_db`?  
+**Objetivo**: Entender la configuración de sesiones en SQLAlchemy y su integración con FastAPI.
+
+---
+
+### Pregunta 23 (Grupo 23): Función de `APIRouter`
+**Pregunta**: En los archivos de los routers (`users.py`, `products.py`, `orders.py`), se utiliza `APIRouter`. Explica qué es `APIRouter` en FastAPI y por qué se usa en lugar de definir los endpoints directamente en el objeto `app` en `main.py`.  
+**Objetivo**: Analizar la modularidad de los routers en FastAPI.
+
+---
+
+### Pregunta 24 (Grupo 24): Rol de `from_attributes=True` en Pydantic
+**Pregunta**: En los esquemas Pydantic (`user.py`, `product.py`, `order.py`), se incluye `class Config: from_attributes = True`. Explica qué hace esta configuración y por qué es necesaria para que los esquemas funcionen con los modelos SQLAlchemy.  
+**Objetivo**: Comprender la interacción entre Pydantic y SQLAlchemy.
+
+---
+
+### Pregunta 25 (Grupo 25): Proceso de Creación de Recursos
+**Pregunta**: Analiza el endpoint `POST /api/users/` en `src/routers/users.py`. Describe paso a paso qué sucede desde que se recibe la solicitud hasta que se devuelve la respuesta, incluyendo el rol de `db.add`, `db.commit` y `db.refresh`.  
+**Objetivo**: Detallar el flujo de creación de recursos en FastAPI con SQLAlchemy.
+
+---
+
+### Pregunta 26 (Grupo 26): Claves Foráneas en el Modelo `Order`
+**Pregunta**: En el modelo `Order` (`src/models/order.py`), se definen `user_id` y `product_id` como `ForeignKey`. Explica qué son las claves foráneas en este contexto y cómo garantizan la integridad referencial entre las tablas `users`, `products` y `orders`.  
+**Objetivo**: Entender las claves foráneas y su importancia en bases de datos relacionales.
+
+---
+
+### Pregunta 27 (Grupo 27): Estructura de los Esquemas Pydantic
+**Pregunta**: Compara los esquemas `UserCreate` y `User` en `src/schemas/user.py`. Explica por qué se definen dos esquemas diferentes para la misma entidad y cómo se utilizan en los endpoints `POST` y `GET` del router de usuarios.  
+**Objetivo**: Comprender la separación de esquemas para entrada y salida en Pydantic.
+
+---
+
+### Pregunta 28 (Grupo 28): Tags en los Routers
+**Pregunta**: En los routers (`users.py`, `products.py`, `orders.py`), se define `router = APIRouter(tags=["users"])` (o similares). Explica qué hacen los `tags` en FastAPI y cómo afectan la documentación generada en Swagger UI.  
+**Objetivo**: Explorar cómo los tags mejoran la organización de la documentación de la API.
+
+---
+
+### Pregunta 29 (Grupo 29): Manejo de Errores en Endpoints `GET`
+**Pregunta**: En los endpoints `GET` de los routers, se lanza una excepción `HTTPException` con un código de estado 404 si el recurso no se encuentra. Explica cómo FastAPI maneja esta excepción y qué ve el cliente en la respuesta. Proporciona un ejemplo de la respuesta JSON esperada para un error 404 en `/api/products/1`.  
+**Objetivo**: Entender el manejo de errores en FastAPI y las respuestas HTTP.
+
+---
+
+### Pregunta 30 (Grupo 30): Ejecución de la Aplicación
+**Pregunta**: En las instrucciones para ejecutar la aplicación, se usa el comando `fastapi dev src/main.py`. Explica qué hace este comando, cómo inicia el servidor Uvicorn, y qué significa que FastAPI se ejecute en modo desarrollo. ¿Qué sucede si se accede a `http://127.0.0.1:8000/`?  
+**Objetivo**: Comprender el proceso de ejecución y el endpoint raíz de la aplicación.
+
+---
+
+## Instrucciones para los Grupos
+1. **Investigación**: Cada grupo debe analizar el código proporcionado y, si es necesario, consultar la documentación oficial de FastAPI (https://fastapi.tiangolo.com/), SQLAlchemy (https://docs.sqlalchemy.org/), o Pydantic (https://docs.pydantic.dev/) para respaldar sus respuestas.
+2. **Exposición**: Presentar la respuesta en un máximo de 5 minutos, explicando claramente el concepto, refiriéndose al código proporcionado y respondiendo preguntas de los demás grupos.
+3. **Entregable**: Un documento breve (máximo 1 página) con la respuesta escrita, incluyendo referencias específicas al código o la documentación.
+4. **Colaboración**: Los grupos pueden usar herramientas como GitHub o diagramas para ilustrar sus explicaciones si lo consideran necesario.
+5. **Enfoque**: Las respuestas deben basarse únicamente en el código y la información proporcionada, sin proponer nuevas características o modificaciones.
+
+Estas preguntas están diseñadas para profundizar en la comprensión del código existente, promoviendo el análisis técnico y la discusión colaborativa. ¡Éxito en las exposiciones!

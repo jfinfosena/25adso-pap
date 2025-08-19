@@ -77,6 +77,7 @@ nav:
       - tutorial/p2.md     
       - tutorial/p3.md     
       - tutorial/p4.md     
+      - tutorial/p5.md     
 
 plugins:
   - search

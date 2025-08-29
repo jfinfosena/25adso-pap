@@ -78,7 +78,19 @@ nav:
       - tutorial/p2.md     
       - tutorial/p3.md     
       - tutorial/p4.md     
-      - tutorial/p5.md     
+      - tutorial/p5.md       
+  - Sistema de Inventario con FastAPI: 
+      - Api/01-introduccion-fastapi.md 
+      - Api/02-instalacion-configuracion.md  
+      - Api/03-estructura-proyecto.md  
+      - Api/04-base-datos-sqlalchemy.md       
+      - Api/05-esquemas-pydantic.md      
+      - Api/06-operaciones-crud.md      
+      - Api/07-endpoints-routers.md     
+      - Api/08-middleware-autenticacion.md      
+      - Api/09-testing-pruebas.md  
+      - Api/10-deployment-produccion.md       
+      - Api/11-Repositorio.md      
 
 plugins:
   - search

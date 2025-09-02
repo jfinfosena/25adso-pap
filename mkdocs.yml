@@ -78,19 +78,32 @@ nav:
       - tutorial/p2.md     
       - tutorial/p3.md     
       - tutorial/p4.md     
-      - tutorial/p5.md       
-  - Sistema de Inventario con FastAPI: 
-      - Api/01-introduccion-fastapi.md 
-      - Api/02-instalacion-configuracion.md  
-      - Api/03-estructura-proyecto.md  
-      - Api/04-base-datos-sqlalchemy.md       
-      - Api/05-esquemas-pydantic.md      
-      - Api/06-operaciones-crud.md      
-      - Api/07-endpoints-routers.md     
-      - Api/08-middleware-autenticacion.md      
-      - Api/09-testing-pruebas.md  
-      - Api/10-deployment-produccion.md       
-      - Api/11-Repositorio.md      
+      - tutorial/p5.md 
+      - Sistema de Inventario con FastAPI: 
+          - tutorial/api1/01-introduccion-fastapi.md
+          - tutorial/api1/02-instalacion-configuracion.md  
+          - tutorial/api1/03-estructura-proyecto.md  
+          - tutorial/api1/04-base-datos-sqlalchemy.md       
+          - tutorial/api1/05-esquemas-pydantic.md      
+          - tutorial/api1/06-operaciones-crud.md      
+          - tutorial/api1/07-endpoints-routers.md     
+          - tutorial/api1/08-middleware-autenticacion.md      
+          - tutorial/api1/09-testing-pruebas.md  
+          - tutorial/api1/10-deployment-produccion.md       
+          - tutorial/api1/11-Repositorio.md       
+      - Ejemplo Básico FastAPI: 
+          - tutorial/api2/api2/01-introduccion.md
+          - tutorial/api2/api2/02-configuracion-entorno.md 
+          - tutorial/api2/api2/03-estructura-proyecto.md 
+          - tutorial/api2/api2/04-base-datos-modelos.md       
+          - tutorial/api2/api2/05-esquemas-validacion.md     
+          - tutorial/api2/api2/06-operaciones-crud.md      
+          - tutorial/api2/api2/07-rutas-endpoints.md    
+          - tutorial/api2/api2/08-aplicacion-principal.md      
+          - tutorial/api2/api2/09-testing-debugging.md
+          - tutorial/api2/api2/10-documentacion-deployment.md       
+          - tutorial/api2/api2/11-Repositorio.md      
+     
 
 plugins:
   - search

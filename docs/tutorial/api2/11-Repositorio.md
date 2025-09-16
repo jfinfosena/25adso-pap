@@ -4,7 +4,7 @@
 https://github.com/jfinfosena/act_apirest_fastapi2.git
 ```
 
-# Proyecto grupales
+# Proyectos grupales
 
 ```bash
 https://github.com/jfinfosena/act_pi_pap_grupos.git

@@ -1,0 +1,3106 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/api1/08-middleware-autenticacion/">
+      
+      
+        <link rel="prev" href="../07-endpoints-routers/">
+      
+      
+        <link rel="next" href="../09-testing-pruebas/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Middleware, Autenticación y Autorización - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#middleware-autenticacion-y-autorizacion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Middleware, Autenticación y Autorización
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es Middleware?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es Middleware?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-middleware-en-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Middleware en FastAPI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacion-de-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementación de Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Middleware básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-middleware-de-cors-personalizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Middleware de CORS personalizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-middleware-de-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Middleware de rate limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autenticación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-autenticacion-con-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Autenticación con JWT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Autenticación con JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de JWT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esquemas-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esquemas de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencias-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencias de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Router de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autorización
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autorización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sistema-de-roles-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sistema de roles y permisos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-actualizar-modelo-de-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Actualizar modelo de usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dependencias-de-autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependencias de autorización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-uso-en-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Uso en endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-en-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración en main.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas de seguridad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores prácticas de seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-segura" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración segura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validacion-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validación de entrada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-logging-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Logging de seguridad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es Middleware?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es Middleware?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-middleware-en-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Middleware en FastAPI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacion-de-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementación de Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Middleware básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-middleware-de-cors-personalizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Middleware de CORS personalizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-middleware-de-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Middleware de rate limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autenticación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-autenticacion-con-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Autenticación con JWT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Autenticación con JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de JWT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esquemas-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esquemas de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencias-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencias de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Router de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autorización
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autorización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sistema-de-roles-y-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sistema de roles y permisos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-actualizar-modelo-de-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Actualizar modelo de usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dependencias-de-autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependencias de autorización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-uso-en-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Uso en endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-en-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración en main.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas de seguridad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores prácticas de seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-segura" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración segura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validacion-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validación de entrada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-logging-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Logging de seguridad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="middleware-autenticacion-y-autorizacion">Middleware, Autenticación y Autorización</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>En este tema aprenderemos sobre tres conceptos fundamentales para crear APIs seguras y robustas:</p>
+<ul>
+<li><strong>Middleware</strong>: Funciones que se ejecutan antes/después de cada request</li>
+<li><strong>Autenticación</strong>: Verificar la identidad del usuario</li>
+<li><strong>Autorización</strong>: Verificar los permisos del usuario</li>
+</ul>
+<h2 id="que-es-middleware">¿Qué es Middleware?</h2>
+<p>El middleware es código que se ejecuta antes y/o después de que tu endpoint procese una request. Es útil para:</p>
+<ul>
+<li><strong>Logging</strong> de requests</li>
+<li><strong>Autenticación</strong> y autorización</li>
+<li><strong>Manejo de CORS</strong></li>
+<li><strong>Rate limiting</strong></li>
+<li><strong>Compresión</strong> de respuestas</li>
+<li><strong>Manejo de errores</strong> globales</li>
+</ul>
+<h3 id="tipos-de-middleware-en-fastapi">Tipos de Middleware en FastAPI</h3>
+<ol>
+<li><strong>Middleware de aplicación</strong>: Se aplica a toda la aplicación</li>
+<li><strong>Middleware de router</strong>: Se aplica a un router específico</li>
+<li><strong>Dependencies</strong>: Se aplican a endpoints específicos</li>
+</ol>
+<h2 id="implementacion-de-middleware">Implementación de Middleware</h2>
+<h3 id="1-middleware-basico">1. Middleware básico</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/middleware/logging.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+
+<span class="c1"># Configurar logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LoggingMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Middleware para logging de requests y responses.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="c1"># Información del request</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">client_ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">host</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="c1"># Log del request entrante</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">client_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Procesar el request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Calcular tiempo de procesamiento</span>
+        <span class="n">process_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+        <span class="c1"># Log del response</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Response: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;in </span><span class="si">{</span><span class="n">process_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Agregar header con tiempo de procesamiento</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-Process-Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">process_time</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h3 id="2-middleware-de-cors-personalizado">2. Middleware de CORS personalizado</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/middleware/cors.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span> <span class="k">as</span> <span class="n">StarletteResponse</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomCORSMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Middleware personalizado para manejo de CORS.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">allowed_origins</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allowed_origins</span> <span class="o">=</span> <span class="n">allowed_origins</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="c1"># Obtener el origin del request</span>
+        <span class="n">origin</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;origin&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Manejar preflight requests (OPTIONS)</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;OPTIONS&quot;</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">StarletteResponse</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Agregar headers CORS</span>
+        <span class="k">if</span> <span class="n">origin</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">allowed_origins</span> <span class="ow">or</span> <span class="n">origin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">allowed_origins</span><span class="p">):</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Methods&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;GET, POST, PUT, DELETE, OPTIONS&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Headers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Content-Type, Authorization&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Credentials&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h3 id="3-middleware-de-rate-limiting">3. Middleware de rate limiting</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/middleware/rate_limit.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RateLimitMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Middleware para limitar la cantidad de requests por IP.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">calls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">60</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calls</span> <span class="o">=</span> <span class="n">calls</span>  <span class="c1"># Número de llamadas permitidas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">period</span>  <span class="c1"># Período en segundos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clients</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>  <span class="c1"># Almacenar requests por IP</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="n">client_ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">host</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Limpiar requests antiguos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clients</span><span class="p">[</span><span class="n">client_ip</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">timestamp</span> <span class="k">for</span> <span class="n">timestamp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clients</span><span class="p">[</span><span class="n">client_ip</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">now</span> <span class="o">-</span> <span class="n">timestamp</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Verificar límite</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clients</span><span class="p">[</span><span class="n">client_ip</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calls</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+                <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_429_TOO_MANY_REQUESTS</span><span class="p">,</span>
+                <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Rate limit exceeded&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Registrar el request actual</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clients</span><span class="p">[</span><span class="n">client_ip</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+
+        <span class="c1"># Procesar request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Agregar headers informativos</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-RateLimit-Limit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calls</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-RateLimit-Remaining&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calls</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clients</span><span class="p">[</span><span class="n">client_ip</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-RateLimit-Reset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">now</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h2 id="autenticacion">Autenticación</h2>
+<h3 id="1-autenticacion-con-jwt">1. Autenticación con JWT</h3>
+<p>Primero, instalemos las dependencias necesarias:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>python-jose<span class="o">[</span>cryptography<span class="o">]</span><span class="w"> </span>passlib<span class="o">[</span>bcrypt<span class="o">]</span><span class="w"> </span>python-multipart
+</code></pre></div>
+<h4 id="configuracion-de-jwt">Configuración de JWT</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/auth/jwt.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jose</span><span class="w"> </span><span class="kn">import</span> <span class="n">JWTError</span><span class="p">,</span> <span class="n">jwt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passlib.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">CryptContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+
+<span class="c1"># Configuración de encriptación</span>
+<span class="n">pwd_context</span> <span class="o">=</span> <span class="n">CryptContext</span><span class="p">(</span><span class="n">schemes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bcrypt&quot;</span><span class="p">],</span> <span class="n">deprecated</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+
+<span class="c1"># Configuración JWT</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">SECRET_KEY</span>
+<span class="n">ALGORITHM</span> <span class="o">=</span> <span class="s2">&quot;HS256&quot;</span>
+<span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_password</span><span class="p">(</span><span class="n">plain_password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hashed_password</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verificar si una contraseña coincide con su hash.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        plain_password: Contraseña en texto plano</span>
+<span class="sd">        hashed_password: Contraseña hasheada</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True si coinciden, False si no</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pwd_context</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">plain_password</span><span class="p">,</span> <span class="n">hashed_password</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_password_hash</span><span class="p">(</span><span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generar hash de una contraseña.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        password: Contraseña en texto plano</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Hash de la contraseña</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pwd_context</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">expires_delta</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">timedelta</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un token JWT de acceso.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: Datos a incluir en el token</span>
+<span class="sd">        expires_delta: Tiempo de expiración personalizado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Token JWT como string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">to_encode</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">expires_delta</span><span class="p">:</span>
+        <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">expires_delta</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span><span class="p">)</span>
+
+    <span class="n">to_encode</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="n">expire</span><span class="p">})</span>
+    <span class="n">encoded_jwt</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">to_encode</span><span class="p">,</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">ALGORITHM</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">encoded_jwt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_token</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verificar y decodificar un token JWT.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        token: Token JWT a verificar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Payload del token si es válido, None si no</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">ALGORITHM</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">payload</span>
+    <span class="k">except</span> <span class="n">JWTError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user_from_token</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener el username del usuario desde un token.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        token: Token JWT</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Username si el token es válido, None si no</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">verify_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">payload</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sub&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+<h4 id="esquemas-de-autenticacion">Esquemas de autenticación</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/schemas/auth.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">EmailStr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserLogin</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para login de usuario.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Token</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para respuesta de token.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">access_token</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">token_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bearer&quot;</span>
+    <span class="n">expires_in</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Segundos hasta expiración</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TokenData</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para datos del token.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">username</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserRegister</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para registro de usuario.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
+    <span class="n">full_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PasswordChange</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para cambio de contraseña.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">current_password</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">new_password</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PasswordReset</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para reset de contraseña.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PasswordResetConfirm</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esquema para confirmar reset de contraseña.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">new_password</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+<h4 id="dependencias-de-autenticacion">Dependencias de autenticación</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/auth/dependencies.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPBearer</span><span class="p">,</span> <span class="n">HTTPAuthorizationCredentials</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_user_from_token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.users</span><span class="w"> </span><span class="kn">import</span> <span class="n">user</span> <span class="k">as</span> <span class="n">crud_user</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.user</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+
+<span class="c1"># Configurar esquema de seguridad</span>
+<span class="n">security</span> <span class="o">=</span> <span class="n">HTTPBearer</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_current_user</span><span class="p">(</span>
+    <span class="n">credentials</span><span class="p">:</span> <span class="n">HTTPAuthorizationCredentials</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">security</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener el usuario actual desde el token JWT.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        credentials: Credenciales del header Authorization</span>
+<span class="sd">        db: Sesión de base de datos</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Usuario autenticado</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        HTTPException: Si el token es inválido o el usuario no existe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar que hay credenciales</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">credentials</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Token de acceso requerido&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Obtener username del token</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">get_user_from_token</span><span class="p">(</span><span class="n">credentials</span><span class="o">.</span><span class="n">credentials</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">username</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Token inválido&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Obtener usuario de la base de datos</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_username</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Verificar que el usuario está activo</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario inactivo&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">user</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_current_active_user</span><span class="p">(</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener usuario activo (alias para claridad).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        current_user: Usuario actual</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Usuario activo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">current_user</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_optional_current_user</span><span class="p">(</span>
+    <span class="n">credentials</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">HTTPAuthorizationCredentials</span><span class="p">]</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">security</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">User</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener usuario actual de forma opcional (para endpoints públicos).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        credentials: Credenciales opcionales</span>
+<span class="sd">        db: Sesión de base de datos</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Usuario si está autenticado, None si no</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">credentials</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_current_user</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">HTTPException</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+<h4 id="router-de-autenticacion">Router de autenticación</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/routers/auth.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">OAuth2PasswordRequestForm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">verify_password</span><span class="p">,</span> 
+    <span class="n">create_access_token</span><span class="p">,</span> 
+    <span class="n">get_password_hash</span><span class="p">,</span>
+    <span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.dependencies</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_user</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.users</span><span class="w"> </span><span class="kn">import</span> <span class="n">user</span> <span class="k">as</span> <span class="n">crud_user</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.auth</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Token</span><span class="p">,</span> 
+    <span class="n">UserRegister</span><span class="p">,</span> 
+    <span class="n">PasswordChange</span><span class="p">,</span>
+    <span class="n">PasswordReset</span><span class="p">,</span>
+    <span class="n">PasswordResetConfirm</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.user</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserResponse</span><span class="p">,</span> <span class="n">UserCreate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.user</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/auth&quot;</span><span class="p">,</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/register&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">(</span>
+    <span class="n">user_data</span><span class="p">:</span> <span class="n">UserRegister</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Registrar un nuevo usuario.</span>
+
+<span class="sd">    - **username**: Nombre de usuario único</span>
+<span class="sd">    - **email**: Email único</span>
+<span class="sd">    - **full_name**: Nombre completo</span>
+<span class="sd">    - **password**: Contraseña (será hasheada)</span>
+<span class="sd">    - **phone**: Teléfono (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar si el usuario ya existe</span>
+    <span class="k">if</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_username</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">user_data</span><span class="o">.</span><span class="n">username</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;El nombre de usuario ya está registrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_email</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">user_data</span><span class="o">.</span><span class="n">email</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;El email ya está registrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Hashear la contraseña</span>
+    <span class="n">hashed_password</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">user_data</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+
+    <span class="c1"># Crear usuario</span>
+    <span class="n">user_create</span> <span class="o">=</span> <span class="n">UserCreate</span><span class="p">(</span>
+        <span class="n">username</span><span class="o">=</span><span class="n">user_data</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+        <span class="n">email</span><span class="o">=</span><span class="n">user_data</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+        <span class="n">full_name</span><span class="o">=</span><span class="n">user_data</span><span class="o">.</span><span class="n">full_name</span><span class="p">,</span>
+        <span class="n">phone</span><span class="o">=</span><span class="n">user_data</span><span class="o">.</span><span class="n">phone</span><span class="p">,</span>
+        <span class="n">hashed_password</span><span class="o">=</span><span class="n">hashed_password</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">user_create</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Token</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span>
+    <span class="n">form_data</span><span class="p">:</span> <span class="n">OAuth2PasswordRequestForm</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Iniciar sesión y obtener token de acceso.</span>
+
+<span class="sd">    - **username**: Nombre de usuario o email</span>
+<span class="sd">    - **password**: Contraseña del usuario</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Buscar usuario por username o email</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_username</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">form_data</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_email</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">form_data</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+
+    <span class="c1"># Verificar usuario y contraseña</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">form_data</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">hashed_password</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Credenciales incorrectas&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Verificar que el usuario está activo</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario inactivo&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Crear token de acceso</span>
+    <span class="n">access_token_expires</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span><span class="p">)</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">},</span>
+        <span class="n">expires_delta</span><span class="o">=</span><span class="n">access_token_expires</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="n">access_token</span><span class="p">,</span>
+        <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span> <span class="o">*</span> <span class="mi">60</span>
+    <span class="p">}</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/me&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_users_me</span><span class="p">(</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener información del usuario actual.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">current_user</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/change-password&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">change_password</span><span class="p">(</span>
+    <span class="n">password_data</span><span class="p">:</span> <span class="n">PasswordChange</span><span class="p">,</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cambiar la contraseña del usuario actual.</span>
+
+<span class="sd">    - **current_password**: Contraseña actual</span>
+<span class="sd">    - **new_password**: Nueva contraseña</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar contraseña actual</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">password_data</span><span class="o">.</span><span class="n">current_password</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">hashed_password</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Contraseña actual incorrecta&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Actualizar contraseña</span>
+    <span class="n">hashed_password</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password_data</span><span class="o">.</span><span class="n">new_password</span><span class="p">)</span>
+    <span class="n">current_user</span><span class="o">.</span><span class="n">hashed_password</span> <span class="o">=</span> <span class="n">hashed_password</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Contraseña actualizada exitosamente&quot;</span><span class="p">}</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/logout&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cerrar sesión (en una implementación real, invalidarías el token).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Sesión cerrada exitosamente&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="autorizacion">Autorización</h2>
+<h3 id="1-sistema-de-roles-y-permisos">1. Sistema de roles y permisos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/models/role.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">ForeignKey</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">relationship</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="c1"># Tabla de asociación para usuarios y roles</span>
+<span class="n">user_roles</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="s1">&#39;user_roles&#39;</span><span class="p">,</span>
+    <span class="n">BaseModel</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
+    <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;role_id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;roles.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Tabla de asociación para roles y permisos</span>
+<span class="n">role_permissions</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="s1">&#39;role_permissions&#39;</span><span class="p">,</span>
+    <span class="n">BaseModel</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
+    <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;role_id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;roles.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;permission_id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;permissions.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Role</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modelo para roles de usuario.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;roles&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+    <span class="n">is_active</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Boolean</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Relaciones</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="n">user_roles</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;roles&quot;</span><span class="p">)</span>
+    <span class="n">permissions</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Permission&quot;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="n">role_permissions</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;roles&quot;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Permission</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modelo para permisos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;permissions&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+    <span class="n">resource</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>  <span class="c1"># ej: &quot;users&quot;, &quot;items&quot;, &quot;loans&quot;</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>    <span class="c1"># ej: &quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span>
+
+    <span class="c1"># Relaciones</span>
+    <span class="n">roles</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Role&quot;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="n">role_permissions</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;permissions&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="2-actualizar-modelo-de-usuario">2. Actualizar modelo de usuario</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Agregar a app/models/user.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">relationship</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.role</span><span class="w"> </span><span class="kn">import</span> <span class="n">user_roles</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="c1"># ... campos existentes ...</span>
+
+    <span class="c1"># Agregar relación con roles</span>
+    <span class="n">roles</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Role&quot;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="n">user_roles</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">permission_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verificar si el usuario tiene un permiso específico.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            permission_name: Nombre del permiso a verificar</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True si tiene el permiso, False si no</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roles</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">role</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">permission</span> <span class="ow">in</span> <span class="n">role</span><span class="o">.</span><span class="n">permissions</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">permission</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">permission_name</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">role_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verificar si el usuario tiene un rol específico.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            role_name: Nombre del rol a verificar</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True si tiene el rol, False si no</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roles</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">role</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="n">role</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">role_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<h3 id="3-dependencias-de-autorizacion">3. Dependencias de autorización</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/auth/permissions.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.dependencies</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_user</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.user</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">require_permissions</span><span class="p">(</span><span class="n">permissions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator para requerir permisos específicos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        permissions: Lista de permisos requeridos</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Función de dependencia</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">permission_checker</span><span class="p">(</span><span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">permission</span> <span class="ow">in</span> <span class="n">permissions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="n">permission</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+                    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
+                    <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Permiso requerido: </span><span class="si">{</span><span class="n">permission</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">current_user</span>
+
+    <span class="k">return</span> <span class="n">permission_checker</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">require_roles</span><span class="p">(</span><span class="n">roles</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator para requerir roles específicos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        roles: Lista de roles requeridos (cualquiera de ellos)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Función de dependencia</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">role_checker</span><span class="p">(</span><span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">)):</span>
+        <span class="n">has_required_role</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="n">current_user</span><span class="o">.</span><span class="n">has_role</span><span class="p">(</span><span class="n">role</span><span class="p">)</span> <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">roles</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_required_role</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+                <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
+                <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Rol requerido: </span><span class="si">{</span><span class="s1">&#39; o &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">roles</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">current_user</span>
+
+    <span class="k">return</span> <span class="n">role_checker</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">require_admin</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dependencia para requerir rol de administrador.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Función de dependencia</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">require_roles</span><span class="p">([</span><span class="s2">&quot;admin&quot;</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">require_staff</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dependencia para requerir rol de staff o admin.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Función de dependencia</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">require_roles</span><span class="p">([</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;staff&quot;</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_modify_user</span><span class="p">(</span><span class="n">target_user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verificar si el usuario puede modificar a otro usuario.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_user_id: ID del usuario a modificar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Función de dependencia</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">user_modifier_checker</span><span class="p">(</span><span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">)):</span>
+        <span class="c1"># Los admins pueden modificar cualquier usuario</span>
+        <span class="k">if</span> <span class="n">current_user</span><span class="o">.</span><span class="n">has_role</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">current_user</span>
+
+        <span class="c1"># Los usuarios solo pueden modificarse a sí mismos</span>
+        <span class="k">if</span> <span class="n">current_user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">target_user_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">current_user</span>
+
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;No tienes permisos para modificar este usuario&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">user_modifier_checker</span>
+</code></pre></div>
+<h3 id="4-uso-en-endpoints">4. Uso en endpoints</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejemplo de uso en routers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">require_permissions</span><span class="p">,</span> <span class="n">require_admin</span><span class="p">,</span> <span class="n">require_staff</span>
+
+<span class="c1"># Endpoint que requiere permiso específico</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/items/&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">ItemResponse</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_item</span><span class="p">(</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">ItemCreate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">),</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">require_permissions</span><span class="p">([</span><span class="s2">&quot;items:create&quot;</span><span class="p">]))</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear artículo (requiere permiso items:create).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+
+<span class="c1"># Endpoint que requiere rol de admin</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">),</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">require_admin</span><span class="p">())</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eliminar usuario (solo admins).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+
+<span class="c1"># Endpoint que requiere ser staff o admin</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/reports/loans&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_loans_report</span><span class="p">(</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">),</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">require_staff</span><span class="p">())</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener reporte de préstamos (staff o admin).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Reporte de préstamos&quot;</span><span class="p">}</span>
+
+<span class="c1"># Endpoint con autorización personalizada</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">user_update</span><span class="p">:</span> <span class="n">UserUpdate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">),</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">can_modify_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar usuario (solo el mismo usuario o admin).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">db_obj</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">user_update</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="configuracion-en-mainpy">Configuración en main.py</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/main.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.middleware.cors</span><span class="w"> </span><span class="kn">import</span> <span class="n">CORSMiddleware</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.middleware.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggingMiddleware</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.middleware.rate_limit</span><span class="w"> </span><span class="kn">import</span> <span class="n">RateLimitMiddleware</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.routers</span><span class="w"> </span><span class="kn">import</span> <span class="n">users</span><span class="p">,</span> <span class="n">categories</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">loans</span><span class="p">,</span> <span class="n">auth</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sistema de Inventario API&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;API REST para gestión de inventario y préstamos&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Agregar middleware (el orden importa)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">LoggingMiddleware</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+    <span class="n">RateLimitMiddleware</span><span class="p">,</span>
+    <span class="n">calls</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>  <span class="c1"># 100 requests</span>
+    <span class="n">period</span><span class="o">=</span><span class="mi">60</span>   <span class="c1"># por minuto</span>
+<span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+    <span class="n">CORSMiddleware</span><span class="p">,</span>
+    <span class="n">allow_origins</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">ALLOWED_HOSTS</span><span class="p">,</span>
+    <span class="n">allow_credentials</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">allow_methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+    <span class="n">allow_headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># Incluir routers</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">categories</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">loans</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Sistema de Inventario API con Autenticación&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="mejores-practicas-de-seguridad">Mejores prácticas de seguridad</h2>
+<h3 id="1-configuracion-segura">1. Configuración segura</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/config.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+    <span class="c1"># Generar clave secreta segura</span>
+    <span class="n">SECRET_KEY</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_urlsafe</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+    <span class="c1"># Configuración de base de datos</span>
+    <span class="n">DATABASE_URL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///./inventory.db&quot;</span>
+
+    <span class="c1"># Configuración CORS</span>
+    <span class="n">ALLOWED_HOSTS</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://localhost:3000&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Configuración JWT</span>
+    <span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">REFRESH_TOKEN_EXPIRE_DAYS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span>
+
+    <span class="c1"># Rate limiting</span>
+    <span class="n">RATE_LIMIT_CALLS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">RATE_LIMIT_PERIOD</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">60</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">env_file</span> <span class="o">=</span> <span class="s2">&quot;.env&quot;</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="2-validacion-de-entrada">2. Validación de entrada</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Siempre validar entrada del usuario</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">validator</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserRegister</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="nd">@validator</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">username_must_be_alphanumeric</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Username debe ser alfanumérico&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Username debe tener al menos 3 caracteres&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span>
+
+    <span class="nd">@validator</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">password_must_be_strong</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Password debe tener al menos 8 caracteres&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">v</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Password debe tener al menos una mayúscula&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">v</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Password debe tener al menos una minúscula&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">v</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Password debe tener al menos un número&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<h3 id="3-logging-de-seguridad">3. Logging de seguridad</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/middleware/security_logging.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+
+<span class="n">security_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;security&quot;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SecurityLoggingMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="c1"># Log intentos de autenticación</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/&quot;</span><span class="p">):</span>
+            <span class="n">security_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Auth attempt: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;from </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Log fallos de autenticación</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+            <span class="n">security_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Auth failed: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;from </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Log accesos denegados</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
+            <span class="n">security_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Access denied: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;from </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h2 id="proximos-pasos">Próximos pasos</h2>
+<p>En el siguiente tema aprenderemos sobre testing y cómo escribir pruebas para nuestra API.</p>
+<hr />
+<p><strong>💡 Tips importantes</strong>:</p>
+<ol>
+<li><strong>Nunca hardcodear secretos</strong> - usar variables de entorno</li>
+<li><strong>Hashear contraseñas</strong> - nunca almacenar en texto plano</li>
+<li><strong>Validar entrada</strong> - siempre validar datos del usuario</li>
+<li><strong>Principio de menor privilegio</strong> - dar solo permisos necesarios</li>
+<li><strong>Logging de seguridad</strong> - registrar eventos importantes</li>
+</ol>
+<p><strong>🔗 Enlaces útiles</strong>:
+- <a href="https://fastapi.tiangolo.com/tutorial/security/">FastAPI Security</a>
+- <a href="https://jwt.io/">JWT.io</a>
+- <a href="https://owasp.org/www-project-api-security/">OWASP API Security</a>
+- <a href="https://cryptography.io/">Python Cryptography</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

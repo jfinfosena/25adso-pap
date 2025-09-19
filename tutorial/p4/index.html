@@ -1,0 +1,3243 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/p4/">
+      
+      
+        <link rel="prev" href="../p3/">
+      
+      
+        <link rel="next" href="../p5/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-detallado-extensivo-y-completo-de-pydantic-en-espanol" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-pydantic" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Pydantic?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es Pydantic?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-y-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación y Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Instalación y Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-modelos-basicos-con-basemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Modelos Básicos con BaseModel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Modelos Básicos con BaseModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-pydantic-aqui" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué hace Pydantic aquí?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-validacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Validación de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Validación de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de validación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tipos-de-datos-soportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Tipos de Datos Soportados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Tipos de Datos Soportados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos comunes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-con-tipos-complejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo con tipos complejos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-campos-opcionales-y-valores-por-defecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Campos Opcionales y Valores por Defecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Campos Opcionales y Valores por Defecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#campos-opcionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Campos opcionales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-campos-anotados-con-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Campos Anotados con Field
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Campos Anotados con Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametros-comunes-de-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parámetros comunes de Field:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-validadores-personalizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Validadores Personalizados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Validadores Personalizados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validador-de-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validador de campo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validador-de-modelo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validador de modelo completo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-modelos-anidados-y-composicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Modelos Anidados y Composición
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-listas-dicts-y-colecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Listas, Dicts y Colecciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Listas, Dicts y Colecciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listas-con-tipo-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listas con tipo específico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listas-de-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listas de modelos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-uso-de-alias-campos-con-nombres-diferentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Uso de Alias (Campos con Nombres Diferentes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Uso de Alias (Campos con Nombres Diferentes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alias-y-validation_alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      alias y validation_alias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso-con-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso con JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-serializacion-y-deserializacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Serialización y Deserialización
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Serialización y Deserialización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deserializacion-de-dict-o-json-a-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deserialización (de dict o JSON a modelo)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serializacion-modelo-a-dict-o-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialización (modelo a dict o JSON)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones comunes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-configuracion-del-modelo-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Configuración del Modelo (Config)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Configuración del Modelo (Config)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-clave-de-model_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones clave de model_config:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-uso-con-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Uso con FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-manejo-de-errores-y-excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Manejo de Errores y Excepciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Manejo de Errores y Excepciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-modelos-genericos" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Modelos Genéricos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-modelos-dinamicos-y-create_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Modelos Dinámicos y create_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-uso-con-pydantic-v2-actualizaciones-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. Uso con Pydantic v2 (Actualizaciones Clave)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Uso con Pydantic v2 (Actualizaciones Clave)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambios-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambios principales:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo v2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-mejores-practicas-y-consejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. Mejores Prácticas y Consejos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-ejemplo-completo-api-rest-con-pydantic-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Ejemplo Completo: API REST con Pydantic + FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-pydantic" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Pydantic?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es Pydantic?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-y-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación y Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Instalación y Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-modelos-basicos-con-basemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Modelos Básicos con BaseModel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Modelos Básicos con BaseModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-pydantic-aqui" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué hace Pydantic aquí?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-validacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Validación de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Validación de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de validación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tipos-de-datos-soportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Tipos de Datos Soportados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Tipos de Datos Soportados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos comunes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-con-tipos-complejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo con tipos complejos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-campos-opcionales-y-valores-por-defecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Campos Opcionales y Valores por Defecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Campos Opcionales y Valores por Defecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#campos-opcionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Campos opcionales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-campos-anotados-con-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Campos Anotados con Field
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Campos Anotados con Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametros-comunes-de-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parámetros comunes de Field:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-validadores-personalizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Validadores Personalizados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Validadores Personalizados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validador-de-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validador de campo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validador-de-modelo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validador de modelo completo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-modelos-anidados-y-composicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Modelos Anidados y Composición
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-listas-dicts-y-colecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Listas, Dicts y Colecciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Listas, Dicts y Colecciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listas-con-tipo-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listas con tipo específico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listas-de-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listas de modelos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-uso-de-alias-campos-con-nombres-diferentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Uso de Alias (Campos con Nombres Diferentes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Uso de Alias (Campos con Nombres Diferentes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alias-y-validation_alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      alias y validation_alias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso-con-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso con JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-serializacion-y-deserializacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Serialización y Deserialización
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Serialización y Deserialización">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deserializacion-de-dict-o-json-a-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deserialización (de dict o JSON a modelo)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serializacion-modelo-a-dict-o-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialización (modelo a dict o JSON)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones comunes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-configuracion-del-modelo-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Configuración del Modelo (Config)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Configuración del Modelo (Config)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-clave-de-model_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones clave de model_config:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-uso-con-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Uso con FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-manejo-de-errores-y-excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Manejo de Errores y Excepciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Manejo de Errores y Excepciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-modelos-genericos" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Modelos Genéricos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-modelos-dinamicos-y-create_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Modelos Dinámicos y create_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-uso-con-pydantic-v2-actualizaciones-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. Uso con Pydantic v2 (Actualizaciones Clave)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Uso con Pydantic v2 (Actualizaciones Clave)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambios-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambios principales:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo v2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-mejores-practicas-y-consejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. Mejores Prácticas y Consejos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-ejemplo-completo-api-rest-con-pydantic-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Ejemplo Completo: API REST con Pydantic + FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tutorial-detallado-extensivo-y-completo-de-pydantic-en-espanol">📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español</h1>
+<h2 id="1-que-es-pydantic">1. ¿Qué es Pydantic?</h2>
+<p><strong>Pydantic</strong> es una biblioteca de validación y configuración de datos en tiempo de ejecución para Python, basada en anotaciones de tipo (type hints). Es ampliamente utilizada en aplicaciones modernas de Python, especialmente con frameworks como <strong>FastAPI</strong>, <strong>Starlette</strong>, y <strong>Django Ninja</strong>.</p>
+<h3 id="caracteristicas-principales">Características principales:</h3>
+<ul>
+<li>Validación automática de datos basada en tipos.</li>
+<li>Generación de documentación automática (como JSON Schema).</li>
+<li>Conversión automática de tipos (casting).</li>
+<li>Soporte para modelos anidados, listas, diccionarios, y más.</li>
+<li>Integración perfecta con herramientas de desarrollo (IDEs, mypy, etc.).</li>
+<li>Compatible con Python 3.7+ (y versiones más recientes).</li>
+</ul>
+<p>Pydantic ayuda a evitar errores comunes en la manipulación de datos, especialmente en APIs, formularios, archivos de configuración o bases de datos.</p>
+<hr />
+<h2 id="2-instalacion-y-requisitos">2. Instalación y Requisitos</h2>
+<h3 id="instalacion">Instalación</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pydantic
+</code></pre></div>
+<p>Para Pydantic v2 (recomendado desde 2023):</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;pydantic&gt;=2.0.0&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Nota</strong>: Pydantic v2 fue lanzado en 2023 y trae cambios importantes. Este tutorial cubre principalmente v2, pero se indicarán diferencias con v1 cuando sea relevante.</p>
+</blockquote>
+<h3 id="requisitos">Requisitos</h3>
+<ul>
+<li>Python 3.7 o superior</li>
+<li>Bibliotecas estándar de Python</li>
+</ul>
+<hr />
+<h2 id="3-modelos-basicos-con-basemodel">3. Modelos Básicos con <code>BaseModel</code></h2>
+<p>La clase base de Pydantic es <code>BaseModel</code>. Define modelos de datos con campos tipados.</p>
+<h3 id="ejemplo-basico">Ejemplo básico</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Usuario</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">edad</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="c1"># Crear una instancia</span>
+<span class="n">usuario</span> <span class="o">=</span> <span class="n">Usuario</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;ana@example.com&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">usuario</span><span class="p">)</span>
+<span class="c1"># salida: nombre=&#39;Ana&#39; edad=30 email=&#39;ana@example.com&#39;</span>
+</code></pre></div>
+<h3 id="que-hace-pydantic-aqui">¿Qué hace Pydantic aquí?</h3>
+<ul>
+<li>Valida que <code>edad</code> sea un entero.</li>
+<li>Convierte tipos si es posible (ej. cadena <code>"30"</code> → entero <code>30</code>).</li>
+<li>Lanza error si falta un campo obligatorio.</li>
+</ul>
+<hr />
+<h2 id="4-validacion-de-datos">4. Validación de Datos</h2>
+<p>Pydantic valida automáticamente los tipos y valores al instanciar un modelo.</p>
+<h3 id="ejemplo-de-validacion">Ejemplo de validación</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Producto</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">precio</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">disponible</span><span class="p">:</span> <span class="nb">bool</span>
+
+<span class="c1"># Intento con datos inválidos</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Producto</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Laptop&quot;</span><span class="p">,</span> <span class="n">precio</span><span class="o">=</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="n">disponible</span><span class="o">=</span><span class="s2">&quot;no&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Salida:</strong>
+<div class="highlight"><pre><span></span><code>2 validation errors for Producto
+precio
+  Input should be a valid number [type=float_type, ...]
+disponible
+  Input should be a valid boolean [type=bool_type, ...]
+</code></pre></div></p>
+<hr />
+<h2 id="5-tipos-de-datos-soportados">5. Tipos de Datos Soportados</h2>
+<p>Pydantic soporta todos los tipos estándar de Python y muchos adicionales del módulo <code>typing</code>.</p>
+<h3 id="tipos-comunes">Tipos comunes</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td>Cadenas de texto</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>Enteros</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>Números decimales</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td>Booleanos (<code>True</code>/<code>False</code>)</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>Listas</td>
+</tr>
+<tr>
+<td><code>dict</code></td>
+<td>Diccionarios</td>
+</tr>
+<tr>
+<td><code>tuple</code></td>
+<td>Tuplas</td>
+</tr>
+<tr>
+<td><code>set</code></td>
+<td>Conjuntos</td>
+</tr>
+<tr>
+<td><code>datetime.datetime</code></td>
+<td>Fecha y hora</td>
+</tr>
+<tr>
+<td><code>datetime.date</code></td>
+<td>Solo fecha</td>
+</tr>
+<tr>
+<td><code>datetime.time</code></td>
+<td>Solo hora</td>
+</tr>
+<tr>
+<td><code>uuid.UUID</code></td>
+<td>Identificadores únicos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-con-tipos-complejos">Ejemplo con tipos complejos</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUID</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Pedido</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">UUID</span>
+    <span class="n">fecha</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="n">cliente</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">productos</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">fecha_entrega</span><span class="p">:</span> <span class="n">date</span>
+</code></pre></div>
+<blockquote>
+<p>✅ Pydantic puede convertir cadenas a <code>datetime</code>, <code>date</code>, <code>UUID</code>, etc., automáticamente.</p>
+</blockquote>
+<hr />
+<h2 id="6-campos-opcionales-y-valores-por-defecto">6. Campos Opcionales y Valores por Defecto</h2>
+<h3 id="campos-opcionales">Campos opcionales</h3>
+<p>Usa <code>Optional[]</code> o el operador <code>|</code> (Python 3.10+) con <code>None</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Empleado</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">edad</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Opcional con valor por defecto None</span>
+    <span class="n">departamento</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;General&quot;</span>  <span class="c1"># Valor por defecto</span>
+</code></pre></div>
+<h3 id="uso">Uso</h3>
+<div class="highlight"><pre><span></span><code><span class="n">emp1</span> <span class="o">=</span> <span class="n">Empleado</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Luis&quot;</span><span class="p">)</span>  <span class="c1"># edad=None, departamento=&quot;General&quot;</span>
+<span class="n">emp2</span> <span class="o">=</span> <span class="n">Empleado</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;María&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">departamento</span><span class="o">=</span><span class="s2">&quot;IT&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>🔹 En Pydantic v2, también puedes usar <code>Annotated</code> con <code>Field(default=None)</code> para mayor control.</p>
+</blockquote>
+<hr />
+<h2 id="7-campos-anotados-con-field">7. Campos Anotados con <code>Field</code></h2>
+<p><code>Field</code> permite añadir metadatos a los campos: valores por defecto, restricciones, descripciones, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Libro</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Título del libro&quot;</span><span class="p">)</span>
+    <span class="n">autor</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">paginas</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">gt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>  <span class="c1"># &gt;0 y &lt;=10000</span>
+    <span class="n">isbn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^\d</span><span class="si">{3}</span><span class="s2">-\d</span><span class="si">{10}</span><span class="s2">$&quot;</span><span class="p">,</span>  <span class="c1"># Ej: 978-1234567890</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ISBN en formato 13 dígitos con guión&quot;</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="parametros-comunes-de-field">Parámetros comunes de <code>Field</code>:</h3>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default</code></td>
+<td>Valor por defecto</td>
+</tr>
+<tr>
+<td><code>default_factory</code></td>
+<td>Función que genera el valor por defecto</td>
+</tr>
+<tr>
+<td><code>...</code> (Ellipsis)</td>
+<td>Indica que el campo es obligatorio</td>
+</tr>
+<tr>
+<td><code>min_length</code>, <code>max_length</code></td>
+<td>Longitud mínima/máxima (para str, list)</td>
+</tr>
+<tr>
+<td><code>gt</code>, <code>ge</code>, <code>lt</code>, <code>le</code></td>
+<td>Mayor que, mayor o igual, menor que, menor o igual</td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>Expresión regular</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Descripción del campo</td>
+</tr>
+<tr>
+<td><code>examples</code></td>
+<td>Ejemplos de uso</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-validadores-personalizados">8. Validadores Personalizados</h2>
+<p>Puedes definir validadores usando decoradores <code>@field_validator</code> (v2) o <code>@validator</code> (v1).</p>
+<h3 id="validador-de-campo">Validador de campo</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">field_validator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Estudiante</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">materias</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">promedio</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nombre_no_vacio</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span> <span class="ow">or</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;El nombre no puede estar vacío&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s1">&#39;promedio&#39;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">promedio_valido</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;El promedio debe estar entre 0 y 10&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<h3 id="validador-de-modelo-completo">Validador de modelo completo</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">model_validator</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Rectangulo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">ancho</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">alto</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">area</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;after&#39;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calcular_area</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ancho</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">alto</span>
+        <span class="k">return</span> <span class="n">model</span>
+</code></pre></div>
+<blockquote>
+<p>🔹 <code>mode='after'</code>: se ejecuta después de la validación de campos.<br />
+🔹 <code>mode='before'</code>: se ejecuta antes.</p>
+</blockquote>
+<hr />
+<h2 id="9-modelos-anidados-y-composicion">9. Modelos Anidados y Composición</h2>
+<p>Puedes usar modelos como tipos de campo.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Direccion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">calle</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">ciudad</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">codigo_postal</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Persona</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">direccion</span><span class="p">:</span> <span class="n">Direccion</span>
+    <span class="n">telefonos</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Uso</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="n">Direccion</span><span class="p">(</span><span class="n">calle</span><span class="o">=</span><span class="s2">&quot;Av. Siempre Viva 123&quot;</span><span class="p">,</span> <span class="n">ciudad</span><span class="o">=</span><span class="s2">&quot;Springfield&quot;</span><span class="p">,</span> <span class="n">codigo_postal</span><span class="o">=</span><span class="s2">&quot;12345&quot;</span><span class="p">)</span>
+<span class="n">persona</span> <span class="o">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Homero&quot;</span><span class="p">,</span> <span class="n">direccion</span><span class="o">=</span><span class="nb">dir</span><span class="p">,</span> <span class="n">telefonos</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;555-1234&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="o">.</span><span class="n">direccion</span><span class="o">.</span><span class="n">ciudad</span><span class="p">)</span>  <span class="c1"># Springfield</span>
+</code></pre></div>
+<hr />
+<h2 id="10-listas-dicts-y-colecciones">10. Listas, Dicts y Colecciones</h2>
+<p>Pydantic soporta colecciones con validación interna.</p>
+<h3 id="listas-con-tipo-especifico">Listas con tipo específico</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Inventario</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">productos</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">precios</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="diccionarios">Diccionarios</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Configuracion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">variables</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>  <span class="c1"># claves y valores como str</span>
+</code></pre></div>
+<h3 id="listas-de-modelos">Listas de modelos</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Tarea</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">completada</span><span class="p">:</span> <span class="nb">bool</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ListaTareas</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">tareas</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tarea</span><span class="p">]</span>
+</code></pre></div>
+<hr />
+<h2 id="11-uso-de-alias-campos-con-nombres-diferentes">11. Uso de Alias (Campos con Nombres Diferentes)</h2>
+<p>A veces los nombres de campo en Python no coinciden con los de JSON (ej: <code>user_id</code> vs <code>userId</code>).</p>
+<h3 id="alias-y-validation_alias"><code>alias</code> y <code>validation_alias</code></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UsuarioAPI</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">usuario_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;userId&quot;</span><span class="p">)</span>
+    <span class="n">nombre_completo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;fullName&quot;</span><span class="p">)</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">populate_by_name</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Permite usar nombre de campo o alias</span>
+</code></pre></div>
+<blockquote>
+<p>🔹 En <strong>Pydantic v2</strong>, <code>populate_by_name</code> se llama <code>populate_by_name=True</code> en <code>model_config</code>.</p>
+</blockquote>
+<h3 id="uso-con-json">Uso con JSON</h3>
+<div class="highlight"><pre><span></span><code><span class="n">json_data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;userId&quot;: 123, &quot;fullName&quot;: &quot;Ana Pérez&quot;}&#39;</span>
+<span class="n">usuario</span> <span class="o">=</span> <span class="n">UsuarioAPI</span><span class="o">.</span><span class="n">model_validate_json</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">usuario</span><span class="o">.</span><span class="n">usuario_id</span><span class="p">)</span>  <span class="c1"># 123</span>
+</code></pre></div>
+<hr />
+<h2 id="12-serializacion-y-deserializacion">12. Serialización y Deserialización</h2>
+<h3 id="deserializacion-de-dict-o-json-a-modelo">Deserialización (de dict o JSON a modelo)</h3>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Carlos&quot;</span><span class="p">,</span> <span class="s2">&quot;edad&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;carlos@example.com&quot;</span><span class="p">}</span>
+<span class="n">usuario</span> <span class="o">=</span> <span class="n">Usuario</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># v2 (antes: parse_obj)</span>
+</code></pre></div>
+<h3 id="serializacion-modelo-a-dict-o-json">Serialización (modelo a dict o JSON)</h3>
+<div class="highlight"><pre><span></span><code><span class="n">usuario_dict</span> <span class="o">=</span> <span class="n">usuario</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>  <span class="c1"># v2 (antes: dict())</span>
+<span class="n">usuario_json</span> <span class="o">=</span> <span class="n">usuario</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="opciones-comunes">Opciones comunes</h3>
+<div class="highlight"><pre><span></span><code><span class="n">usuario</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span>
+    <span class="n">include</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">},</span>  <span class="c1"># Solo incluir estos campos</span>
+    <span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;edad&#39;</span><span class="p">},</span>             <span class="c1"># Excluir campo</span>
+    <span class="n">by_alias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                <span class="c1"># Usar alias en salida</span>
+    <span class="n">exclude_none</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>            <span class="c1"># No incluir valores None</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="13-configuracion-del-modelo-config">13. Configuración del Modelo (<code>Config</code>)</h2>
+<p>En Pydantic v2, se usa <code>model_config</code> como atributo de clase.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Producto</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">precio</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="n">model_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;frozen&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                <span class="c1"># Inmutabilidad</span>
+        <span class="s2">&quot;str_strip_whitespace&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Eliminar espacios en str</span>
+        <span class="s2">&quot;validate_assignment&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>   <span class="c1"># Validar al asignar</span>
+        <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="s2">&quot;forbid&quot;</span><span class="p">,</span>             <span class="c1"># No permitir campos extra</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h3 id="opciones-clave-de-model_config">Opciones clave de <code>model_config</code>:</h3>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frozen</code></td>
+<td>Hace el modelo inmutable (como un namedtuple)</td>
+</tr>
+<tr>
+<td><code>extra</code></td>
+<td><code>'allow'</code>, <code>'ignore'</code>, <code>'forbid'</code> (campos no definidos)</td>
+</tr>
+<tr>
+<td><code>validate_assignment</code></td>
+<td>Valida al cambiar un atributo</td>
+</tr>
+<tr>
+<td><code>str_strip_whitespace</code></td>
+<td>Recorta espacios en cadenas</td>
+</tr>
+<tr>
+<td><code>arbitrary_types_allowed</code></td>
+<td>Permite tipos no estándar (con precaución)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-uso-con-fastapi">14. Uso con FastAPI</h2>
+<p>Pydantic es el corazón de FastAPI para validación de entrada/salida.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Item</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">precio</span><span class="p">:</span> <span class="nb">float</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Pedido</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Item</span><span class="p">]</span>
+    <span class="n">activo</span><span class="p">:</span> <span class="nb">bool</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/pedidos/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">crear_pedido</span><span class="p">(</span><span class="n">pedido</span><span class="p">:</span> <span class="n">Pedido</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mensaje&quot;</span><span class="p">:</span> <span class="s2">&quot;Pedido creado&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pedido</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</code></pre></div>
+<p>FastAPI:
+- Valida automáticamente el JSON entrante.
+- Genera documentación OpenAPI (Swagger).
+- Devuelve errores claros si falla la validación.</p>
+<hr />
+<h2 id="15-manejo-de-errores-y-excepciones">15. Manejo de Errores y Excepciones</h2>
+<p>Pydantic lanza <code>ValidationError</code> cuando falla la validación.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">modelo</span> <span class="o">=</span> <span class="n">MiModelo</span><span class="p">(</span><span class="o">**</span><span class="n">datos_invalidos</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">errors</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error en campo </span><span class="si">{</span><span class="n">error</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">error</span><span class="p">[</span><span class="s1">&#39;msg&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="estructura-de-error">Estructura de error</h3>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;missing&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Field required&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr />
+<h2 id="16-modelos-genericos">16. Modelos Genéricos</h2>
+<p>Puedes crear modelos reutilizables con tipos genéricos.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RespuestaPaginada</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="n">total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">pagina</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">hay_mas</span><span class="p">:</span> <span class="nb">bool</span>
+
+<span class="c1"># Uso</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Usuario</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">respuesta</span> <span class="o">=</span> <span class="n">RespuestaPaginada</span><span class="p">[</span><span class="n">Usuario</span><span class="p">](</span>
+    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">Usuario</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Ana&quot;</span><span class="p">)],</span>
+    <span class="n">total</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">pagina</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">hay_mas</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="17-modelos-dinamicos-y-create_model">17. Modelos Dinámicos y <code>create_model</code></h2>
+<p>Crea modelos en tiempo de ejecución.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_model</span>
+
+<span class="n">DynamicModel</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
+    <span class="s1">&#39;DynamicModel&#39;</span><span class="p">,</span>
+    <span class="n">nombre</span><span class="o">=</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">),</span>
+    <span class="n">edad</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">gt</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span>
+    <span class="n">email</span><span class="o">=</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">instancia</span> <span class="o">=</span> <span class="n">DynamicModel</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<p>Útil para configuraciones dinámicas, APIs genéricas, etc.</p>
+<hr />
+<h2 id="18-uso-con-pydantic-v2-actualizaciones-clave">18. Uso con Pydantic v2 (Actualizaciones Clave)</h2>
+<p>Pydantic v2 (2023) trae cambios importantes:</p>
+<h3 id="cambios-principales">Cambios principales:</h3>
+<table>
+<thead>
+<tr>
+<th>v1</th>
+<th>v2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parse_obj()</code></td>
+<td><code>model_validate()</code></td>
+</tr>
+<tr>
+<td><code>dict()</code></td>
+<td><code>model_dump()</code></td>
+</tr>
+<tr>
+<td><code>json()</code></td>
+<td><code>model_dump_json()</code></td>
+</tr>
+<tr>
+<td><code>@validator</code></td>
+<td><code>@field_validator</code></td>
+</tr>
+<tr>
+<td><code>@root_validator</code></td>
+<td><code>@model_validator(mode='before'/'after')</code></td>
+</tr>
+<tr>
+<td><code>config</code> como clase</td>
+<td><code>model_config</code> como dict</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-v2">Ejemplo v2</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">field_validator</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_age</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Age must be positive&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span>
+
+    <span class="n">model_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="s2">&quot;forbid&quot;</span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="19-mejores-practicas-y-consejos">19. Mejores Prácticas y Consejos</h2>
+<ol>
+<li>✅ Usa <code>Field</code> para documentar y restringir campos.</li>
+<li>✅ Define modelos pequeños y reutilizables.</li>
+<li>✅ Usa <code>model_config</code> para configurar comportamiento global.</li>
+<li>✅ Evita lógica compleja en validadores; manténlos simples.</li>
+<li>✅ Usa <code>default_factory</code> para valores mutables (listas, dict):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Grupo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">miembros</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>✅ Usa <code>exclude_none=True</code> al serializar para JSON limpio.</li>
+<li>✅ Combina con <code>mypy</code> para detección temprana de errores.</li>
+</ol>
+<hr />
+<h2 id="20-ejemplo-completo-api-rest-con-pydantic-fastapi">20. Ejemplo Completo: API REST con Pydantic + FastAPI</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># main.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">field_validator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;API de Tareas&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Modelos</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TareaBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">descripcion</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TareaCrear</span><span class="p">(</span><span class="n">TareaBase</span><span class="p">):</span>
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s1">&#39;titulo&#39;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">no_contiene_prohibido</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">prohibidas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;malware&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">p</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prohibidas</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Título no permitido&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Tarea</span><span class="p">(</span><span class="n">TareaBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">completada</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">fecha_creacion</span><span class="p">:</span> <span class="n">datetime</span>
+
+    <span class="n">model_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;from_attributes&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>  <span class="c1"># Para ORM</span>
+
+<span class="c1"># Base de datos simulada</span>
+<span class="n">tareas_db</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">next_id</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/tareas/&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Tarea</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">crear_tarea</span><span class="p">(</span><span class="n">tarea</span><span class="p">:</span> <span class="n">TareaCrear</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">next_id</span>
+    <span class="n">nueva</span> <span class="o">=</span> <span class="n">Tarea</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="n">next_id</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">tarea</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(),</span>
+        <span class="n">fecha_creacion</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">tareas_db</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nueva</span><span class="p">)</span>
+    <span class="n">next_id</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">nueva</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/tareas/&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">Tarea</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">listar_tareas</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">tareas_db</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/tareas/</span><span class="si">{tarea_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Tarea</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_tarea</span><span class="p">(</span><span class="n">tarea_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tareas_db</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">tarea_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">t</span>
+    <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Tarea no encontrada&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Inicia con:
+<div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</code></pre></div></p>
+<p>Accede a:
+- <code>http://localhost:8000/docs</code> → Documentación automática
+- <code>http://localhost:8000/openapi.json</code> → Esquema OpenAPI</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

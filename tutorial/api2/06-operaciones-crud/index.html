@@ -1,0 +1,3050 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/api2/06-operaciones-crud/">
+      
+      
+        <link rel="prev" href="../05-esquemas-validacion/">
+      
+      
+        <link rel="next" href="../07-rutas-endpoints/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>6. Operaciones CRUD - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-operaciones-crud" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Operaciones CRUD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es CRUD?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es CRUD?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-una-capa-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué una Capa CRUD?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-nuestro-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Nuestro CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura de Nuestro CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enfoque-generico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enfoque Genérico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-del-enfoque-generico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas del Enfoque Genérico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-detallado-de-cada-operacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Detallado de Cada Operación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis Detallado de Cada Operación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-crear-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. CREATE - Crear Registros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. CREATE - Crear Registros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-a-paso-del-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a Paso del CREATE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-read-leer-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. READ - Leer Registros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. READ - Leer Registros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtener-todos-los-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener Todos los Registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtener-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener por ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update-actualizar-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. UPDATE - Actualizar Registros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. UPDATE - Actualizar Registros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actualizacion-parcial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actualización Parcial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-delete-eliminar-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. DELETE - Eliminar Registros
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operaciones-avanzadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones Avanzadas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operaciones Avanzadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-con-filtros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Búsqueda con Filtros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paginacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paginación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordenamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conteo-de-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conteo de Registros
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manejo de Errores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manejo de Errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes-y-soluciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores Comunes y Soluciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transacciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizacion-de-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimización de Consultas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimización de Consultas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading-carga-anticipada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eager Loading (Carga Anticipada)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-especificas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas Específicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indices-para-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Índices para Rendimiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-de-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing de CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing de CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-unitario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Unitario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-separacion-de-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Separación de Responsabilidades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-manejo-consistente-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manejo Consistente de Errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-validaciones-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Validaciones de Negocio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-documentacion-clara" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Documentación Clara
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-crud-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: CRUD Completo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-busquedas-avanzadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Búsquedas Avanzadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-validaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Validaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-optimizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Optimización
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos Pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es CRUD?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es CRUD?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-una-capa-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué una Capa CRUD?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-nuestro-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Nuestro CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura de Nuestro CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enfoque-generico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enfoque Genérico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-del-enfoque-generico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas del Enfoque Genérico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-detallado-de-cada-operacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Detallado de Cada Operación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis Detallado de Cada Operación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-crear-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. CREATE - Crear Registros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. CREATE - Crear Registros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-a-paso-del-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a Paso del CREATE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-read-leer-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. READ - Leer Registros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. READ - Leer Registros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtener-todos-los-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener Todos los Registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtener-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener por ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update-actualizar-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. UPDATE - Actualizar Registros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. UPDATE - Actualizar Registros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actualizacion-parcial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actualización Parcial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-delete-eliminar-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. DELETE - Eliminar Registros
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operaciones-avanzadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones Avanzadas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operaciones Avanzadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-con-filtros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Búsqueda con Filtros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paginacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paginación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordenamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conteo-de-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conteo de Registros
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manejo de Errores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manejo de Errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes-y-soluciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores Comunes y Soluciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transacciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizacion-de-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimización de Consultas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimización de Consultas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading-carga-anticipada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eager Loading (Carga Anticipada)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-especificas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas Específicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indices-para-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Índices para Rendimiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-de-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing de CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing de CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-unitario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Unitario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-separacion-de-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Separación de Responsabilidades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-manejo-consistente-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manejo Consistente de Errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-validaciones-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Validaciones de Negocio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-documentacion-clara" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Documentación Clara
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-crud-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: CRUD Completo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-busquedas-avanzadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Búsquedas Avanzadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-validaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Validaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-optimizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Optimización
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos Pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-operaciones-crud">6. Operaciones CRUD</h1>
+<h2 id="que-es-crud">¿Qué es CRUD?</h2>
+<p>CRUD es un acrónimo que representa las cuatro operaciones básicas de persistencia de datos:</p>
+<ul>
+<li><strong>C</strong>reate (Crear) - Insertar nuevos registros</li>
+<li><strong>R</strong>ead (Leer) - Consultar registros existentes</li>
+<li><strong>U</strong>pdate (Actualizar) - Modificar registros existentes</li>
+<li><strong>D</strong>elete (Eliminar) - Borrar registros</li>
+</ul>
+<h3 id="por-que-una-capa-crud">¿Por qué una Capa CRUD?</h3>
+<p>La capa CRUD actúa como un <strong>intermediario</strong> entre los endpoints de la API y la base de datos:</p>
+<div class="highlight"><pre><span></span><code>🌐 API Endpoints
+       ↕️
+🔧 Capa CRUD        ← Lógica de negocio
+       ↕️
+🗄️ Base de Datos
+</code></pre></div>
+<p><strong>Ventajas:</strong>
+- <strong>Reutilización</strong>: Una función CRUD puede usarse en múltiples endpoints
+- <strong>Mantenimiento</strong>: Cambios en la lógica de datos en un solo lugar
+- <strong>Testing</strong>: Fácil probar la lógica de negocio independientemente
+- <strong>Abstracción</strong>: Los endpoints no necesitan conocer detalles de la BD</p>
+<h2 id="estructura-de-nuestro-crud">Estructura de Nuestro CRUD</h2>
+<h3 id="enfoque-generico">Enfoque Genérico</h3>
+<p>Nuestro proyecto usa un enfoque <strong>genérico</strong> que funciona con cualquier modelo:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/crud/crud.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">schemas</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener todos los registros de un modelo.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_by_id</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener un registro por ID.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_item</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">item_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crear un nuevo registro.&quot;&quot;&quot;</span>
+    <span class="n">db_item</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">item_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">}))</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_item</span>
+</code></pre></div>
+<h3 id="ventajas-del-enfoque-generico">Ventajas del Enfoque Genérico</h3>
+<ol>
+<li><strong>Menos Código</strong>: Una función para todos los modelos</li>
+<li><strong>Consistencia</strong>: Mismo comportamiento para todas las entidades</li>
+<li><strong>Mantenimiento</strong>: Cambios en un solo lugar</li>
+<li><strong>Escalabilidad</strong>: Fácil agregar nuevos modelos</li>
+</ol>
+<h2 id="analisis-detallado-de-cada-operacion">Análisis Detallado de Cada Operación</h2>
+<h3 id="1-create-crear-registros">1. CREATE - Crear Registros</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_item</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">item_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crear un nuevo registro en la base de datos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        model: Modelo SQLAlchemy (User, Product, Order)</span>
+<span class="sd">        item_data: Esquema Pydantic con los datos</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        El objeto creado con ID asignado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1. Convertir esquema Pydantic a diccionario</span>
+    <span class="n">data_dict</span> <span class="o">=</span> <span class="n">item_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">})</span>
+
+    <span class="c1"># 2. Crear instancia del modelo</span>
+    <span class="n">db_item</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">data_dict</span><span class="p">)</span>
+
+    <span class="c1"># 3. Agregar a la sesión</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+
+    <span class="c1"># 4. Confirmar cambios</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="c1"># 5. Refrescar para obtener ID generado</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">db_item</span>
+</code></pre></div>
+<h4 id="paso-a-paso-del-create">Paso a Paso del CREATE</h4>
+<p><strong>1. Conversión de Datos</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Esquema Pydantic</span>
+<span class="n">user_data</span> <span class="o">=</span> <span class="n">UserCreate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;juan@email.com&quot;</span><span class="p">)</span>
+
+<span class="c1"># Convertir a diccionario (excluyendo ID)</span>
+<span class="n">data_dict</span> <span class="o">=</span> <span class="n">user_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">})</span>
+<span class="c1"># Resultado: {&#39;name&#39;: &#39;Juan&#39;, &#39;email&#39;: &#39;juan@email.com&#39;}</span>
+</code></pre></div></p>
+<p><strong>2. Creación del Objeto</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear instancia del modelo SQLAlchemy</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">data_dict</span><span class="p">)</span>
+<span class="c1"># Equivale a: db_user = User(name=&quot;Juan&quot;, email=&quot;juan@email.com&quot;)</span>
+</code></pre></div></p>
+<p><strong>3. Persistencia</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Agregar a la sesión (aún no se guarda)</span>
+<span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+
+<span class="c1"># Confirmar cambios (ejecuta INSERT)</span>
+<span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1"># Refrescar para obtener datos actualizados (como ID)</span>
+<span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">db_user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>  <span class="c1"># Ahora tiene ID: 1, 2, 3...</span>
+</code></pre></div></p>
+<h3 id="2-read-leer-registros">2. READ - Leer Registros</h3>
+<h4 id="obtener-todos-los-registros">Obtener Todos los Registros</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener todos los registros de un modelo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        model: Modelo SQLAlchemy</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Lista de todos los registros</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>SQL Generado:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">email</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+</code></pre></div></p>
+<h4 id="obtener-por-id">Obtener por ID</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_by_id</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener un registro específico por ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        model: Modelo SQLAlchemy</span>
+<span class="sd">        item_id: ID del registro a buscar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        El registro encontrado o None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>SQL Generado:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">email</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="3-update-actualizar-registros">3. UPDATE - Actualizar Registros</h3>
+<p>Aunque nuestro proyecto simple no incluye UPDATE, aquí está la implementación:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_item</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Actualizar un registro existente.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        model: Modelo SQLAlchemy</span>
+<span class="sd">        item_id: ID del registro a actualizar</span>
+<span class="sd">        item_data: Esquema con los nuevos datos</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        El registro actualizado o None si no existe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1. Buscar el registro existente</span>
+    <span class="n">db_item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">db_item</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># 2. Obtener datos a actualizar (excluyendo None)</span>
+    <span class="n">update_data</span> <span class="o">=</span> <span class="n">item_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">})</span>
+
+    <span class="c1"># 3. Actualizar campos</span>
+    <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">update_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_item</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="c1"># 4. Confirmar cambios</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">db_item</span>
+</code></pre></div>
+<h4 id="actualizacion-parcial">Actualización Parcial</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Esquema para actualización</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserUpdate</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Uso</span>
+<span class="n">user_update</span> <span class="o">=</span> <span class="n">UserUpdate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Juan Carlos&quot;</span><span class="p">)</span>  <span class="c1"># Solo actualizar nombre</span>
+<span class="n">update_data</span> <span class="o">=</span> <span class="n">user_update</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Resultado: {&#39;name&#39;: &#39;Juan Carlos&#39;} - email no se incluye</span>
+</code></pre></div>
+<h3 id="4-delete-eliminar-registros">4. DELETE - Eliminar Registros</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">delete_item</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eliminar un registro por ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        model: Modelo SQLAlchemy</span>
+<span class="sd">        item_id: ID del registro a eliminar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True si se eliminó, False si no existía</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1. Buscar el registro</span>
+    <span class="n">db_item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">db_item</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># 2. Eliminar</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<h2 id="operaciones-avanzadas">Operaciones Avanzadas</h2>
+<h3 id="busqueda-con-filtros">Búsqueda con Filtros</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_users_by_name</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Buscar usuarios por nombre (búsqueda parcial).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;%</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_products_by_price_range</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">min_price</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_price</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Buscar productos en un rango de precio.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">Product</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;=</span> <span class="n">min_price</span><span class="p">,</span>
+        <span class="n">Product</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;=</span> <span class="n">max_price</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_orders_by_user</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener todas las órdenes de un usuario.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Order</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Order</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="paginacion">Paginación</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_paginated</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener registros con paginación.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        model: Modelo SQLAlchemy</span>
+<span class="sd">        skip: Número de registros a saltar</span>
+<span class="sd">        limit: Número máximo de registros a retornar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Lista de registros paginados</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># Uso</span>
+<span class="c1"># Página 1: skip=0, limit=10 (registros 1-10)</span>
+<span class="c1"># Página 2: skip=10, limit=10 (registros 11-20)</span>
+<span class="c1"># Página 3: skip=20, limit=10 (registros 21-30)</span>
+</code></pre></div>
+<h3 id="ordenamiento">Ordenamiento</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">desc</span><span class="p">,</span> <span class="n">asc</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_products_sorted</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">sort_by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;asc&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener productos ordenados.&quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">elif</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s2">&quot;price&quot;</span><span class="p">:</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">price</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">id</span>
+
+    <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;desc&quot;</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">desc</span><span class="p">(</span><span class="n">column</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">asc</span><span class="p">(</span><span class="n">column</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="conteo-de-registros">Conteo de Registros</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">count_items</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contar total de registros.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_users_by_domain</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contar usuarios por dominio de email.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">User</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;%@</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="manejo-de-errores">Manejo de Errores</h2>
+<h3 id="errores-comunes-y-soluciones">Errores Comunes y Soluciones</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.exc</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntegrityError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPException</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user_safe</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user_data</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crear usuario con manejo de errores.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Verificar si el email ya existe</span>
+        <span class="n">existing_user</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">User</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">user_data</span><span class="o">.</span><span class="n">email</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">existing_user</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+                <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+                <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Email ya está registrado&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Crear usuario</span>
+        <span class="n">db_user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">user_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">}))</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">db_user</span>
+
+    <span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Error de integridad en la base de datos&quot;</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Error interno: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+</code></pre></div>
+<h3 id="transacciones">Transacciones</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_order_with_items</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">order_data</span><span class="p">,</span> <span class="n">items_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crear orden con múltiples items en una transacción.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Iniciar transacción implícita</span>
+
+        <span class="c1"># 1. Crear la orden</span>
+        <span class="n">db_order</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="o">**</span><span class="n">order_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">}))</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_order</span><span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>  <span class="c1"># Obtener ID sin hacer commit</span>
+
+        <span class="c1"># 2. Crear los items</span>
+        <span class="k">for</span> <span class="n">item_data</span> <span class="ow">in</span> <span class="n">items_data</span><span class="p">:</span>
+            <span class="n">db_item</span> <span class="o">=</span> <span class="n">OrderItem</span><span class="p">(</span>
+                <span class="n">order_id</span><span class="o">=</span><span class="n">db_order</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">item_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">})</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_item</span><span class="p">)</span>
+
+        <span class="c1"># 3. Confirmar toda la transacción</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_order</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">db_order</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Revertir todos los cambios</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="n">e</span>
+</code></pre></div>
+<h2 id="optimizacion-de-consultas">Optimización de Consultas</h2>
+<h3 id="eager-loading-carga-anticipada">Eager Loading (Carga Anticipada)</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">joinedload</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_orders_with_user</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener órdenes con datos del usuario (una sola consulta).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Order</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span>
+        <span class="n">joinedload</span><span class="p">(</span><span class="n">Order</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># Sin joinedload: N+1 consultas (1 para órdenes + N para usuarios)</span>
+<span class="c1"># Con joinedload: 1 sola consulta con JOIN</span>
+</code></pre></div>
+<h3 id="consultas-especificas">Consultas Específicas</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_user_summary</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener resumen de usuario con estadísticas.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">func</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+        <span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+        <span class="n">User</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">User</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+        <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Order</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s1">&#39;total_orders&#39;</span><span class="p">),</span>
+        <span class="n">func</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Order</span><span class="o">.</span><span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s1">&#39;total_spent&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Order</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">User</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<h3 id="indices-para-rendimiento">Índices para Rendimiento</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># En los modelos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Index</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Índice simple</span>
+
+    <span class="c1"># Índice compuesto</span>
+    <span class="n">__table_args__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Index</span><span class="p">(</span><span class="s1">&#39;idx_name_email&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h2 id="testing-de-crud">Testing de CRUD</h2>
+<h3 id="test-unitario">Test Unitario</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.crud</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_item</span><span class="p">,</span> <span class="n">get_by_id</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span> <span class="k">as</span> <span class="n">UserSchema</span>
+
+<span class="c1"># Configurar base de datos de prueba</span>
+<span class="n">SQLALCHEMY_DATABASE_URL</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///./test.db&quot;</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">SQLALCHEMY_DATABASE_URL</span><span class="p">)</span>
+<span class="n">TestingSessionLocal</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">autocommit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">autoflush</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_session</span><span class="p">():</span>
+    <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">TestingSessionLocal</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">db</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">drop_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_create_user</span><span class="p">(</span><span class="n">db_session</span><span class="p">):</span>
+    <span class="c1"># Datos de prueba</span>
+    <span class="n">user_data</span> <span class="o">=</span> <span class="n">UserSchema</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test User&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Crear usuario</span>
+    <span class="n">created_user</span> <span class="o">=</span> <span class="n">create_item</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span>
+
+    <span class="c1"># Verificaciones</span>
+    <span class="k">assert</span> <span class="n">created_user</span><span class="o">.</span><span class="n">id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">assert</span> <span class="n">created_user</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test User&quot;</span>
+    <span class="k">assert</span> <span class="n">created_user</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="s2">&quot;test@example.com&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_by_id</span><span class="p">(</span><span class="n">db_session</span><span class="p">):</span>
+    <span class="c1"># Crear usuario primero</span>
+    <span class="n">user_data</span> <span class="o">=</span> <span class="n">UserSchema</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test User&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">)</span>
+    <span class="n">created_user</span> <span class="o">=</span> <span class="n">create_item</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span>
+
+    <span class="c1"># Buscar por ID</span>
+    <span class="n">found_user</span> <span class="o">=</span> <span class="n">get_by_id</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">created_user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+    <span class="c1"># Verificaciones</span>
+    <span class="k">assert</span> <span class="n">found_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">assert</span> <span class="n">found_user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">created_user</span><span class="o">.</span><span class="n">id</span>
+    <span class="k">assert</span> <span class="n">found_user</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test User&quot;</span>
+</code></pre></div>
+<h2 id="mejores-practicas">Mejores Prácticas</h2>
+<h3 id="1-separacion-de-responsabilidades">1. <strong>Separación de Responsabilidades</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Bueno: CRUD solo maneja datos</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user_data</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">):</span>
+    <span class="n">db_user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">user_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">}))</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_user</span>
+
+<span class="c1"># ❌ Malo: CRUD con lógica de negocio</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user_data</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">):</span>
+    <span class="c1"># Enviar email de bienvenida (debería estar en otra capa)</span>
+    <span class="n">send_welcome_email</span><span class="p">(</span><span class="n">user_data</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+
+    <span class="n">db_user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">user_data</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">}))</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_user</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">db_user</span>
+</code></pre></div>
+<h3 id="2-manejo-consistente-de-errores">2. <strong>Manejo Consistente de Errores</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_user_or_404</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener usuario o lanzar error 404.&quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">get_by_id</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Usuario con ID </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2"> no encontrado&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span>
+</code></pre></div>
+<h3 id="3-validaciones-de-negocio">3. <strong>Validaciones de Negocio</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_order</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">order_data</span><span class="p">:</span> <span class="n">OrderCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crear orden con validaciones de negocio.&quot;&quot;&quot;</span>
+    <span class="c1"># Verificar que el usuario existe</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">get_user_or_404</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">order_data</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
+
+    <span class="c1"># Verificar que el producto existe</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">get_by_id</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">Product</span><span class="p">,</span> <span class="n">order_data</span><span class="o">.</span><span class="n">product_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">product</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Producto no encontrado&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Verificar stock (si tuviéramos ese campo)</span>
+    <span class="c1"># if product.stock &lt; order_data.quantity:</span>
+    <span class="c1">#     raise HTTPException(400, &quot;Stock insuficiente&quot;)</span>
+
+    <span class="c1"># Crear la orden</span>
+    <span class="k">return</span> <span class="n">create_item</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">Order</span><span class="p">,</span> <span class="n">order_data</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="4-documentacion-clara">4. <strong>Documentación Clara</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_filtered_products</span><span class="p">(</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_price</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_price</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtener productos con filtros opcionales.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db: Sesión de base de datos</span>
+<span class="sd">        name: Filtrar por nombre (búsqueda parcial)</span>
+<span class="sd">        min_price: Precio mínimo (inclusive)</span>
+<span class="sd">        max_price: Precio máximo (inclusive)</span>
+<span class="sd">        skip: Número de registros a saltar para paginación</span>
+<span class="sd">        limit: Número máximo de registros a retornar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Lista de productos que cumplen los criterios</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        # Buscar productos caros con &quot;phone&quot; en el nombre</span>
+<span class="sd">        products = get_filtered_products(</span>
+<span class="sd">            db, </span>
+<span class="sd">            name=&quot;phone&quot;, </span>
+<span class="sd">            min_price=500.0,</span>
+<span class="sd">            skip=0, </span>
+<span class="sd">            limit=10</span>
+<span class="sd">        )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Product</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;%</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">min_price</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Product</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;=</span> <span class="n">min_price</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_price</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Product</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;=</span> <span class="n">max_price</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="ejercicios-practicos">Ejercicios Prácticos</h2>
+<h3 id="ejercicio-1-crud-completo">Ejercicio 1: CRUD Completo</h3>
+<p>Implementa las operaciones faltantes:
+- <code>update_item()</code>
+- <code>delete_item()</code>
+- Pruébalas con diferentes modelos</p>
+<h3 id="ejercicio-2-busquedas-avanzadas">Ejercicio 2: Búsquedas Avanzadas</h3>
+<p>Crea funciones para:
+- Buscar usuarios por dominio de email
+- Obtener productos más vendidos
+- Calcular total de ventas por usuario</p>
+<h3 id="ejercicio-3-validaciones">Ejercicio 3: Validaciones</h3>
+<p>Agrega validaciones para:
+- No permitir órdenes con cantidad 0
+- Verificar que el email sea único al crear usuarios
+- Validar que el precio sea positivo</p>
+<h3 id="ejercicio-4-optimizacion">Ejercicio 4: Optimización</h3>
+<p>Implementa:
+- Paginación con información de total de páginas
+- Búsqueda con múltiples criterios
+- Cache de consultas frecuentes</p>
+<h2 id="proximos-pasos">Próximos Pasos</h2>
+<p>En el siguiente capítulo aprenderemos sobre <strong>Rutas y Endpoints</strong>, donde:
+- Conectaremos las operaciones CRUD con HTTP
+- Definiremos los endpoints de nuestra API
+- Manejaremos parámetros de consulta y cuerpo de peticiones
+- Implementaremos respuestas HTTP apropiadas</p>
+<hr />
+<p><strong>Siguiente:</strong> <a href="../07-rutas-endpoints/">Rutas y Endpoints</a></p>
+<p><strong>Anterior:</strong> <a href="../05-esquemas-validacion/">Esquemas de Validación</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

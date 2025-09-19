@@ -1,0 +1,3982 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/api2/10-documentacion-deployment/">
+      
+      
+        <link rel="prev" href="../09-testing-debugging/">
+      
+      
+        <link rel="next" href="../11-Repositorio/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>10. Documentación y Deployment - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-documentacion-y-deployment" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10. Documentación y Deployment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion-automatica-con-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Automática con FastAPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentación Automática con FastAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-incluye-la-documentacion-automatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué Incluye la Documentación Automática?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urls-de-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      URLs de Documentación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personalizacion-de-la-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalización de la Documentación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Personalización de la Documentación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadatos-de-la-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadatos de la Aplicación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags-para-organizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tags para Organización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-de-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación de Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esquemas-con-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esquemas con Ejemplos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personalizacion-del-schema-openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalización del Schema OpenAPI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion-adicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Adicional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentación Adicional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readmemd-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      README.md del Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear un usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtener-todos-los-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener todos los usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear un producto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Productos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Órdenes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contribuir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contribuir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licencia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Licencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respuestas-de-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Respuestas de Error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-de-estado-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Códigos de Estado HTTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limites-de-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Límites de Rate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versionado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versionado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo .env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-para-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración para Producción
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-con-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment con Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment con Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker-compose.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos Docker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment en la Nube
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment en la Nube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heroku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heroku
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#railway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Railway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#render" class="md-nav__link">
+    <span class="md-ellipsis">
+      Render
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitalocean-app-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      DigitalOcean App Platform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoreo-y-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoreo y Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoreo y Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-de-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware de Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-check-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check Avanzado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headers-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Headers de Seguridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-para-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas para Producción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas para Producción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-por-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración por Entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-manejo-de-secretos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manejo de Secretos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-logging-apropiado" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Logging Apropiado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Manejo de Errores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-documentacion-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Documentación Completa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-configuracion-de-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Configuración de Producción
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-docker-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Docker Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-monitoreo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Monitoreo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-has-construido" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lo que has construido:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-aprendidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos aprendidos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximos-pasos-sugeridos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos sugeridos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos adicionales:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion-automatica-con-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Automática con FastAPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentación Automática con FastAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-incluye-la-documentacion-automatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué Incluye la Documentación Automática?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urls-de-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      URLs de Documentación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personalizacion-de-la-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalización de la Documentación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Personalización de la Documentación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadatos-de-la-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadatos de la Aplicación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags-para-organizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tags para Organización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-de-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación de Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esquemas-con-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esquemas con Ejemplos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personalizacion-del-schema-openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalización del Schema OpenAPI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion-adicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Adicional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentación Adicional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readmemd-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      README.md del Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear un usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtener-todos-los-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener todos los usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear un producto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Productos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Órdenes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contribuir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contribuir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licencia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Licencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respuestas-de-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Respuestas de Error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-de-estado-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Códigos de Estado HTTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limites-de-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Límites de Rate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versionado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versionado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archivo-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo .env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-para-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración para Producción
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-con-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment con Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment con Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker-compose.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos Docker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment en la Nube
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment en la Nube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heroku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heroku
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#railway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Railway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#render" class="md-nav__link">
+    <span class="md-ellipsis">
+      Render
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitalocean-app-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      DigitalOcean App Platform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoreo-y-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoreo y Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoreo y Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-de-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware de Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-check-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check Avanzado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headers-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Headers de Seguridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-para-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas para Producción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas para Producción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-por-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración por Entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-manejo-de-secretos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manejo de Secretos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-logging-apropiado" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Logging Apropiado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Manejo de Errores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-documentacion-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Documentación Completa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-configuracion-de-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Configuración de Producción
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-docker-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Docker Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-monitoreo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Monitoreo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-has-construido" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lo que has construido:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-aprendidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos aprendidos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximos-pasos-sugeridos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos sugeridos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos adicionales:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="10-documentacion-y-deployment">10. Documentación y Deployment</h1>
+<h2 id="documentacion-automatica-con-fastapi">Documentación Automática con FastAPI</h2>
+<p>Una de las características más poderosas de FastAPI es la <strong>generación automática de documentación</strong>. Esto significa que tu API tendrá documentación interactiva sin esfuerzo adicional.</p>
+<h3 id="que-incluye-la-documentacion-automatica">¿Qué Incluye la Documentación Automática?</h3>
+<ul>
+<li><strong>Swagger UI</strong>: Interfaz interactiva para probar endpoints</li>
+<li><strong>ReDoc</strong>: Documentación estática elegante</li>
+<li><strong>OpenAPI Schema</strong>: Especificación estándar de la API</li>
+<li><strong>Validación automática</strong>: Basada en los tipos de Python</li>
+<li><strong>Ejemplos de request/response</strong>: Generados automáticamente</li>
+</ul>
+<h3 id="urls-de-documentacion">URLs de Documentación</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># URLs por defecto</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">docs</span>      <span class="c1"># Swagger UI</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">redoc</span>     <span class="c1"># ReDoc</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">openapi</span><span class="o">.</span><span class="n">json</span>  <span class="c1"># Schema OpenAPI</span>
+</code></pre></div>
+<h2 id="personalizacion-de-la-documentacion">Personalización de la Documentación</h2>
+<h3 id="metadatos-de-la-aplicacion">Metadatos de la Aplicación</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># main.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;API Simple E-commerce&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Una API REST simple para aprender FastAPI.</span>
+
+<span class="s2">    Esta API permite gestionar:</span>
+
+<span class="s2">    * **Usuarios**: Crear y consultar usuarios del sistema</span>
+<span class="s2">    * **Productos**: Gestionar catálogo de productos</span>
+<span class="s2">    * **Órdenes**: Procesar pedidos de usuarios</span>
+
+<span class="s2">    ## Características</span>
+
+<span class="s2">    * Validación automática de datos</span>
+<span class="s2">    * Documentación interactiva</span>
+<span class="s2">    * Respuestas en formato JSON</span>
+<span class="s2">    * Manejo de errores robusto</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+    <span class="n">terms_of_service</span><span class="o">=</span><span class="s2">&quot;http://example.com/terms/&quot;</span><span class="p">,</span>
+    <span class="n">contact</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Equipo de Desarrollo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/contact/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;dev@example.com&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">license_info</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://opensource.org/licenses/MIT&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="tags-para-organizacion">Tags para Organización</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Definir tags con descripciones</span>
+<span class="n">tags_metadata</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Operaciones con usuarios. Permite crear y consultar usuarios del sistema.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;externalDocs&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Documentación externa de usuarios&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/docs/users&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Gestión de productos. Catálogo de productos disponibles para la venta.&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;orders&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Procesamiento de órdenes. Gestión de pedidos realizados por usuarios.&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;API Simple E-commerce&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;API REST para e-commerce básico&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+    <span class="n">openapi_tags</span><span class="o">=</span><span class="n">tags_metadata</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="documentacion-de-endpoints">Documentación de Endpoints</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/routers/users.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;users&quot;</span><span class="p">])</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">User</span><span class="p">,</span>
+    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Crear un nuevo usuario&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Crea un nuevo usuario en el sistema con nombre y email únicos.&quot;</span><span class="p">,</span>
+    <span class="n">response_description</span><span class="o">=</span><span class="s2">&quot;Usuario creado exitosamente&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un nuevo usuario:</span>
+
+<span class="sd">    - **name**: Nombre completo del usuario (requerido)</span>
+<span class="sd">    - **email**: Dirección de email única (requerido)</span>
+
+<span class="sd">    Retorna el usuario creado con su ID asignado.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar si el email ya existe</span>
+    <span class="n">existing_user</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existing_user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;El email ya está registrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">create_item</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">User</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Obtener todos los usuarios&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Retorna una lista de todos los usuarios registrados en el sistema.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_users</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener todos los usuarios del sistema.</span>
+
+<span class="sd">    Retorna una lista vacía si no hay usuarios registrados.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">get_all</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">User</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">User</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Obtener usuario por ID&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtiene un usuario específico por su ID único.&quot;</span><span class="p">,</span>
+    <span class="n">responses</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">200</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Usuario encontrado&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;application/json&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Juan Pérez&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;juan@example.com&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="mi">404</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Usuario no encontrado&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;application/json&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;detail&quot;</span><span class="p">:</span> <span class="s2">&quot;Usuario no encontrado&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener un usuario específico por ID.</span>
+
+<span class="sd">    - **user_id**: ID único del usuario</span>
+
+<span class="sd">    Retorna el usuario si existe, error 404 si no existe.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">get_by_id</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span>
+</code></pre></div>
+<h3 id="esquemas-con-ejemplos">Esquemas con Ejemplos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/schemas/schemas.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">EmailStr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Nombre del usuario&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Nombre completo del usuario&quot;</span><span class="p">,</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">example</span><span class="o">=</span><span class="s2">&quot;Juan Pérez&quot;</span>
+    <span class="p">)</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Email del usuario&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Dirección de email única del usuario&quot;</span><span class="p">,</span>
+        <span class="n">example</span><span class="o">=</span><span class="s2">&quot;juan@example.com&quot;</span>
+    <span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserCreate</span><span class="p">(</span><span class="n">UserBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema para crear un usuario.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">schema_extra</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;María García&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;maria@example.com&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">UserBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema de respuesta para usuario.&quot;&quot;&quot;</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ID del usuario&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Identificador único del usuario&quot;</span><span class="p">,</span>
+        <span class="n">example</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">from_attributes</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">schema_extra</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Juan Pérez&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;juan@example.com&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProductBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Nombre del producto&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Nombre descriptivo del producto&quot;</span><span class="p">,</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">example</span><span class="o">=</span><span class="s2">&quot;Laptop Gaming ASUS ROG&quot;</span>
+    <span class="p">)</span>
+    <span class="n">price</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Precio del producto&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Precio en USD del producto&quot;</span><span class="p">,</span>
+        <span class="n">gt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">le</span><span class="o">=</span><span class="mf">999999.99</span><span class="p">,</span>
+        <span class="n">example</span><span class="o">=</span><span class="mf">1299.99</span>
+    <span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProductCreate</span><span class="p">(</span><span class="n">ProductBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema para crear un producto.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">schema_extra</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mouse Gamer Logitech G502&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="mf">79.99</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Product</span><span class="p">(</span><span class="n">ProductBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema de respuesta para producto.&quot;&quot;&quot;</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ID del producto&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Identificador único del producto&quot;</span><span class="p">,</span>
+        <span class="n">example</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">from_attributes</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">schema_extra</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;example&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Laptop Gaming ASUS ROG&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="mf">1299.99</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre></div>
+<h3 id="personalizacion-del-schema-openapi">Personalización del Schema OpenAPI</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># main.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.openapi.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_openapi</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">custom_openapi</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span>
+
+    <span class="n">openapi_schema</span> <span class="o">=</span> <span class="n">get_openapi</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;API Simple E-commerce&quot;</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;API REST para gestión de e-commerce básico&quot;</span><span class="p">,</span>
+        <span class="n">routes</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">routes</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Personalizar información adicional</span>
+    <span class="n">openapi_schema</span><span class="p">[</span><span class="s2">&quot;info&quot;</span><span class="p">][</span><span class="s2">&quot;x-logo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/logo.png&quot;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Agregar información de servidores</span>
+    <span class="n">openapi_schema</span><span class="p">[</span><span class="s2">&quot;servers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Servidor de desarrollo&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Servidor de producción&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Agregar esquemas de seguridad (para futuras implementaciones)</span>
+    <span class="n">openapi_schema</span><span class="p">[</span><span class="s2">&quot;components&quot;</span><span class="p">][</span><span class="s2">&quot;securitySchemes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Bearer&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bearerFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span> <span class="o">=</span> <span class="n">openapi_schema</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">openapi</span> <span class="o">=</span> <span class="n">custom_openapi</span>
+</code></pre></div>
+<h2 id="documentacion-adicional">Documentación Adicional</h2>
+<h3 id="readmemd-del-proyecto">README.md del Proyecto</h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># API Simple E-commerce</span>
+
+Una API REST simple construida con FastAPI para aprender desarrollo de APIs.
+
+<span class="gu">## Características</span>
+
+<span class="k">-</span><span class="w"> </span>✅ CRUD completo para Usuarios, Productos y Órdenes
+<span class="k">-</span><span class="w"> </span>✅ Validación automática de datos
+<span class="k">-</span><span class="w"> </span>✅ Documentación interactiva
+<span class="k">-</span><span class="w"> </span>✅ Base de datos SQLite
+<span class="k">-</span><span class="w"> </span>✅ Tests automatizados
+<span class="k">-</span><span class="w"> </span>✅ Logging configurado
+
+<span class="gu">## Instalación</span>
+
+<span class="gu">### Prerrequisitos</span>
+
+<span class="k">-</span><span class="w"> </span>Python 3.8+
+<span class="k">-</span><span class="w"> </span>pip
+
+<span class="gu">### Pasos</span>
+
+<span class="k">1.</span> Clonar el repositorio:
+```bash
+git clone https://github.com/usuario/api-simple.git
+cd api-simple
+</code></pre></div>
+<ol>
+<li>
+<p>Crear entorno virtual:
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+
+<span class="c1"># Windows</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+
+<span class="c1"># Linux/Mac</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</code></pre></div></p>
+</li>
+<li>
+<p>Instalar dependencias:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div></p>
+</li>
+<li>
+<p>Ejecutar la aplicación:
+<div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</code></pre></div></p>
+</li>
+<li>
+<p>Abrir documentación:</p>
+</li>
+<li>Swagger UI: http://localhost:8000/docs</li>
+<li>ReDoc: http://localhost:8000/redoc</li>
+</ol>
+<h2 id="uso">Uso</h2>
+<h3 id="crear-un-usuario">Crear un usuario</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8000/users/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">       &quot;name&quot;: &quot;Juan Pérez&quot;,</span>
+<span class="s1">       &quot;email&quot;: &quot;juan@example.com&quot;</span>
+<span class="s1">     }&#39;</span>
+</code></pre></div>
+<h3 id="obtener-todos-los-usuarios">Obtener todos los usuarios</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;http://localhost:8000/users/&quot;</span>
+</code></pre></div>
+<h3 id="crear-un-producto">Crear un producto</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8000/products/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">       &quot;name&quot;: &quot;Laptop Gaming&quot;,</span>
+<span class="s1">       &quot;price&quot;: 1299.99</span>
+<span class="s1">     }&#39;</span>
+</code></pre></div>
+<h2 id="testing">Testing</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutar todos los tests</span>
+pytest
+
+<span class="c1"># Ejecutar con coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>app
+
+<span class="c1"># Ejecutar tests específicos</span>
+pytest<span class="w"> </span>tests/test_users.py
+</code></pre></div>
+<h2 id="estructura-del-proyecto">Estructura del Proyecto</h2>
+<div class="highlight"><pre><span></span><code>api_simple/
+├── app/
+│   ├── crud/
+│   │   ├── __init__.py
+│   │   └── crud.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   └── database.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   └── models.py
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   ├── users.py
+│   │   ├── products.py
+│   │   └── orders.py
+│   └── schemas/
+│       ├── __init__.py
+│       └── schemas.py
+├── docs/
+│   └── [archivos de tutorial]
+├── tests/
+│   └── [archivos de test]
+├── main.py
+├── requirements.txt
+└── README.md
+</code></pre></div>
+<h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="usuarios">Usuarios</h3>
+<ul>
+<li><code>POST /users/</code> - Crear usuario</li>
+<li><code>GET /users/</code> - Obtener todos los usuarios</li>
+<li><code>GET /users/{user_id}</code> - Obtener usuario por ID</li>
+</ul>
+<h3 id="productos">Productos</h3>
+<ul>
+<li><code>POST /products/</code> - Crear producto</li>
+<li><code>GET /products/</code> - Obtener todos los productos</li>
+<li><code>GET /products/{product_id}</code> - Obtener producto por ID</li>
+</ul>
+<h3 id="ordenes">Órdenes</h3>
+<ul>
+<li><code>POST /orders/</code> - Crear orden</li>
+<li><code>GET /orders/</code> - Obtener todas las órdenes</li>
+<li><code>GET /orders/{order_id}</code> - Obtener orden por ID</li>
+</ul>
+<h2 id="contribuir">Contribuir</h2>
+<ol>
+<li>Fork el proyecto</li>
+<li>Crear una rama para tu feature (<code>git checkout -b feature/AmazingFeature</code>)</li>
+<li>Commit tus cambios (<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+<li>Push a la rama (<code>git push origin feature/AmazingFeature</code>)</li>
+<li>Abrir un Pull Request</li>
+</ol>
+<h2 id="licencia">Licencia</h2>
+<p>Este proyecto está bajo la Licencia MIT - ver el archivo <a href="LICENSE">LICENSE</a> para detalles.
+<div class="highlight"><pre><span></span><code>### Documentación de API
+
+```markdown
+# docs/api.md
+
+# Documentación de la API
+
+## Autenticación
+
+Actualmente la API no requiere autenticación. En futuras versiones se implementará autenticación JWT.
+
+## Formato de Respuestas
+
+Todas las respuestas están en formato JSON.
+
+### Respuestas Exitosas
+
+```json
+{
+  &quot;id&quot;: 1,
+  &quot;name&quot;: &quot;Juan Pérez&quot;,
+  &quot;email&quot;: &quot;juan@example.com&quot;
+}
+</code></pre></div></p>
+<h3 id="respuestas-de-error">Respuestas de Error</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Descripción del error&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="codigos-de-estado-http">Códigos de Estado HTTP</h2>
+<ul>
+<li><code>200 OK</code> - Operación exitosa</li>
+<li><code>201 Created</code> - Recurso creado exitosamente</li>
+<li><code>400 Bad Request</code> - Datos inválidos</li>
+<li><code>404 Not Found</code> - Recurso no encontrado</li>
+<li><code>422 Unprocessable Entity</code> - Error de validación</li>
+<li><code>500 Internal Server Error</code> - Error interno del servidor</li>
+</ul>
+<h2 id="limites-de-rate">Límites de Rate</h2>
+<p>Actualmente no hay límites de rate implementados.</p>
+<h2 id="versionado">Versionado</h2>
+<p>La API actualmente está en la versión 1.0. Futuras versiones mantendrán compatibilidad hacia atrás.
+<div class="highlight"><pre><span></span><code>## Preparación para Deployment
+
+### Variables de Entorno
+
+```python
+# app/core/config.py
+import os
+from functools import lru_cache
+from pydantic import BaseSettings
+
+class Settings(BaseSettings):
+    &quot;&quot;&quot;Configuración de la aplicación.&quot;&quot;&quot;
+
+    # Información de la aplicación
+    app_name: str = &quot;API Simple E-commerce&quot;
+    version: str = &quot;1.0.0&quot;
+    description: str = &quot;API REST para e-commerce básico&quot;
+
+    # Configuración del servidor
+    host: str = &quot;0.0.0.0&quot;
+    port: int = 8000
+    debug: bool = False
+
+    # Base de datos
+    database_url: str = &quot;sqlite:///./app.db&quot;
+
+    # Seguridad
+    secret_key: str = &quot;your-secret-key-change-in-production&quot;
+
+    # CORS
+    allowed_origins: list = [&quot;*&quot;]
+
+    # Logging
+    log_level: str = &quot;INFO&quot;
+
+    # Documentación
+    docs_url: str = &quot;/docs&quot;
+    redoc_url: str = &quot;/redoc&quot;
+    openapi_url: str = &quot;/openapi.json&quot;
+
+    class Config:
+        env_file = &quot;.env&quot;
+        case_sensitive = False
+
+@lru_cache()
+def get_settings():
+    return Settings()
+
+# Instancia global
+settings = get_settings()
+</code></pre></div></p>
+<h3 id="archivo-env">Archivo .env</h3>
+<div class="highlight"><pre><span></span><code># .env
+
+# Aplicación
+APP_NAME=&quot;API Simple E-commerce&quot;
+VERSION=&quot;1.0.0&quot;
+DEBUG=false
+
+# Servidor
+HOST=&quot;0.0.0.0&quot;
+PORT=8000
+
+# Base de datos
+DATABASE_URL=&quot;sqlite:///./production.db&quot;
+
+# Seguridad
+SECRET_KEY=&quot;your-super-secret-key-here&quot;
+
+# CORS
+ALLOWED_ORIGINS=[&quot;https://myapp.com&quot;, &quot;https://www.myapp.com&quot;]
+
+# Logging
+LOG_LEVEL=&quot;INFO&quot;
+
+# Documentación (deshabilitada en producción)
+DOCS_URL=null
+REDOC_URL=null
+OPENAPI_URL=null
+</code></pre></div>
+<h3 id="configuracion-para-produccion">Configuración para Producción</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.middleware.cors</span><span class="w"> </span><span class="kn">import</span> <span class="n">CORSMiddleware</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.middleware.trustedhost</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrustedHostMiddleware</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.routers</span><span class="w"> </span><span class="kn">import</span> <span class="n">users</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">orders</span>
+
+<span class="c1"># Crear tablas</span>
+<span class="n">models</span><span class="o">.</span><span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="c1"># Crear aplicación</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">app_name</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+    <span class="n">docs_url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">docs_url</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">debug</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">redoc_url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">redoc_url</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">debug</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">openapi_url</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">openapi_url</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">debug</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Middleware de seguridad para producción</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">settings</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+        <span class="n">TrustedHostMiddleware</span><span class="p">,</span>
+        <span class="n">allowed_hosts</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;api.mycompany.com&quot;</span><span class="p">,</span> <span class="s2">&quot;*.mycompany.com&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="c1"># CORS</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+    <span class="n">CORSMiddleware</span><span class="p">,</span>
+    <span class="n">allow_origins</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">allowed_origins</span><span class="p">,</span>
+    <span class="n">allow_credentials</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">allow_methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">],</span>
+    <span class="n">allow_headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># Incluir routers</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;API Simple E-commerce&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+        <span class="s2">&quot;docs&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">settings</span><span class="o">.</span><span class="n">docs_url</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">debug</span> <span class="k">else</span> <span class="s2">&quot;Documentación no disponible en producción&quot;</span>
+    <span class="p">}</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">health_check</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Endpoint de salud para monitoreo.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;healthy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">version</span>
+    <span class="p">}</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">uvicorn</span>
+    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="s2">&quot;main:app&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+        <span class="n">reload</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">debug</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h2 id="deployment-con-docker">Deployment con Docker</h2>
+<h3 id="dockerfile">Dockerfile</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Dockerfile</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.10-slim</span>
+
+<span class="c"># Establecer directorio de trabajo</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># Instalar dependencias del sistema</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="c"># Copiar archivos de dependencias</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+
+<span class="c"># Instalar dependencias de Python</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c"># Copiar código de la aplicación</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+
+<span class="c"># Crear usuario no-root</span>
+<span class="k">RUN</span><span class="w"> </span>useradd<span class="w"> </span>--create-home<span class="w"> </span>--shell<span class="w"> </span>/bin/bash<span class="w"> </span>app<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>app:app<span class="w"> </span>/app
+<span class="k">USER</span><span class="w"> </span><span class="s">app</span>
+
+<span class="c"># Exponer puerto</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+
+<span class="c"># Comando por defecto</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="docker-composeyml">docker-compose.yml</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># docker-compose.yml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_URL=sqlite:///./app.db</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG=false</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL=INFO</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/app/data</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;curl&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-f&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;http://localhost:8000/health&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">start_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40s</span>
+
+<span class="w">  </span><span class="c1"># Para futuras implementaciones con PostgreSQL</span>
+<span class="w">  </span><span class="c1"># db:</span>
+<span class="w">  </span><span class="c1">#   image: postgres:13</span>
+<span class="w">  </span><span class="c1">#   environment:</span>
+<span class="w">  </span><span class="c1">#     POSTGRES_DB: api_simple</span>
+<span class="w">  </span><span class="c1">#     POSTGRES_USER: api_user</span>
+<span class="w">  </span><span class="c1">#     POSTGRES_PASSWORD: api_password</span>
+<span class="w">  </span><span class="c1">#   volumes:</span>
+<span class="w">  </span><span class="c1">#     - postgres_data:/var/lib/postgresql/data</span>
+<span class="w">  </span><span class="c1">#   ports:</span>
+<span class="w">  </span><span class="c1">#     - &quot;5432:5432&quot;</span>
+
+<span class="c1"># volumes:</span>
+<span class="c1">#   postgres_data:</span>
+</code></pre></div>
+<h3 id="comandos-docker">Comandos Docker</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Construir imagen</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>api-simple<span class="w"> </span>.
+
+<span class="c1"># Ejecutar contenedor</span>
+docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>api-simple
+
+<span class="c1"># Usar docker-compose</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># Ver logs</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>api
+
+<span class="c1"># Parar servicios</span>
+docker-compose<span class="w"> </span>down
+</code></pre></div>
+<h2 id="deployment-en-la-nube">Deployment en la Nube</h2>
+<h3 id="heroku">Heroku</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Procfile</span>
+<span class="n">web</span><span class="p">:</span> <span class="n">uvicorn</span> <span class="n">main</span><span class="p">:</span><span class="n">app</span> <span class="o">--</span><span class="n">host</span> <span class="mf">0.0.0.0</span> <span class="o">--</span><span class="n">port</span> <span class="err">$</span><span class="n">PORT</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Comandos Heroku</span>
+heroku<span class="w"> </span>create<span class="w"> </span>api-simple-app
+heroku<span class="w"> </span>config:set<span class="w"> </span><span class="nv">DEBUG</span><span class="o">=</span><span class="nb">false</span>
+heroku<span class="w"> </span>config:set<span class="w"> </span><span class="nv">SECRET_KEY</span><span class="o">=</span>your-production-secret-key
+git<span class="w"> </span>push<span class="w"> </span>heroku<span class="w"> </span>main
+</code></pre></div>
+<h3 id="railway">Railway</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># railway.toml</span>
+<span class="k">[build]</span>
+<span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;NIXPACKS&quot;</span>
+
+<span class="k">[deploy]</span>
+<span class="n">startCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uvicorn main:app --host 0.0.0.0 --port $PORT&quot;</span>
+<span class="n">restartPolicyType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ON_FAILURE&quot;</span>
+<span class="n">restartPolicyMaxRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+</code></pre></div>
+<h3 id="render">Render</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># render.yaml</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-simple</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="w">    </span><span class="nt">buildCommand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">    </span><span class="nt">startCommand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvicorn main:app --host 0.0.0.0 --port $PORT</span>
+<span class="w">    </span><span class="nt">envVars</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SECRET_KEY</span>
+<span class="w">        </span><span class="nt">generateValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h3 id="digitalocean-app-platform">DigitalOcean App Platform</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># .do/app.yaml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-simple</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api</span>
+<span class="w">  </span><span class="nt">source_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">  </span><span class="nt">github</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usuario/api-simple</span>
+<span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">run_command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvicorn main:app --host 0.0.0.0 --port $PORT</span>
+<span class="w">  </span><span class="nt">environment_slug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="w">  </span><span class="nt">instance_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">instance_size_slug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">basic-xxs</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SECRET_KEY</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your-production-secret-key&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SECRET</span>
+</code></pre></div>
+<h2 id="monitoreo-y-logging">Monitoreo y Logging</h2>
+<h3 id="configuracion-de-logging">Configuración de Logging</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/core/logging.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_logging</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configurar logging para la aplicación.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Crear directorio de logs</span>
+    <span class="n">log_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;logs&quot;</span><span class="p">)</span>
+    <span class="n">log_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Configurar formato</span>
+    <span class="n">log_format</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(name)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - &quot;</span>
+        <span class="s2">&quot;</span><span class="si">%(filename)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Configurar handlers</span>
+    <span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">settings</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+        <span class="c1"># En producción, también log a archivos</span>
+        <span class="n">handlers</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">log_dir</span> <span class="o">/</span> <span class="s2">&quot;app.log&quot;</span><span class="p">),</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">log_dir</span> <span class="o">/</span> <span class="s2">&quot;error.log&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+        <span class="p">])</span>
+
+    <span class="c1"># Configurar logging</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+        <span class="n">level</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">log_level</span><span class="o">.</span><span class="n">upper</span><span class="p">()),</span>
+        <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">,</span>
+        <span class="n">handlers</span><span class="o">=</span><span class="n">handlers</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Configurar loggers específicos</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;sqlalchemy.engine&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="middleware-de-logging">Middleware de Logging</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/middleware/logging.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LoggingMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Log request</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Request: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> - &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Client: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">host</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">request</span><span class="o">.</span><span class="n">client</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Procesar request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Calcular tiempo de procesamiento</span>
+        <span class="n">process_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+        <span class="c1"># Log response</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Response: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Time: </span><span class="si">{</span><span class="n">process_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Agregar header de tiempo</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-Process-Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">process_time</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h3 id="health-check-avanzado">Health Check Avanzado</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/routers/health.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">])</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">health_check</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Health check básico.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;healthy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="p">}</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health/detailed&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">detailed_health_check</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Health check detallado.&quot;&quot;&quot;</span>
+    <span class="n">health_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;healthy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+        <span class="s2">&quot;checks&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Check de base de datos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT 1&quot;</span><span class="p">)</span>
+        <span class="n">health_data</span><span class="p">[</span><span class="s2">&quot;checks&quot;</span><span class="p">][</span><span class="s2">&quot;database&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;healthy&quot;</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">health_data</span><span class="p">[</span><span class="s2">&quot;checks&quot;</span><span class="p">][</span><span class="s2">&quot;database&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;unhealthy: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">health_data</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;unhealthy&quot;</span>
+
+    <span class="c1"># Check de memoria</span>
+    <span class="n">memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+    <span class="n">health_data</span><span class="p">[</span><span class="s2">&quot;checks&quot;</span><span class="p">][</span><span class="s2">&quot;memory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;usage_percent&quot;</span><span class="p">:</span> <span class="n">memory</span><span class="o">.</span><span class="n">percent</span><span class="p">,</span>
+        <span class="s2">&quot;available_gb&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">available</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Check de disco</span>
+    <span class="n">disk</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_usage</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">health_data</span><span class="p">[</span><span class="s2">&quot;checks&quot;</span><span class="p">][</span><span class="s2">&quot;disk&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;usage_percent&quot;</span><span class="p">:</span> <span class="n">disk</span><span class="o">.</span><span class="n">percent</span><span class="p">,</span>
+        <span class="s2">&quot;free_gb&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">free</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">health_data</span>
+</code></pre></div>
+<h2 id="seguridad">Seguridad</h2>
+<h3 id="headers-de-seguridad">Headers de Seguridad</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/middleware/security.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SecurityHeadersMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Headers de seguridad</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-Content-Type-Options&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;nosniff&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-Frame-Options&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;DENY&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-XSS-Protection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1; mode=block&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Strict-Transport-Security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;max-age=31536000; includeSubDomains&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Referrer-Policy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;strict-origin-when-cross-origin&quot;</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h3 id="rate-limiting">Rate Limiting</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Instalar: pip install slowapi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">slowapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Limiter</span><span class="p">,</span> <span class="n">_rate_limit_exceeded_handler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">slowapi.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_remote_address</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">slowapi.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">RateLimitExceeded</span>
+
+<span class="n">limiter</span> <span class="o">=</span> <span class="n">Limiter</span><span class="p">(</span><span class="n">key_func</span><span class="o">=</span><span class="n">get_remote_address</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">limiter</span> <span class="o">=</span> <span class="n">limiter</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_exception_handler</span><span class="p">(</span><span class="n">RateLimitExceeded</span><span class="p">,</span> <span class="n">_rate_limit_exceeded_handler</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/&quot;</span><span class="p">)</span>
+<span class="nd">@limiter</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="s2">&quot;10/minute&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+    <span class="k">return</span> <span class="n">get_all</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">User</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="mejores-practicas-para-produccion">Mejores Prácticas para Producción</h2>
+<h3 id="1-configuracion-por-entorno">1. <strong>Configuración por Entorno</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Bueno: Configuración por variables de entorno</span>
+<span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DATABASE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;sqlite:///./app.db&quot;</span><span class="p">)</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+
+<span class="c1"># ❌ Malo: Configuración hardcodeada</span>
+<span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///./app.db&quot;</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<h3 id="2-manejo-de-secretos">2. <strong>Manejo de Secretos</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Bueno: Secretos en variables de entorno</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SECRET_KEY&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">SECRET_KEY</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;SECRET_KEY environment variable is required&quot;</span><span class="p">)</span>
+
+<span class="c1"># ❌ Malo: Secretos en código</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s2">&quot;my-secret-key-123&quot;</span>
+</code></pre></div>
+<h3 id="3-logging-apropiado">3. <strong>Logging Apropiado</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Bueno: Logging estructurado</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;User created&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">})</span>
+
+<span class="c1"># ❌ Malo: Print statements</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User created: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="4-manejo-de-errores">4. <strong>Manejo de Errores</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Bueno: Manejo específico de errores</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">create_user</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Email already exists&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Internal server error&quot;</span><span class="p">)</span>
+
+<span class="c1"># ❌ Malo: Errores sin manejar</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">create_user</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span>  <span class="c1"># Puede fallar sin control</span>
+</code></pre></div>
+<h2 id="ejercicios-practicos">Ejercicios Prácticos</h2>
+<h3 id="ejercicio-1-documentacion-completa">Ejercicio 1: Documentación Completa</h3>
+<p>Mejora la documentación de todos los endpoints:
+- Agrega ejemplos de request/response
+- Documenta todos los códigos de error posibles
+- Agrega descripciones detalladas</p>
+<h3 id="ejercicio-2-configuracion-de-produccion">Ejercicio 2: Configuración de Producción</h3>
+<p>Configura la aplicación para producción:
+- Variables de entorno
+- Logging apropiado
+- Headers de seguridad
+- Deshabilitación de documentación</p>
+<h3 id="ejercicio-3-docker-setup">Ejercicio 3: Docker Setup</h3>
+<p>Crea un setup completo con Docker:
+- Dockerfile optimizado
+- docker-compose con base de datos
+- Scripts de deployment</p>
+<h3 id="ejercicio-4-monitoreo">Ejercicio 4: Monitoreo</h3>
+<p>Implementa monitoreo básico:
+- Health checks detallados
+- Métricas de performance
+- Alertas básicas</p>
+<h2 id="conclusion">Conclusión</h2>
+<p>¡Felicitaciones! Has completado el tutorial completo de construcción de una API REST con FastAPI. A lo largo de estos 10 capítulos has aprendido:</p>
+<h3 id="lo-que-has-construido">Lo que has construido:</h3>
+<ul>
+<li>✅ Una API REST funcional con FastAPI</li>
+<li>✅ Modelos de base de datos con SQLAlchemy</li>
+<li>✅ Validación de datos con Pydantic</li>
+<li>✅ Operaciones CRUD genéricas</li>
+<li>✅ Endpoints organizados con routers</li>
+<li>✅ Tests automatizados</li>
+<li>✅ Documentación interactiva</li>
+<li>✅ Configuración para deployment</li>
+</ul>
+<h3 id="conceptos-aprendidos">Conceptos aprendidos:</h3>
+<ul>
+<li><strong>Arquitectura en capas</strong>: Separación clara de responsabilidades</li>
+<li><strong>ORM</strong>: Mapeo objeto-relacional con SQLAlchemy</li>
+<li><strong>Validación</strong>: Schemas con Pydantic</li>
+<li><strong>Testing</strong>: Unit tests e integration tests</li>
+<li><strong>Documentación</strong>: OpenAPI/Swagger automático</li>
+<li><strong>Deployment</strong>: Preparación para producción</li>
+</ul>
+<h3 id="proximos-pasos-sugeridos">Próximos pasos sugeridos:</h3>
+<ol>
+<li><strong>Autenticación y Autorización</strong></li>
+<li>JWT tokens</li>
+<li>Roles y permisos</li>
+<li>
+<p>OAuth2</p>
+</li>
+<li>
+<p><strong>Base de Datos Avanzada</strong></p>
+</li>
+<li>PostgreSQL</li>
+<li>Migraciones con Alembic</li>
+<li>
+<p>Relaciones complejas</p>
+</li>
+<li>
+<p><strong>Performance</strong></p>
+</li>
+<li>Caching con Redis</li>
+<li>Paginación</li>
+<li>
+<p>Optimización de queries</p>
+</li>
+<li>
+<p><strong>Microservicios</strong></p>
+</li>
+<li>Separación de servicios</li>
+<li>Comunicación entre servicios</li>
+<li>
+<p>API Gateway</p>
+</li>
+<li>
+<p><strong>Observabilidad</strong></p>
+</li>
+<li>Métricas con Prometheus</li>
+<li>Tracing distribuido</li>
+<li>Dashboards con Grafana</li>
+</ol>
+<h3 id="recursos-adicionales">Recursos adicionales:</h3>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/">Documentación oficial de FastAPI</a></li>
+<li><a href="https://docs.sqlalchemy.org/">SQLAlchemy Documentation</a></li>
+<li><a href="https://pydantic-docs.helpmanual.io/">Pydantic Documentation</a></li>
+<li><a href="https://docs.pytest.org/">Pytest Documentation</a></li>
+</ul>
+<p>¡Sigue practicando y construyendo APIs increíbles! 🚀</p>
+<hr />
+<p><strong>Anterior:</strong> <a href="../09-testing-debugging/">Testing y Debugging</a></p>
+<p><strong>Inicio:</strong> <a href="README.md">README</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,2367 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/p2/">
+      
+      
+        <link rel="prev" href="../p1/">
+      
+      
+        <link rel="next" href="../p3/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>📘 Ciclos en Python - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ciclos-en-python" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📘 Ciclos en Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ciclo-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Ciclo for
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Ciclo for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sintaxis-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Sintaxis básica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-objetos-iterables-mas-usados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Objetos iterables más usados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ejemplos-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Ejemplos paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Ejemplos paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-recorrer-un-rango" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1 Recorrer un rango
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-recorrer-una-lista-con-desempaquetado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 Recorrer una lista con desempaquetado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-recorrer-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.3 Recorrer diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-usar-enumerate-para-indice-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.4 Usar enumerate para índice + valor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-recorrer-dos-listas-al-mismo-tiempo-zip" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.5 Recorrer dos listas al mismo tiempo (zip)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-bucle-anidado-nested-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.6 Bucle anidado (nested for)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-comprension-de-listas-for-en-una-sola-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.7 Comprensión de listas (for en una sola línea)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ciclo-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ciclo while
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Ciclo while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sintaxis-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Sintaxis básica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ejemplos-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Ejemplos paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Ejemplos paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-contador-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.1 Contador simple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-lectura-hasta-sentinela" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.2 Lectura hasta sentinela
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-re-try-con-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 Re-try con continue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-else-en-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.4 else en while
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flujos-de-control-dentro-de-ciclos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Flujos de control dentro de ciclos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ciclos-infinitos-y-sus-formas-de-salir" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ciclos “infinitos” y sus formas de salir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-iteradores-y-generadores-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Iteradores y generadores (avanzado)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Iteradores y generadores (avanzado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-uso-de-iter-y-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Uso de iter() y next()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-resumen-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Resumen visual
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mejores-practicas-y-recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Mejores prácticas y recomendaciones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ciclo-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Ciclo for
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Ciclo for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sintaxis-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Sintaxis básica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-objetos-iterables-mas-usados" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Objetos iterables más usados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ejemplos-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Ejemplos paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Ejemplos paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-recorrer-un-rango" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1 Recorrer un rango
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-recorrer-una-lista-con-desempaquetado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 Recorrer una lista con desempaquetado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-recorrer-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.3 Recorrer diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-usar-enumerate-para-indice-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.4 Usar enumerate para índice + valor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-recorrer-dos-listas-al-mismo-tiempo-zip" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.5 Recorrer dos listas al mismo tiempo (zip)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-bucle-anidado-nested-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.6 Bucle anidado (nested for)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-comprension-de-listas-for-en-una-sola-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.7 Comprensión de listas (for en una sola línea)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ciclo-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ciclo while
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Ciclo while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sintaxis-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Sintaxis básica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ejemplos-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Ejemplos paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Ejemplos paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-contador-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.1 Contador simple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-lectura-hasta-sentinela" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.2 Lectura hasta sentinela
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-re-try-con-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 Re-try con continue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-else-en-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.4 else en while
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flujos-de-control-dentro-de-ciclos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Flujos de control dentro de ciclos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ciclos-infinitos-y-sus-formas-de-salir" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ciclos “infinitos” y sus formas de salir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-iteradores-y-generadores-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Iteradores y generadores (avanzado)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Iteradores y generadores (avanzado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-uso-de-iter-y-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Uso de iter() y next()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-resumen-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Resumen visual
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mejores-practicas-y-recomendaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Mejores prácticas y recomendaciones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ciclos-en-python">📘 Ciclos en Python</h1>
+<h2 id="1-introduccion">1. Introducción</h2>
+<p>Los <strong>ciclos (o bucles)</strong> permiten ejecutar un bloque de código <em>repetidamente</em> sin necesidad de reescribirlo.<br />
+En Python existen <strong>dos construcciones básicas</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Construcción</th>
+<th>Uso típico</th>
+<th>¿Termina automáticamente?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for</code></td>
+<td>Recorrer iterables</td>
+<td>Sí, cuando el iterable se agota</td>
+</tr>
+<tr>
+<td><code>while</code></td>
+<td>Repetir mientras se cumpla una condición</td>
+<td>No, puede ser infinito si no se actualiza la condición</td>
+</tr>
+</tbody>
+</table>
+<p>A su vez, cada construcción admite <strong>flujos de control</strong> (<code>break</code>, <code>continue</code>, <code>else</code>) y combinaciones avanzadas (<code>else</code>, <code>else</code> + <code>continue</code>, <code>else</code> + <code>break</code>).  </p>
+<hr />
+<h2 id="2-ciclo-for">2. Ciclo <code>for</code></h2>
+<h3 id="21-sintaxis-basica">2.1 Sintaxis básica</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="c1"># bloque a repetir</span>
+<span class="k">else</span><span class="p">:</span>          <span class="c1"># opcional</span>
+    <span class="c1"># se ejecuta si NO hubo break</span>
+</code></pre></div>
+<h3 id="22-objetos-iterables-mas-usados">2.2 Objetos iterables más usados</h3>
+<table>
+<thead>
+<tr>
+<th>Iterable</th>
+<th>Ejemplo</th>
+<th>¿Qué recorre?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>range()</code></td>
+<td><code>range(5)</code></td>
+<td>Números enteros</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td>Elementos de la lista</td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td><code>"abc"</code></td>
+<td>Caracteres</td>
+</tr>
+<tr>
+<td><code>dict</code></td>
+<td><code>{"a": 1, "b": 2}</code></td>
+<td>Claves (por defecto)</td>
+</tr>
+<tr>
+<td><code>enumerate()</code></td>
+<td><code>enumerate(["x", "y"])</code></td>
+<td>Pares (índice, elemento)</td>
+</tr>
+<tr>
+<td><code>zip()</code></td>
+<td><code>zip(l1, l2)</code></td>
+<td>Tuplas emparejadas</td>
+</tr>
+<tr>
+<td>Generador</td>
+<td><code>(x**2 for x in range(3))</code></td>
+<td>Valores producidos bajo demanda</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-ejemplos-paso-a-paso">2.3 Ejemplos paso a paso</h3>
+<h4 id="231-recorrer-un-rango">2.3.1 Recorrer un rango</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>      <span class="c1"># 1,2,3,4,5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="232-recorrer-una-lista-con-desempaquetado">2.3.2 Recorrer una lista con desempaquetado</h4>
+<div class="highlight"><pre><span></span><code><span class="n">productos</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Manzanas&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Peras&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">cantidad</span> <span class="ow">in</span> <span class="n">productos</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">cantidad</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="233-recorrer-diccionarios">2.3.3 Recorrer diccionarios</h4>
+<div class="highlight"><pre><span></span><code><span class="n">precios</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;manzana&quot;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s2">&quot;pera&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">fruta</span><span class="p">,</span> <span class="n">precio</span> <span class="ow">in</span> <span class="n">precios</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fruta</span><span class="si">}</span><span class="s2"> cuesta $</span><span class="si">{</span><span class="n">precio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="234-usar-enumerate-para-indice-valor">2.3.4 Usar <code>enumerate</code> para índice + valor</h4>
+<div class="highlight"><pre><span></span><code><span class="n">palabras</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sol&quot;</span><span class="p">,</span> <span class="s2">&quot;luna&quot;</span><span class="p">,</span> <span class="s2">&quot;estrella&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pal</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">palabras</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">pal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="235-recorrer-dos-listas-al-mismo-tiempo-zip">2.3.5 Recorrer dos listas al mismo tiempo (<code>zip</code>)</h4>
+<div class="highlight"><pre><span></span><code><span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Luis&quot;</span><span class="p">,</span> <span class="s2">&quot;Eva&quot;</span><span class="p">]</span>
+<span class="n">edades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">nom</span><span class="p">,</span> <span class="n">ed</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nombres</span><span class="p">,</span> <span class="n">edades</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2"> tiene </span><span class="si">{</span><span class="n">ed</span><span class="si">}</span><span class="s2"> años&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="236-bucle-anidado-nested-for">2.3.6 Bucle anidado (nested for)</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;i=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, j=</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="237-comprension-de-listas-for-en-una-sola-linea">2.3.7 Comprensión de listas (for en una sola línea)</h4>
+<div class="highlight"><pre><span></span><code><span class="n">cuadrados</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>   <span class="c1"># [0, 1, 4, 9, 16]</span>
+</code></pre></div>
+<hr />
+<h2 id="3-ciclo-while">3. Ciclo <code>while</code></h2>
+<h3 id="31-sintaxis-basica">3.1 Sintaxis básica</h3>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">condición</span><span class="p">:</span>
+    <span class="c1"># bloque a repetir</span>
+<span class="k">else</span><span class="p">:</span>          <span class="c1"># opcional</span>
+    <span class="c1"># se ejecuta si la condición es falsa y NO hubo break</span>
+</code></pre></div>
+<h3 id="32-ejemplos-paso-a-paso">3.2 Ejemplos paso a paso</h3>
+<h4 id="321-contador-simple">3.2.1 Contador simple</h4>
+<div class="highlight"><pre><span></span><code><span class="n">cont</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">cont</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cont</span><span class="p">)</span>
+    <span class="n">cont</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<h4 id="322-lectura-hasta-sentinela">3.2.2 Lectura hasta <em>sentinela</em></h4>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Número (q para salir): &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total:&quot;</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="323-re-try-con-continue">3.2.3 Re-try con <code>continue</code></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">dado</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">continue</span>           <span class="c1"># volver a tirar</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sacaste&quot;</span><span class="p">,</span> <span class="n">dado</span><span class="p">)</span>
+    <span class="k">break</span>                  <span class="c1"># terminar</span>
+</code></pre></div>
+<h4 id="324-else-en-while">3.2.4 <code>else</code> en while</h4>
+<div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Terminó sin break&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="4-flujos-de-control-dentro-de-ciclos">4. Flujos de control dentro de ciclos</h2>
+<table>
+<thead>
+<tr>
+<th>Sentencia</th>
+<th>Qué hace</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>break</code></td>
+<td>Salir del ciclo inmediatamente</td>
+<td><code>if x &lt; 0: break</code></td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td>Saltar al siguiente ciclo</td>
+<td><code>if x % 2 == 0: continue</code></td>
+</tr>
+<tr>
+<td><code>else</code></td>
+<td>Ejecutar solo si no hubo <code>break</code></td>
+<td>Ver secciones anteriores</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-ciclos-infinitos-y-sus-formas-de-salir">5. Ciclos “infinitos” y sus formas de salir</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Opción 1: while True + break</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">opcion</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">opcion</span> <span class="o">==</span> <span class="s2">&quot;salir&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="c1"># Opción 2: flag externa</span>
+<span class="n">seguir</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">seguir</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="n">condicion</span><span class="p">:</span>
+        <span class="n">seguir</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+<hr />
+<h2 id="6-iteradores-y-generadores-avanzado">6. Iteradores y generadores (avanzado)</h2>
+<h3 id="61-uso-de-iter-y-next">6.1 Uso de <code>iter()</code> y <code>next()</code></h3>
+<div class="highlight"><pre><span></span><code><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>  <span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>  <span class="c1"># 20</span>
+</code></pre></div>
+<hr />
+<h2 id="7-resumen-visual">7. Resumen visual</h2>
+<pre class="mermaid"><code>graph TD
+    A[Ciclo] --&gt;|determinista| B[for]
+    A --&gt;|condicional| C[while]
+    B --&gt; D[range]
+    B --&gt; E[listas]
+    B --&gt; F[dict]
+    B --&gt; G[enumerate/zip]
+    C --&gt; H[condición]
+    C --&gt; I[break/continue]</code></pre>
+<hr />
+<h2 id="8-mejores-practicas-y-recomendaciones">8. Mejores prácticas y recomendaciones</h2>
+<ol>
+<li><strong>Preferir <code>for</code> sobre <code>while</code></strong> cuando se conoce la cantidad de iteraciones.</li>
+<li><strong>Evitar ciclos infinitos</strong> sin mecanismo de salida claro.</li>
+<li><strong>Usar nombres descriptivos</strong> para variables de control.</li>
+<li><strong>Aprovechar <code>enumerate</code> y <code>zip</code></strong> para código más legible.</li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

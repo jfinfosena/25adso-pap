@@ -1,0 +1,3287 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/p3/">
+      
+      
+        <link rel="prev" href="../p2/">
+      
+      
+        <link rel="next" href="../p4/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#estructuras-de-control-bucles-y-estructuras-de-datos-colecciones-en-python" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bucle-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle while
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucle while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formas-de-usar-el-bucle-for-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formas de usar el bucle for en Python:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucle-while-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle while básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-infinito" class="md-nav__link">
+    <span class="md-ellipsis">
+      While infinito
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#romper-el-bucle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Romper el bucle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuar-la-iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuar la iteración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-con-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      While con else
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-anidado" class="md-nav__link">
+    <span class="md-ellipsis">
+      While anidado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-resueltos-bucle-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios resueltos bucle while
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bucle-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle for
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucle for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formas-de-usar-el-bucle-for-en-python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formas de usar el bucle for en Python:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucle-for-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle for básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorrer-una-lista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recorrer una lista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-sobre-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar sobre una cadena
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-en-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar en pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-sobre-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar sobre diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rango-personalizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rango personalizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    <span class="md-ellipsis">
+      Break
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-resueltos-bucle-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios resueltos bucle for
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras-de-datos-colecciones-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de datos - Colecciones en Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras de datos - Colecciones en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Listas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-las-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de las listas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de listas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuplas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuplas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tuplas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-las-tuplas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de las tuplas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-tuplas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de tuplas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conjuntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjuntos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conjuntos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-los-conjuntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de los conjuntos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-conjuntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de conjuntos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diccionarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diccionarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-los-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de los diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-para-iterar-sobre-los-elementos-de-un-diccionario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas para iterar sobre los elementos de un diccionario.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-una-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición de una función
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llamando-a-una-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llamando a una función
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valor-de-retorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Valor de retorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-de-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación de funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-sin-retorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones sin retorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables Globales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables Globales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-por-que-utilizar-variables-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Por qué utilizar variables globales?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-declaracion-y-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Declaración y Acceso:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-importancia-de-la-palabra-clave-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Importancia de la palabra clave global:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Ejemplos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-precauciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Precauciones:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bucle-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle while
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucle while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formas-de-usar-el-bucle-for-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formas de usar el bucle for en Python:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucle-while-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle while básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-infinito" class="md-nav__link">
+    <span class="md-ellipsis">
+      While infinito
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#romper-el-bucle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Romper el bucle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuar-la-iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuar la iteración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-con-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      While con else
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-anidado" class="md-nav__link">
+    <span class="md-ellipsis">
+      While anidado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-resueltos-bucle-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios resueltos bucle while
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bucle-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle for
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucle for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formas-de-usar-el-bucle-for-en-python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formas de usar el bucle for en Python:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucle-for-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucle for básico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorrer-una-lista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recorrer una lista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-sobre-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar sobre una cadena
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-en-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar en pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterar-sobre-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterar sobre diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rango-personalizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rango personalizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    <span class="md-ellipsis">
+      Break
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-resueltos-bucle-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios resueltos bucle for
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras-de-datos-colecciones-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de datos - Colecciones en Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras de datos - Colecciones en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Listas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-las-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de las listas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de listas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuplas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuplas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tuplas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-las-tuplas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de las tuplas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-tuplas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de tuplas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conjuntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjuntos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conjuntos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-los-conjuntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de los conjuntos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-conjuntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de conjuntos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diccionarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diccionarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-los-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de los diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-de-diccionarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de diccionarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-para-iterar-sobre-los-elementos-de-un-diccionario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas para iterar sobre los elementos de un diccionario.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-una-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición de una función
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llamando-a-una-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llamando a una función
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valor-de-retorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Valor de retorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-de-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación de funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-sin-retorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones sin retorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables Globales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables Globales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-por-que-utilizar-variables-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Por qué utilizar variables globales?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-declaracion-y-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Declaración y Acceso:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-importancia-de-la-palabra-clave-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Importancia de la palabra clave global:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Ejemplos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-precauciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Precauciones:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="estructuras-de-control-bucles-y-estructuras-de-datos-colecciones-en-python">📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python</h1>
+<p>En Python, las estructuras de control repetitivas se utilizan para ejecutar una o más instrucciones de manera repetitiva mientras se cumpla una condición determinada. Las estructuras de control repetitivas en Python son: Bucle while, Bucle for</p>
+<h3 id="bucle-while">Bucle while</h3>
+<p>Bucle while:
+El bucle while se utiliza para ejecutar un conjunto de instrucciones mientras se cumpla una determinada condición. La sintaxis del bucle while en Python es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">condición</span><span class="p">:</span>
+    <span class="c1"># bloque de instrucciones a ejecutar mientras la condición sea verdadera</span>
+</code></pre></div>
+<h4 id="formas-de-usar-el-bucle-for-en-python">Formas de usar el bucle for en Python:</h4>
+<h4 id="bucle-while-basico">Bucle while básico</h4>
+<div class="highlight"><pre><span></span><code><span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">contador</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<h4 id="while-infinito">While infinito</h4>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h4 id="romper-el-bucle">Romper el bucle</h4>
+<div class="highlight"><pre><span></span><code><span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">contador</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">contador</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<h4 id="continuar-la-iteracion">Continuar la iteración</h4>
+<div class="highlight"><pre><span></span><code><span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">contador</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">contador</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="while-con-else">While con else</h4>
+<div class="highlight"><pre><span></span><code><span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">contador</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin del bucle while&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="while-anidado">While anidado</h4>
+<div class="highlight"><pre><span></span><code><span class="n">contador1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">while</span> <span class="n">contador1</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">contador2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">contador2</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">contador1</span><span class="p">,</span> <span class="n">contador2</span><span class="p">)</span>
+        <span class="n">contador2</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">contador1</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<h4 id="ejercicios-resueltos-bucle-while">Ejercicios resueltos bucle while</h4>
+<ol>
+<li>Pedir al usuario que adivine un número secreto. El usuario tendrá un número limitado de intentos para adivinar el número. Si no lo adivina en ese número de intentos, el programa le dirá que perdió.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">numero_secreto</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">intentos</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_intentos</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">adivinado</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estoy pensando en un número entre 1 y 20.&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">intentos</span> <span class="o">&lt;</span> <span class="n">max_intentos</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">adivinado</span><span class="p">:</span>
+    <span class="n">intento</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Intenta adivinar el número: &quot;</span><span class="p">))</span>
+    <span class="n">intentos</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">intento</span> <span class="o">==</span> <span class="n">numero_secreto</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Correcto! Adivinaste el número en&quot;</span><span class="p">,</span> <span class="n">intentos</span><span class="p">,</span> <span class="s2">&quot;intentos.&quot;</span><span class="p">)</span>
+        <span class="n">adivinado</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">intento</span> <span class="o">&lt;</span> <span class="n">numero_secreto</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El número es mayor que&quot;</span><span class="p">,</span> <span class="n">intento</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El número es menor que&quot;</span><span class="p">,</span> <span class="n">intento</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">adivinado</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lo siento, no adivinaste el número en el número máximo de intentos.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El número secreto era&quot;</span><span class="p">,</span> <span class="n">numero_secreto</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Pedir al usuario que ingrese una cadena y contar la cantidad de letras que contiene.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">cadena</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa una cadena: &quot;</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">cadena</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cadena</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+        <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La cadena tiene&quot;</span><span class="p">,</span> <span class="n">contador</span><span class="p">,</span> <span class="s2">&quot;letras.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Pedir al usuario que ingrese un número entero positivo y mostrar su tabla de multiplicar.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">numero</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa un número entero positivo: &quot;</span><span class="p">))</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numero</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">numero</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<ol>
+<li>Pedir al usuario que ingrese una lista de números y calcular su promedio.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">lista</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa una lista de números separados por comas: &quot;</span><span class="p">)</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="n">lista</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">suma</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">suma</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">promedio</span> <span class="o">=</span> <span class="n">suma</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El promedio de la lista es&quot;</span><span class="p">,</span> <span class="n">promedio</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="bucle-for">Bucle for</h3>
+<p>El bucle for se utiliza para recorrer una secuencia de elementos, como una lista o una cadena, y ejecutar un conjunto de instrucciones para cada elemento. La sintaxis del bucle for en Python es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">secuencia</span><span class="p">:</span>
+    <span class="c1"># bloque de instrucciones a ejecutar para cada elemento de la secuencia</span>
+</code></pre></div>
+<h4 id="formas-de-usar-el-bucle-for-en-python_1">Formas de usar el bucle for en Python:</h4>
+<h4 id="bucle-for-basico">Bucle for básico</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="recorrer-una-lista">Recorrer una lista</h4>
+<div class="highlight"><pre><span></span><code><span class="n">frutas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;manzana&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;zanahoria&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">fruta</span> <span class="ow">in</span> <span class="n">frutas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruta</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="iterar-sobre-una-cadena">Iterar sobre una cadena</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">letra</span> <span class="ow">in</span> <span class="s2">&quot;Hola&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letra</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="iterar-en-pasos">Iterar en pasos</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="iterar-sobre-diccionarios">Iterar sobre diccionarios</h4>
+<div class="highlight"><pre><span></span><code><span class="n">dicc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">llave</span> <span class="ow">in</span> <span class="n">dicc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">llave</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">llave</span> <span class="ow">in</span> <span class="n">dicc</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">llave</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">dicc</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">llave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">dicc</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">llave</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="rango-personalizado">Rango personalizado</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">mi_lista</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mi_lista</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="break">Break</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="continue">Continue</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="ejercicios-resueltos-bucle-for">Ejercicios resueltos bucle for</h4>
+<ol>
+<li>Pedir al usuario que ingrese una palabra y mostrarla en orden inverso.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">palabra</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa una palabra: &quot;</span><span class="p">)</span>
+<span class="n">inverso</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">letra</span> <span class="ow">in</span> <span class="n">palabra</span><span class="p">:</span>
+    <span class="n">inverso</span> <span class="o">=</span> <span class="n">letra</span> <span class="o">+</span> <span class="n">inverso</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La palabra en orden inverso es:&quot;</span><span class="p">,</span> <span class="n">inverso</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Pedir al usuario que ingrese una cadena de texto y mostrar solamente las letras mayúsculas utilizando un ciclo for.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">cadena</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa una cadena de texto: &quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">letra</span> <span class="ow">in</span> <span class="n">cadena</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">letra</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">letra</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Pedir al usuario que ingrese una cadena de texto y contar cuántas palabras tiene utilizando un ciclo for</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">cadena</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa una cadena de texto: &quot;</span><span class="p">)</span>
+<span class="n">palabras</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">palabras</span><span class="p">:</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La cadena de texto ingresada tiene&quot;</span><span class="p">,</span> <span class="n">contador</span><span class="p">,</span> <span class="s2">&quot;palabras.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Imprime los múltiplos de 7 entre 0 y 100:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="estructuras-de-datos-colecciones-en-python">Estructuras de datos - Colecciones en Python</h2>
+<p>En Python, una colección es una estructura de datos que puede almacenar varios elementos. Hay varios tipos de colecciones en Python, cada una con diferentes propiedades y usos.</p>
+<p>Aquí hay una breve descripción de las principales colecciones en Python:</p>
+<ul>
+<li>Listas: son colecciones ordenadas y modificables que pueden contener elementos de diferentes tipos de datos.</li>
+<li>Tuplas: son colecciones ordenadas e inmutables que pueden contener elementos de diferentes tipos de datos.</li>
+<li>Conjuntos: son colecciones no ordenadas y no indexadas que no permiten elementos duplicados.</li>
+<li>Diccionarios: son colecciones no ordenadas pero modificables que consisten en pares clave-valor.
+Aquí hay algunos ejemplos de cómo crear e interactuar con estas colecciones:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Creamos una lista con algunos elementos</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;cuatro&#39;</span><span class="p">,</span> <span class="s1">&#39;cinco&#39;</span><span class="p">]</span>
+
+<span class="c1"># Accedemos a un elemento de la lista</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Salida: 1</span>
+
+<span class="c1"># Creamos una tupla con algunos elementos</span>
+<span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;cuatro&#39;</span><span class="p">,</span> <span class="s1">&#39;cinco&#39;</span><span class="p">)</span>
+
+<span class="c1"># Accedemos a un elemento de la tupla</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Salida: 1</span>
+
+<span class="c1"># Creamos un conjunto con algunos elementos</span>
+<span class="n">my_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="c1"># Accedemos a un elemento del conjunto (no es posible porque los conjuntos no tienen índices)</span>
+<span class="c1"># En cambio, podemos verificar si un elemento está en el conjunto</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">my_set</span><span class="p">)</span>  <span class="c1"># Salida: True</span>
+
+<span class="c1"># Creamos un diccionario con algunas claves y valores</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Juan&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;ciudad&#39;</span><span class="p">:</span> <span class="s1">&#39;Buenos Aires&#39;</span><span class="p">}</span>
+
+<span class="c1"># Accedemos a un valor del diccionario mediante su clave</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">])</span>  <span class="c1"># Salida: Juan</span>
+</code></pre></div>
+<h3 id="listas">Listas</h3>
+<p>En Python, una lista es una colección ordenada y modificable de elementos. Las listas pueden contener elementos de diferentes tipos de datos, como números, cadenas, booleanos, entre otros. Las listas en Python son muy útiles para almacenar y manipular grandes cantidades de datos.</p>
+<p>Aquí hay un ejemplo de cómo crear y utilizar una lista en Python, que incluye algunas de las características y métodos más comunes de las listas:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Creamos una lista con algunos elementos</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;cuatro&#39;</span><span class="p">,</span> <span class="s1">&#39;cinco&#39;</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+
+<span class="c1"># Accedemos a un elemento de la lista</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Salida: 1</span>
+
+<span class="c1"># Podemos utilizar índices negativos para acceder a los elementos desde el final de la lista</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Salida: True</span>
+
+<span class="c1"># Podemos reemplazar un elemento de la lista asignando un nuevo valor a su índice</span>
+<span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;tres&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Salida: [1, 2, &#39;tres&#39;, &#39;cuatro&#39;, &#39;cinco&#39;, 6.7, True]</span>
+
+<span class="c1"># Podemos agregar un nuevo elemento al final de la lista con el método append()</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;seis&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Salida: [1, 2, &#39;tres&#39;, &#39;cuatro&#39;, &#39;cinco&#39;, 6.7, True, &#39;seis&#39;]</span>
+
+<span class="c1"># Podemos insertar un nuevo elemento en una posición específica de la lista con el método insert()</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;4.5&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Salida: [1, 2, &#39;tres&#39;, &#39;cuatro&#39;, &#39;4.5&#39;, &#39;cinco&#39;, 6.7, True, &#39;seis&#39;]</span>
+
+<span class="c1"># Podemos eliminar un elemento de la lista con el método remove()</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;tres&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Salida: [1, 2, &#39;cuatro&#39;, &#39;4.5&#39;, &#39;cinco&#39;, 6.7, True, &#39;seis&#39;]</span>
+
+<span class="c1"># Podemos ordenar los elementos de la lista con el método sort()</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Salida: [1, True, 2, 4.5, 6.7, &#39;cinco&#39;, &#39;cuatro&#39;, &#39;seis&#39;]</span>
+
+<span class="c1"># Podemos contar la cantidad de veces que aparece un elemento en la lista con el método count()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># Salida: 1</span>
+
+<span class="c1"># Podemos encontrar el índice de un elemento en la lista con el método index()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;cuatro&#39;</span><span class="p">))</span>  <span class="c1"># Salida: 6</span>
+
+<span class="c1"># Podemos eliminar el último elemento de la lista con el método pop()</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Salida: [1, True, 2, 4.5, 6.7, &#39;cinco&#39;, &#39;cuatro&#39;]</span>
+
+<span class="c1"># Podemos obtener la longitud de la lista con la función len()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">))</span>  <span class="c1"># Salida: 7</span>
+</code></pre></div>
+Estos son solo algunos de los métodos y características más comunes de las listas en Python. Hay muchos más que puedes explorar en la documentación oficial de Python.</p>
+<p><a href="https://docs.python.org/es/3/tutorial/datastructures.html#">https://docs.python.org/es/3/tutorial/datastructures.html#</a></p>
+<h4 id="metodos-de-las-listas">Métodos de las listas</h4>
+<ul>
+<li>append() - Agrega un elemento al final de la lista.</li>
+<li>extend() - Agrega los elementos de otra lista al final de la lista actual.</li>
+<li>insert() - Inserta un elemento en una posición específica de la lista.</li>
+<li>pop() - Elimina un elemento del final de la lista y lo devuelve.</li>
+<li>remove() - Elimina el primer elemento de la lista que coincide con el argumento dado.</li>
+<li>count() - Cuenta el número de veces que aparece un elemento en la lista.</li>
+<li>index() - Devuelve el índice de la primera aparición de un elemento en la lista.</li>
+<li>sort() - Ordena los elementos de la lista en orden ascendente.</li>
+<li>reverse() - Ordena los elementos de la lista en orden descendente.</li>
+<li>clear() - Elimina todos los elementos de la lista.</li>
+</ul>
+<h4 id="ejercicios-de-listas">Ejercicios de listas</h4>
+<ol>
+<li>Dada una lista de números enteros, escribe una función que devuelva una nueva lista con los números pares de la lista original.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">numeros_pares</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">pares</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">pares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pares</span>
+
+<span class="n">numeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numeros_pares</span><span class="p">(</span><span class="n">numeros</span><span class="p">))</span>  <span class="c1"># Salida: [2, 4, 6, 8]</span>
+</code></pre></div>
+2. Dada una lista de palabras, escribe una función que devuelva una nueva lista con las palabras que tienen más de 5 letras.</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">palabras_largas</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">largas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">palabra</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">largas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">palabra</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">largas</span>
+
+<span class="n">palabras</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;manzana&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;naranja&#39;</span><span class="p">,</span> <span class="s1">&#39;pera&#39;</span><span class="p">,</span> <span class="s1">&#39;sandía&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">palabras_largas</span><span class="p">(</span><span class="n">palabras</span><span class="p">))</span>  <span class="c1"># Salida: [&#39;manzana&#39;, &#39;banana&#39;, &#39;naranja&#39;, &#39;sandía&#39;]</span>
+</code></pre></div>
+Hay muchos más que puedes explorar en la documentación oficial de Python.</p>
+<p><a href="https://docs.python.org/es/3/tutorial/datastructures.html#more-on-lists">https://docs.python.org/es/3/tutorial/datastructures.html#more-on-lists</a></p>
+<h3 id="tuplas">Tuplas</h3>
+<p>En Python, una tupla es una colección ordenada e inmutable de elementos que pueden ser de diferentes tipos de datos. La principal diferencia entre las tuplas y las listas es que las tuplas no se pueden modificar una vez creadas, mientras que las listas pueden ser modificadas.</p>
+<p>Aquí hay un ejemplo de cómo crear y usar una tupla en Python:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Creamos una tupla con algunos elementos</span>
+<span class="n">mi_tupla</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;tres&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Accedemos a un elemento de la tupla</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mi_tupla</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Salida: 1</span>
+
+<span class="c1"># Intentamos modificar un elemento de la tupla (esto dará un error porque las tuplas son inmutables)</span>
+<span class="c1"># mi_tupla[0] = 5  # TypeError: &#39;tuple&#39; object does not support item assignment</span>
+
+<span class="c1"># Convertimos la tupla en una lista para poder modificarla</span>
+<span class="n">mi_lista</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mi_tupla</span><span class="p">)</span>
+
+<span class="c1"># Modificamos un elemento de la lista</span>
+<span class="n">mi_lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Convertimos la lista de nuevo en una tupla</span>
+<span class="n">mi_tupla</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">mi_lista</span><span class="p">)</span>
+
+<span class="c1"># Accedemos a un elemento de la tupla modificado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mi_tupla</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Salida: 5</span>
+
+<span class="c1"># Contamos cuántas veces aparece un elemento en la tupla</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mi_tupla</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># Salida: 1</span>
+
+<span class="c1"># Encontramos el índice de la primera aparición de un elemento en la tupla</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mi_tupla</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;tres&#39;</span><span class="p">))</span>  <span class="c1"># Salida: 2</span>
+</code></pre></div>
+En este ejemplo, creamos una tupla mi_tupla con cuatro elementos, y luego intentamos modificar un elemento de la tupla, lo cual da un error porque las tuplas son inmutables. En cambio, convertimos la tupla en una lista, modificamos un elemento de la lista, y luego convertimos la lista de nuevo en una tupla.
+Luego, utilizamos los métodos count e index para contar cuántas veces aparece un elemento en la tupla y encontrar el índice de la primera aparición de un elemento en la tupla, respectivamente.
+Es importante tener en cuenta que las tuplas son útiles cuando se desea tener una colección ordenada e inmutable de elementos. Si se desea modificar los elementos de la colección, es mejor utilizar una lista en su lugar.</p>
+<h4 id="metodos-de-las-tuplas">Métodos de las tuplas</h4>
+<ul>
+<li>count() - Cuenta el número de veces que un elemento aparece en la tupla.</li>
+<li>index() - Devuelve el índice de la primera aparición de un elemento en la tupla.</li>
+<li>len() - Devuelve la longitud de la tupla.</li>
+<li>min() - Devuelve el elemento más pequeño en la tupla.</li>
+<li>max() - Devuelve el elemento más grande en la tupla.</li>
+<li>sorted() - Ordena los elementos de la tupla en orden ascendente.</li>
+<li>sum() - Suma los elementos de la tupla.</li>
+</ul>
+<h4 id="ejercicios-de-tuplas">Ejercicios de tuplas</h4>
+<ol>
+<li>Dadas dos tuplas de números enteros del mismo tamaño, escribe una función que devuelva una nueva tupla con la suma de cada par de números correspondientes en las dos tuplas.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">suma_tuplas</span><span class="p">(</span><span class="n">tupla1</span><span class="p">,</span> <span class="n">tupla2</span><span class="p">):</span>
+    <span class="n">suma</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tupla1</span><span class="p">)):</span>
+        <span class="n">suma</span> <span class="o">+=</span> <span class="p">(</span><span class="n">tupla1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">tupla2</span><span class="p">[</span><span class="n">i</span><span class="p">],)</span>
+    <span class="k">return</span> <span class="n">suma</span>
+
+<span class="n">tupla1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">tupla2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">suma_tuplas</span><span class="p">(</span><span class="n">tupla1</span><span class="p">,</span> <span class="n">tupla2</span><span class="p">))</span>  <span class="c1"># Salida: (5, 7, 9)</span>
+</code></pre></div>
+2. Dada una tupla de cadenas de texto, escribe una función que devuelva una nueva tupla con las cadenas de texto que tienen más de 5 caracteres.</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tupla_palabras_largas</span><span class="p">(</span><span class="n">tupla</span><span class="p">):</span>
+    <span class="n">largas</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="k">for</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">tupla</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">palabra</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">largas</span> <span class="o">+=</span> <span class="p">(</span><span class="n">palabra</span><span class="p">,)</span>
+    <span class="k">return</span> <span class="n">largas</span>
+
+<span class="n">tupla</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;manzana&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;naranja&#39;</span><span class="p">,</span> <span class="s1">&#39;pera&#39;</span><span class="p">,</span> <span class="s1">&#39;sandía&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tupla_palabras_largas</span><span class="p">(</span><span class="n">tupla</span><span class="p">))</span> 
+</code></pre></div>
+Hay muchos más que puedes explorar en la documentación oficial de Python.</p>
+<p><a href="https://docs.python.org/es/3/tutorial/datastructures.html#tuples-and-sequences">https://docs.python.org/es/3/tutorial/datastructures.html#tuples-and-sequences</a></p>
+<h3 id="conjuntos">Conjuntos</h3>
+<p>Los conjuntos de datos en Python son una colección no ordenada y no indexada de elementos únicos e inmutables. Es decir, los conjuntos no pueden contener elementos duplicados y sus elementos no se pueden modificar después de haber sido agregados al conjunto. Los conjuntos son muy útiles para realizar operaciones matemáticas como unión, intersección y diferencia de conjuntos.</p>
+<p>Aquí hay un ejemplo de cómo utilizar conjuntos en Python, utilizando algunos de sus métodos y características:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Creamos un conjunto con algunos elementos</span>
+<span class="n">my_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="c1"># Agregamos un elemento al conjunto</span>
+<span class="n">my_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Eliminamos un elemento del conjunto</span>
+<span class="n">my_set</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Verificamos si un elemento está en el conjunto</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">my_set</span><span class="p">)</span>  <span class="c1"># Salida: True</span>
+
+<span class="c1"># Creamos otro conjunto con algunos elementos</span>
+<span class="n">other_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+
+<span class="c1"># Realizamos la unión de dos conjuntos</span>
+<span class="n">union_set</span> <span class="o">=</span> <span class="n">my_set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">other_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">union_set</span><span class="p">)</span>  <span class="c1"># Salida: {1, 3, 4, 5, 6, 7}</span>
+
+<span class="c1"># Realizamos la intersección de dos conjuntos</span>
+<span class="n">intersection_set</span> <span class="o">=</span> <span class="n">my_set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">other_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">intersection_set</span><span class="p">)</span>  <span class="c1"># Salida: {4, 5, 6}</span>
+
+<span class="c1"># Realizamos la diferencia de dos conjuntos</span>
+<span class="n">difference_set</span> <span class="o">=</span> <span class="n">my_set</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">other_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">difference_set</span><span class="p">)</span>  <span class="c1"># Salida: {1, 3}</span>
+
+<span class="c1"># Vaciamos el conjunto</span>
+<span class="n">my_set</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_set</span><span class="p">)</span>  <span class="c1"># Salida: set()</span>
+</code></pre></div>
+Como se puede ver en el ejemplo anterior, los conjuntos de datos en Python ofrecen una serie de métodos útiles para trabajar con elementos únicos e inmutables. Algunos de los métodos comunes de los conjuntos incluyen add(), remove(), union(), intersection(), difference() y clear().</p>
+<h4 id="metodos-de-los-conjuntos">Métodos de los conjuntos</h4>
+<ul>
+<li>add() - Agrega un elemento al conjunto.</li>
+<li>update() - Agrega los elementos de otro conjunto al conjunto actual.</li>
+<li>remove() - Elimina un elemento del conjunto.</li>
+<li>discard() - Elimina un elemento del conjunto si está presente.</li>
+<li>pop() - Elimina un elemento aleatorio del conjunto.</li>
+<li>clear() - Elimina todos los elementos del conjunto.</li>
+<li>isdisjoint() - Comprueba si dos conjuntos son disjuntos.</li>
+<li>issubset() - Comprueba si un conjunto es subconjunto de otro conjunto.</li>
+<li>issuperset() - Comprueba si un conjunto es superconjunto de otro conjunto.</li>
+<li>union() - Devuelve la unión de dos conjuntos.</li>
+<li>intersection() - Devuelve la intersección de dos conjuntos.</li>
+<li>difference() - Devuelve la diferencia de dos conjuntos.</li>
+<li>symmetric_difference() - Devuelve la diferencia simétrica de dos conjuntos.</li>
+</ul>
+<h4 id="ejercicios-de-conjuntos">Ejercicios de conjuntos</h4>
+<ol>
+<li>Dadas dos listas de números enteros, escribe una función que devuelva un conjunto con los números que aparecen en ambas listas.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">numeros_comunes</span><span class="p">(</span><span class="n">lista1</span><span class="p">,</span> <span class="n">lista2</span><span class="p">):</span>
+    <span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">lista1</span><span class="p">)</span>
+    <span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">lista2</span><span class="p">)</span>
+    <span class="n">comunes</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comunes</span>
+
+<span class="n">lista1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">lista2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numeros_comunes</span><span class="p">(</span><span class="n">lista1</span><span class="p">,</span> <span class="n">lista2</span><span class="p">))</span>  <span class="c1"># Salida: {4, 5}</span>
+</code></pre></div>
+2. Dada una lista de números enteros, escribe una función que devuelva un conjunto con los números únicos en la lista.</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">numeros_unicos</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">unicos</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">unicos</span>
+
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numeros_unicos</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span>  <span class="c1"># Salida: {1, 2, 3, 4, 5}</span>
+</code></pre></div>
+Hay muchos más que puedes explorar en la documentación oficial de Python.</p>
+<p><a href="https://docs.python.org/es/3/tutorial/datastructures.html#sets">https://docs.python.org/es/3/tutorial/datastructures.html#sets</a></p>
+<h3 id="diccionarios">Diccionarios</h3>
+<p>Los diccionarios en Python son una estructura de datos que nos permiten almacenar información en forma de pares de clave-valor. Cada clave es única y se utiliza para acceder a su valor correspondiente. Los diccionarios son mutables, lo que significa que podemos agregar, eliminar y actualizar elementos en ellos.</p>
+<p>Aquí hay un ejemplo de cómo crear y utilizar un diccionario en Python, con algunas de sus características y métodos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Creamos un diccionario con algunos datos</span>
+<span class="n">persona</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;María&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;ciudad&#39;</span><span class="p">:</span> <span class="s1">&#39;Madrid&#39;</span><span class="p">}</span>
+
+<span class="c1"># Accedemos a un valor del diccionario mediante su clave</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">])</span>  <span class="c1"># Salida: 25</span>
+
+<span class="c1"># Agregamos una nueva clave-valor al diccionario</span>
+<span class="n">persona</span><span class="p">[</span><span class="s1">&#39;profesion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Programadora&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="p">)</span>  <span class="c1"># Salida: {&#39;nombre&#39;: &#39;María&#39;, &#39;edad&#39;: 25, &#39;ciudad&#39;: &#39;Madrid&#39;, &#39;profesion&#39;: &#39;Programadora&#39;}</span>
+
+<span class="c1"># Eliminamos una clave-valor del diccionario</span>
+<span class="k">del</span> <span class="n">persona</span><span class="p">[</span><span class="s1">&#39;ciudad&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="p">)</span>  <span class="c1"># Salida: {&#39;nombre&#39;: &#39;María&#39;, &#39;edad&#39;: 25, &#39;profesion&#39;: &#39;Programadora&#39;}</span>
+
+<span class="c1"># Verificamos si una clave está en el diccionario</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span> <span class="ow">in</span> <span class="n">persona</span><span class="p">)</span>  <span class="c1"># Salida: True</span>
+
+<span class="c1"># Obtenemos todas las claves del diccionario</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>  <span class="c1"># Salida: dict_keys([&#39;nombre&#39;, &#39;edad&#39;, &#39;profesion&#39;])</span>
+
+<span class="c1"># Obtenemos todos los valores del diccionario</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># Salida: dict_values([&#39;María&#39;, 25, &#39;Programadora&#39;])</span>
+
+<span class="c1"># Obtenemos todos los pares clave-valor del diccionario</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>  <span class="c1"># Salida: dict_items([(&#39;nombre&#39;, &#39;María&#39;), (&#39;edad&#39;, 25), (&#39;profesion&#39;, &#39;Programadora&#39;)])</span>
+</code></pre></div>
+<p>En este ejemplo, creamos un diccionario llamado persona con tres claves (nombre, edad y ciudad) y sus respectivos valores. Luego, accedimos al valor de la clave edad utilizando la sintaxis de indexación de diccionario (persona['edad']).</p>
+<p>A continuación, agregamos una nueva clave-valor al diccionario utilizando la sintaxis de asignación de diccionario (persona['profesion'] = 'Programadora'). También eliminamos la clave-valor ciudad utilizando el operador del.</p>
+<p>Luego, utilizamos algunos métodos de diccionario para verificar si una clave está en el diccionario ('nombre' in persona), obtener todas las claves del diccionario (persona.keys()), todos los valores del diccionario (persona.values()) y todos los pares clave-valor del diccionario (persona.items()).</p>
+<p>Es importante tener en cuenta que los diccionarios en Python son muy útiles y versátiles, y que hay muchas formas diferentes de utilizarlos. Se recomienda leer la documentación de Python para obtener más información sobre cómo utilizar los diccionarios y sus métodos.</p>
+<h4 id="metodos-de-los-diccionarios">Métodos de los diccionarios</h4>
+<ul>
+<li>get() - Obtiene el valor asociado con la clave dada.</li>
+<li>setdefault() - Asigna el valor dado a la clave dada, si la clave no existe.</li>
+<li>pop() - Elimina la clave y su valor asociado.</li>
+<li>popitem() - Elimina cualquier clave y su valor asociado del diccionario.</li>
+<li>update() - Actualiza el diccionario con los valores de otro diccionario.</li>
+<li>keys() - Devuelve una lista de las claves del diccionario.</li>
+<li>values() - Devuelve una lista de los valores del diccionario.</li>
+<li>items() - Devuelve una lista de tuplas, donde cada tupla contiene una clave y su valor asociado.</li>
+<li>len() - Devuelve el número de elementos en el diccionario.</li>
+<li>clear() - Elimina todos los elementos del diccionario.</li>
+</ul>
+<h4 id="ejercicios-de-diccionarios">Ejercicios de diccionarios</h4>
+<ol>
+<li>Dado un diccionario que contiene nombres de personas y sus edades, escribe una función que devuelva el nombre de la persona más joven.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">persona_mas_joven</span><span class="p">(</span><span class="n">diccionario</span><span class="p">):</span>
+    <span class="n">edad_min</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">diccionario</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">valor</span> <span class="o">&lt;</span> <span class="n">edad_min</span><span class="p">:</span>
+            <span class="n">edad_min</span> <span class="o">=</span> <span class="n">valor</span>
+            <span class="n">nombre</span> <span class="o">=</span> <span class="n">clave</span>
+    <span class="k">return</span> <span class="n">nombre</span>
+
+<span class="n">edades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Juan&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;María&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Pedro&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;Ana&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">persona_mas_joven</span><span class="p">(</span><span class="n">edades</span><span class="p">))</span>  <span class="c1"># Salida: &#39;Pedro&#39;</span>
+</code></pre></div>
+2. Dada una lista de diccionarios que contienen información de productos, escribe una función que calcule el precio total de la lista.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">precio_total</span><span class="p">(</span><span class="n">productos</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">producto</span> <span class="ow">in</span> <span class="n">productos</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">producto</span><span class="p">[</span><span class="s1">&#39;precio&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">producto</span><span class="p">[</span><span class="s1">&#39;cantidad&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">productos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Camisa&#39;</span><span class="p">,</span> <span class="s1">&#39;precio&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;cantidad&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Pantalón&#39;</span><span class="p">,</span> <span class="s1">&#39;precio&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;cantidad&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Zapatillas&#39;</span><span class="p">,</span> <span class="s1">&#39;precio&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;cantidad&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">precio_total</span><span class="p">(</span><span class="n">productos</span><span class="p">))</span>  <span class="c1"># Salida: 300</span>
+</code></pre></div>
+<h4 id="tecnicas-para-iterar-sobre-los-elementos-de-un-diccionario">Técnicas para iterar sobre los elementos de un diccionario.</h4>
+<ol>
+<li>Iterar sobre las claves del diccionario:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="n">diccionario</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">clave</span> <span class="ow">in</span> <span class="n">diccionario</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
+</code></pre></div>
+Este código imprimirá las claves 'a', 'b' y 'c'.</p>
+<ol>
+<li>Iterar sobre los valores del diccionario:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="n">diccionario</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">diccionario</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+</code></pre></div>
+Este código imprimirá los valores 1, 2 y 3.</p>
+<ol>
+<li>Iterar sobre las tuplas (clave, valor) del diccionario:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="n">diccionario</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">diccionario</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clave</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+</code></pre></div>
+Este código imprimirá las tuplas ('a', 1), ('b', 2) y ('c', 3).</p>
+<ol>
+<li>Usar una comprensión de diccionario:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="n">diccionario</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="n">nuevo_diccionario</span> <span class="o">=</span> <span class="p">{</span><span class="n">clave</span><span class="p">:</span> <span class="n">valor</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">diccionario</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</code></pre></div>
+Este código creará un nuevo diccionario con las mismas claves que el original y los valores elevados al cuadrado.</p>
+<p>Es importante tener en cuenta que los diccionarios en Python no están ordenados, por lo que el orden de las claves, valores y tuplas (clave, valor) puede variar de una ejecución a otra.</p>
+<p>Hay muchos más que puedes explorar en la documentación oficial de Python.</p>
+<p><a href="https://docs.python.org/es/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/es/3/tutorial/datastructures.html#dictionaries</a></p>
+<h2 id="funciones">Funciones</h2>
+<p>En Python, una función es un bloque de código reutilizable que realiza una tarea específica cuando se llama. Las funciones son una parte fundamental de la programación en Python y son utilizadas para modular y organizar el código en tareas más pequeñas y manejables. Aquí tienes una explicación detallada de las funciones en Python:</p>
+<h3 id="definicion-de-una-funcion">Definición de una función</h3>
+<p>Para definir una función en Python, puedes usar la palabra clave def, seguida del nombre de la función y los parámetros entre paréntesis. Luego, un bloque de código indentado define lo que hace la función. Aquí tienes un ejemplo simple:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">saludar</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola,&quot;</span><span class="p">,</span> <span class="n">nombre</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="llamando-a-una-funcion">Llamando a una función</h3>
+<p>Para ejecutar o "llamar" una función, simplemente escribes su nombre seguido de paréntesis que pueden contener los argumentos necesarios. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="n">saludar</span><span class="p">(</span><span class="s2">&quot;Juan&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Esto imprimirá "Hola, Juan" en la pantalla.</p>
+<h3 id="parametros">Parámetros</h3>
+<p>Los parámetros son valores que se pasan a una función cuando se llama. Los parámetros se utilizan para que una función pueda aceptar datos de entrada y trabajar con ellos. En el ejemplo anterior, "nombre" es un parámetro de la función "saludar".</p>
+<h3 id="valor-de-retorno">Valor de retorno</h3>
+<p>Una función puede devolver un valor utilizando la palabra clave return. Esto es útil cuando quieres que una función realice un cálculo y devuelva el resultado. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">resultado</span>
+</code></pre></div>
+<p>Puedes llamar a esta función y almacenar el valor de retorno en una variable:</p>
+<div class="highlight"><pre><span></span><code><span class="n">resultado_suma</span> <span class="o">=</span> <span class="n">suma</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p>En este caso, resultado_suma contendría el valor 8.</p>
+<h3 id="documentacion-de-funciones">Documentación de funciones</h3>
+<p>Es una buena práctica incluir documentación en tus funciones para explicar qué hace la función, qué parámetros espera y qué valor devuelve. Puedes usar comentarios de cadena de documentación (docstrings) para esto:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Esta función suma dos números y devuelve el resultado.</span>
+<span class="sd">    :param a: El primer número a sumar.</span>
+<span class="sd">    :param b: El segundo número a sumar.</span>
+<span class="sd">    :return: La suma de a y b.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">resultado</span>
+</code></pre></div>
+<p>Puedes acceder a esta documentación utilizando la función help en Python.</p>
+<h3 id="funciones-sin-retorno">Funciones sin retorno</h3>
+<p>No todas las funciones necesitan devolver un valor. Algunas funciones simplemente realizan una tarea sin necesidad de un valor de retorno. En ese caso, la función puede no tener una instrucción return o puede tener return sin un valor después de él.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">saludar</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola,&quot;</span><span class="p">,</span> <span class="n">nombre</span><span class="p">)</span>
+
+<span class="c1">### Ámbito de las variables</span>
+
+<span class="n">Las</span> <span class="n">variables</span> <span class="n">definidas</span> <span class="n">dentro</span> <span class="n">de</span> <span class="n">una</span> <span class="n">función</span> <span class="n">tienen</span> <span class="n">un</span> <span class="n">alcance</span> <span class="n">local</span><span class="p">,</span> <span class="n">lo</span> <span class="n">significa</span> <span class="n">que</span> <span class="n">solo</span> <span class="n">están</span> <span class="n">disponibles</span> <span class="n">dentro</span> <span class="n">de</span> <span class="n">esa</span> <span class="n">función</span><span class="o">.</span> <span class="n">Las</span> <span class="n">variables</span> <span class="n">definidas</span> <span class="n">fuera</span> <span class="n">de</span> <span class="n">una</span> <span class="n">función</span> <span class="n">tienen</span> <span class="n">un</span> <span class="n">alcance</span> <span class="k">global</span> <span class="n">y</span> <span class="n">se</span> <span class="n">pueden</span> <span class="n">acceder</span> <span class="n">desde</span> <span class="n">cualquier</span> <span class="n">parte</span> <span class="k">del</span> <span class="n">programa</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">python</span>  
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">imprimir_x</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Esta variable x es local a la función</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x dentro de la función:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">imprimir_x</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x fuera de la función:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<p>Esto imprimirá "x dentro de la función: 5" y "x fuera de la función: 10".</p>
+<h3 id="variables-globales">Variables Globales</h3>
+<p>Las variables globales en Python son variables declaradas fuera de cualquier función, permitiendo que sean accesibles desde cualquier parte del código.  Aquí una explicación detallada:</p>
+<h4 id="1-por-que-utilizar-variables-globales"><strong>1. ¿Por qué utilizar variables globales?</strong></h4>
+<ul>
+<li><strong>Acceso universal:</strong>  Las variables globales son visibles y modificables desde cualquier función dentro del script. </li>
+<li><strong>Almacenamiento de información compartida:</strong>  Son útiles para compartir datos entre diferentes partes del código.</li>
+<li><strong>Configuración global:</strong>  Se pueden usar para establecer valores predeterminados o constantes que se utilizan a lo largo del programa.</li>
+</ul>
+<h4 id="2-declaracion-y-acceso"><strong>2. Declaración y Acceso:</strong></h4>
+<ul>
+<li><strong>Declaración:</strong>  Se declara una variable global simplemente asignándole un valor fuera de cualquier función:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">global_variable</span> <span class="o">=</span> <span class="s2">&quot;Hola mundo!&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Acceso:</strong>  Para acceder a una variable global dentro de una función, se utiliza la palabra clave <code>global</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">global_variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">global_variable</span><span class="p">)</span> 
+</code></pre></div>
+<h4 id="3-importancia-de-la-palabra-clave-global"><strong>3. Importancia de la palabra clave <code>global</code>:</strong></h4>
+<ul>
+<li><strong>Ambigüedad:</strong>  Python asume que cualquier variable utilizada dentro de una función es una variable local. Si se intenta modificar una variable global sin utilizar <code>global</code>, Python creará una nueva variable local con el mismo nombre, dejando la variable global sin cambios.</li>
+<li><strong>Control de acceso:</strong>  La palabra clave <code>global</code> le dice a Python que la variable que se va a usar es la variable global, no una variable local.</li>
+</ul>
+<h4 id="4-ejemplos"><strong>4. Ejemplos:</strong></h4>
+<p><strong>Ejemplo 1:  Contador global</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">global_counter</span> <span class="o">=</span> <span class="mi">0</span> 
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment_counter</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">global_counter</span> 
+    <span class="n">global_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contador incrementado a: </span><span class="si">{</span><span class="n">global_counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">increment_counter</span><span class="p">()</span> <span class="c1"># Salida: Contador incrementado a: 1</span>
+<span class="n">increment_counter</span><span class="p">()</span> <span class="c1"># Salida: Contador incrementado a: 2</span>
+</code></pre></div>
+<p><strong>Ejemplo 2:  Configuración global</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">global_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Mi aplicación&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mostrar_config</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre: </span><span class="si">{</span><span class="n">global_config</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Versión: </span><span class="si">{</span><span class="n">global_config</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">mostrar_config</span><span class="p">()</span> <span class="c1"># Salida: Nombre: Mi aplicación</span>
+                <span class="c1">#        Versión: 1.0</span>
+</code></pre></div>
+<h4 id="5-precauciones"><strong>5. Precauciones:</strong></h4>
+<ul>
+<li><strong>Evite el uso excesivo:</strong>  Las variables globales pueden hacer que el código sea difícil de entender y mantener, especialmente en programas grandes. Es preferible utilizar variables locales y pasar datos entre funciones cuando sea posible.</li>
+<li><strong>Posibles errores:</strong>  Modificar variables globales desde diferentes partes del código puede llevar a errores difíciles de rastrear.</li>
+<li><strong>Limitaciones:</strong>  Las variables globales no se pueden usar para compartir información entre diferentes scripts o módulos.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

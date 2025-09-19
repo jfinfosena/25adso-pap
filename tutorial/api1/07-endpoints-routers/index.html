@@ -1,0 +1,3336 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/api1/07-endpoints-routers/">
+      
+      
+        <link rel="prev" href="../06-operaciones-crud/">
+      
+      
+        <link rel="next" href="../08-middleware-autenticacion/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Endpoints y Routers - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#endpoints-y-routers" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Endpoints y Routers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-son-los-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué son los Routers?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué son los Routers?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-usar-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de usar Routers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Routers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura de Routers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organizacion-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organización recomendada
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacion-de-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Routers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementación de Routers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-router-de-usuarios-approutersuserspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Router de Usuarios (app/routers/users.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-router-de-categorias-approuterscategoriespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Router de Categorías (app/routers/categories.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-router-de-articulos-approutersitemspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Router de Artículos (app/routers/items.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-router-de-prestamos-approutersloanspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Router de Préstamos (app/routers/loans.py)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-en-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración en main.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración en main.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registrar-routers-en-la-aplicacion-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registrar routers en la aplicación principal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos importantes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos importantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-codigos-de-estado-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Códigos de estado HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-parametros-de-consulta-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Parámetros de consulta (Query Parameters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-parametros-de-ruta-path-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Parámetros de ruta (Path Parameters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Manejo de errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-documentacion-automatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Documentación automática
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-organizacion-de-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Organización de endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validacion-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validación de entrada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-respuestas-consistentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Respuestas consistentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-son-los-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué son los Routers?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué son los Routers?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-usar-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de usar Routers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de Routers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura de Routers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organizacion-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organización recomendada
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacion-de-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Routers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementación de Routers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-router-de-usuarios-approutersuserspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Router de Usuarios (app/routers/users.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-router-de-categorias-approuterscategoriespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Router de Categorías (app/routers/categories.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-router-de-articulos-approutersitemspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Router de Artículos (app/routers/items.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-router-de-prestamos-approutersloanspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Router de Préstamos (app/routers/loans.py)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-en-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración en main.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración en main.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registrar-routers-en-la-aplicacion-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registrar routers en la aplicación principal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos importantes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos importantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-codigos-de-estado-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Códigos de estado HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-parametros-de-consulta-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Parámetros de consulta (Query Parameters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-parametros-de-ruta-path-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Parámetros de ruta (Path Parameters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Manejo de errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-documentacion-automatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Documentación automática
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-organizacion-de-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Organización de endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validacion-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validación de entrada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-respuestas-consistentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Respuestas consistentes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="endpoints-y-routers">Endpoints y Routers</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>Los endpoints son las URLs específicas donde tu API puede recibir solicitudes. En FastAPI, los routers nos permiten organizar estos endpoints de manera modular y escalable.</p>
+<h2 id="que-son-los-routers">¿Qué son los Routers?</h2>
+<p>Un router en FastAPI es una forma de agrupar endpoints relacionados. Esto nos permite:</p>
+<ul>
+<li><strong>Organizar código</strong> por funcionalidad</li>
+<li><strong>Reutilizar configuraciones</strong> comunes</li>
+<li><strong>Aplicar middleware</strong> específico</li>
+<li><strong>Mantener el código</strong> más limpio y mantenible</li>
+</ul>
+<h3 id="ventajas-de-usar-routers">Ventajas de usar Routers</h3>
+<ol>
+<li><strong>Modularidad</strong>: Cada router maneja una entidad específica</li>
+<li><strong>Escalabilidad</strong>: Fácil agregar nuevas funcionalidades</li>
+<li><strong>Mantenimiento</strong>: Código organizado y fácil de encontrar</li>
+<li><strong>Reutilización</strong>: Configuraciones comunes compartidas</li>
+<li><strong>Testing</strong>: Fácil testear endpoints específicos</li>
+</ol>
+<h2 id="estructura-de-routers">Estructura de Routers</h2>
+<h3 id="organizacion-recomendada">Organización recomendada</h3>
+<div class="highlight"><pre><span></span><code>app/routers/
+├── __init__.py
+├── users.py        # Endpoints de usuarios
+├── categories.py   # Endpoints de categorías
+├── items.py        # Endpoints de artículos
+└── loans.py        # Endpoints de préstamos
+</code></pre></div>
+<h2 id="implementacion-de-routers">Implementación de Routers</h2>
+<h3 id="1-router-de-usuarios-approutersuserspy">1. Router de Usuarios (<code>app/routers/users.py</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.users</span><span class="w"> </span><span class="kn">import</span> <span class="n">user</span> <span class="k">as</span> <span class="n">crud_user</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.user</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">UserCreate</span><span class="p">,</span> 
+    <span class="n">UserResponse</span><span class="p">,</span> 
+    <span class="n">UserUpdate</span><span class="p">,</span> 
+    <span class="n">UserSearch</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">PaginatedResponse</span>
+
+<span class="c1"># Crear el router</span>
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;users&quot;</span><span class="p">],</span>
+    <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="mi">404</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Usuario no encontrado&quot;</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">,</span> 
+    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Crear usuario&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Crear un nuevo usuario en el sistema&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un nuevo usuario.</span>
+
+<span class="sd">    - **username**: Nombre de usuario único</span>
+<span class="sd">    - **email**: Email único del usuario</span>
+<span class="sd">    - **full_name**: Nombre completo del usuario</span>
+<span class="sd">    - **phone**: Teléfono del usuario (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">PaginatedResponse</span><span class="p">[</span><span class="n">UserResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Listar usuarios&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener lista paginada de usuarios&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_users</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Número de registros a saltar&quot;</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Número máximo de registros&quot;</span><span class="p">),</span>
+    <span class="n">active_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solo usuarios activos&quot;</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener lista de usuarios con paginación.</span>
+
+<span class="sd">    - **skip**: Número de registros a saltar para paginación</span>
+<span class="sd">    - **limit**: Número máximo de registros a retornar</span>
+<span class="sd">    - **active_only**: Si es True, solo retorna usuarios activos</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">active_only</span><span class="p">:</span>
+        <span class="n">users</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_active_users</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">users</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_multi</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">PaginatedResponse</span><span class="p">(</span>
+        <span class="n">items</span><span class="o">=</span><span class="n">users</span><span class="p">,</span>
+        <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">,</span>
+        <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span>
+        <span class="n">limit</span><span class="o">=</span><span class="n">limit</span>
+    <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/search&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">UserResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Buscar usuarios&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Buscar usuarios por nombre, email o username&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">search_users</span><span class="p">(</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Término de búsqueda&quot;</span><span class="p">),</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Buscar usuarios por diferentes criterios.</span>
+
+<span class="sd">    - **q**: Término de búsqueda (mínimo 2 caracteres)</span>
+<span class="sd">    - **skip**: Registros a saltar</span>
+<span class="sd">    - **limit**: Límite de registros</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">search_users</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Obtener usuario&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener un usuario específico por ID&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener un usuario específico por ID.</span>
+
+<span class="sd">    - **user_id**: ID único del usuario</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Actualizar usuario&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Actualizar información de un usuario existente&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">user_update</span><span class="p">:</span> <span class="n">UserUpdate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar un usuario existente.</span>
+
+<span class="sd">    - **user_id**: ID del usuario a actualizar</span>
+<span class="sd">    - Solo se actualizarán los campos proporcionados</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">update_user</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">db_obj</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">user_update</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Desactivar usuario&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Desactivar un usuario (soft delete)&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deactivate_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Desactivar un usuario (no se elimina físicamente).</span>
+
+<span class="sd">    - **user_id**: ID del usuario a desactivar</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">crud_user</span><span class="o">.</span><span class="n">deactivate_user</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Usuario desactivado exitosamente&quot;</span><span class="p">}</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{user_id}</span><span class="s2">/loans&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>  <span class="c1"># Usaremos dict por simplicidad</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Préstamos del usuario&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener todos los préstamos de un usuario&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user_loans</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener préstamos de un usuario específico.</span>
+
+<span class="sd">    - **user_id**: ID del usuario</span>
+<span class="sd">    - **skip**: Registros a saltar</span>
+<span class="sd">    - **limit**: Límite de registros</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar que el usuario existe</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.loans</span><span class="w"> </span><span class="kn">import</span> <span class="n">loan</span> <span class="k">as</span> <span class="n">crud_loan</span>
+    <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_by_user</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="2-router-de-categorias-approuterscategoriespy">2. Router de Categorías (<code>app/routers/categories.py</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.categories</span><span class="w"> </span><span class="kn">import</span> <span class="n">category</span> <span class="k">as</span> <span class="n">crud_category</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.category</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CategoryCreate</span><span class="p">,</span> 
+    <span class="n">CategoryResponse</span><span class="p">,</span> 
+    <span class="n">CategoryUpdate</span><span class="p">,</span>
+    <span class="n">CategoryWithItemCount</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/categories&quot;</span><span class="p">,</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;categories&quot;</span><span class="p">],</span>
+    <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="mi">404</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Categoría no encontrada&quot;</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">CategoryResponse</span><span class="p">,</span> 
+    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Crear categoría&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Crear una nueva categoría de artículos&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_category</span><span class="p">(</span>
+    <span class="n">category</span><span class="p">:</span> <span class="n">CategoryCreate</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear una nueva categoría.</span>
+
+<span class="sd">    - **name**: Nombre único de la categoría</span>
+<span class="sd">    - **description**: Descripción de la categoría (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">create_category</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">CategoryResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Listar categorías&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener lista de todas las categorías&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_categories</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener lista de categorías.</span>
+
+<span class="sd">    - **skip**: Número de registros a saltar</span>
+<span class="sd">    - **limit**: Número máximo de registros</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get_multi</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/with-counts&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">CategoryWithItemCount</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Categorías con conteo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener categorías con el número de artículos en cada una&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_categories_with_counts</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener categorías con el conteo de artículos.</span>
+
+<span class="sd">    Útil para mostrar estadísticas en dashboards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">categories_with_counts</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get_categories_with_item_count</span><span class="p">(</span>
+        <span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">CategoryWithItemCount</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">category</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span>
+            <span class="n">item_count</span><span class="o">=</span><span class="n">count</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">categories_with_counts</span>
+    <span class="p">]</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/search&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">CategoryResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Buscar categorías&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Buscar categorías por nombre o descripción&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">search_categories</span><span class="p">(</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Término de búsqueda&quot;</span><span class="p">),</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Buscar categorías por nombre o descripción.</span>
+
+<span class="sd">    - **q**: Término de búsqueda (mínimo 2 caracteres)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">search_categories</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{category_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">CategoryResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Obtener categoría&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener una categoría específica por ID&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_category</span><span class="p">(</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener una categoría específica por ID.</span>
+
+<span class="sd">    - **category_id**: ID único de la categoría</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">category_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">category</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Categoría no encontrada&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">category</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{category_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">CategoryResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Actualizar categoría&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Actualizar información de una categoría existente&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_category</span><span class="p">(</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">category_update</span><span class="p">:</span> <span class="n">CategoryUpdate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar una categoría existente.</span>
+
+<span class="sd">    - **category_id**: ID de la categoría a actualizar</span>
+<span class="sd">    - Solo se actualizarán los campos proporcionados</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">category_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">category</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Categoría no encontrada&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">update_category</span><span class="p">(</span>
+            <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">db_obj</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">category_update</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{category_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Eliminar categoría&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Eliminar una categoría (solo si no tiene artículos)&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_category</span><span class="p">(</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eliminar una categoría.</span>
+
+<span class="sd">    Solo se puede eliminar si no tiene artículos asociados.</span>
+
+<span class="sd">    - **category_id**: ID de la categoría a eliminar</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">category_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">category</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Categoría no encontrada&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">can_delete</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">category_id</span><span class="o">=</span><span class="n">category_id</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;No se puede eliminar la categoría porque tiene artículos asociados&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">crud_category</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">category_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Categoría eliminada exitosamente&quot;</span><span class="p">}</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{category_id}</span><span class="s2">/items&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>  <span class="c1"># Simplificado</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Artículos de la categoría&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener todos los artículos de una categoría&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_category_items</span><span class="p">(</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener artículos de una categoría específica.</span>
+
+<span class="sd">    - **category_id**: ID de la categoría</span>
+<span class="sd">    - **skip**: Registros a saltar</span>
+<span class="sd">    - **limit**: Límite de registros</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar que la categoría existe</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">category_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">category</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Categoría no encontrada&quot;</span>
+        <span class="p">)</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.items</span><span class="w"> </span><span class="kn">import</span> <span class="n">item</span> <span class="k">as</span> <span class="n">crud_item</span>
+    <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_by_category</span><span class="p">(</span>
+        <span class="n">db</span><span class="p">,</span> <span class="n">category_id</span><span class="o">=</span><span class="n">category_id</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="3-router-de-articulos-approutersitemspy">3. Router de Artículos (<code>app/routers/items.py</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.items</span><span class="w"> </span><span class="kn">import</span> <span class="n">item</span> <span class="k">as</span> <span class="n">crud_item</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.item</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ItemCreate</span><span class="p">,</span> 
+    <span class="n">ItemResponse</span><span class="p">,</span> 
+    <span class="n">ItemUpdate</span><span class="p">,</span> 
+    <span class="n">ItemSearch</span><span class="p">,</span>
+    <span class="n">ItemStatus</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/items&quot;</span><span class="p">,</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">],</span>
+    <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="mi">404</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Artículo no encontrado&quot;</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">ItemResponse</span><span class="p">,</span> 
+    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Crear artículo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Crear un nuevo artículo en el inventario&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_item</span><span class="p">(</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">ItemCreate</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un nuevo artículo.</span>
+
+<span class="sd">    - **name**: Nombre del artículo</span>
+<span class="sd">    - **description**: Descripción detallada</span>
+<span class="sd">    - **serial_number**: Número de serie único</span>
+<span class="sd">    - **category_id**: ID de la categoría</span>
+<span class="sd">    - **purchase_price**: Precio de compra (opcional)</span>
+<span class="sd">    - **purchase_date**: Fecha de compra (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">ItemResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Listar artículos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener lista de artículos con filtros opcionales&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_items</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por categoría&quot;</span><span class="p">),</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ItemStatus</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por estado&quot;</span><span class="p">),</span>
+    <span class="n">available_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solo artículos disponibles&quot;</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener lista de artículos con filtros opcionales.</span>
+
+<span class="sd">    - **skip**: Registros a saltar</span>
+<span class="sd">    - **limit**: Límite de registros</span>
+<span class="sd">    - **category_id**: Filtrar por categoría específica</span>
+<span class="sd">    - **status**: Filtrar por estado específico</span>
+<span class="sd">    - **available_only**: Solo artículos disponibles para préstamo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">available_only</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_available_items</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">category_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_by_category</span><span class="p">(</span>
+            <span class="n">db</span><span class="p">,</span> <span class="n">category_id</span><span class="o">=</span><span class="n">category_id</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_multi</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/search&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">ItemResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Buscar artículos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Buscar artículos con múltiples criterios&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">search_items</span><span class="p">(</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Buscar por nombre&quot;</span><span class="p">),</span>
+    <span class="n">serial_number</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Buscar por número de serie&quot;</span><span class="p">),</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por categoría&quot;</span><span class="p">),</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ItemStatus</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por estado&quot;</span><span class="p">),</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Buscar artículos con múltiples criterios.</span>
+
+<span class="sd">    Permite combinar diferentes filtros para búsquedas específicas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">search_criteria</span> <span class="o">=</span> <span class="n">ItemSearch</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">serial_number</span><span class="o">=</span><span class="n">serial_number</span><span class="p">,</span>
+        <span class="n">category_id</span><span class="o">=</span><span class="n">category_id</span><span class="p">,</span>
+        <span class="n">status</span><span class="o">=</span><span class="n">status</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">search_items</span><span class="p">(</span>
+        <span class="n">db</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="n">search_criteria</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span>
+    <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/available&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">ItemResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Artículos disponibles&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener solo artículos disponibles para préstamo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_available_items</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener artículos disponibles para préstamo.</span>
+
+<span class="sd">    Útil para mostrar opciones en formularios de préstamo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_available_items</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">ItemResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Obtener artículo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener un artículo específico por ID&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_item</span><span class="p">(</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener un artículo específico por ID.</span>
+
+<span class="sd">    Incluye información de la categoría asociada.</span>
+
+<span class="sd">    - **item_id**: ID único del artículo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_with_category</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Artículo no encontrado&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">item</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">ItemResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Actualizar artículo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Actualizar información de un artículo existente&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_item</span><span class="p">(</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">item_update</span><span class="p">:</span> <span class="n">ItemUpdate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar un artículo existente.</span>
+
+<span class="sd">    - **item_id**: ID del artículo a actualizar</span>
+<span class="sd">    - Solo se actualizarán los campos proporcionados</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Artículo no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">update_item</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">db_obj</span><span class="o">=</span><span class="n">item</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">item_update</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{item_id}</span><span class="s2">/status&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">ItemResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Actualizar estado&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Actualizar solo el estado de un artículo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_item_status</span><span class="p">(</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">new_status</span><span class="p">:</span> <span class="n">ItemStatus</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar solo el estado de un artículo.</span>
+
+<span class="sd">    - **item_id**: ID del artículo</span>
+<span class="sd">    - **new_status**: Nuevo estado del artículo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Artículo no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">new_status</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Eliminar artículo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Eliminar un artículo (solo si no tiene préstamos activos)&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_item</span><span class="p">(</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eliminar un artículo.</span>
+
+<span class="sd">    Solo se puede eliminar si no tiene préstamos activos.</span>
+
+<span class="sd">    - **item_id**: ID del artículo a eliminar</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Artículo no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">can_delete</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;No se puede eliminar el artículo porque tiene préstamos activos&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">crud_item</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Artículo eliminado exitosamente&quot;</span><span class="p">}</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{item_id}</span><span class="s2">/loans&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>  <span class="c1"># Simplificado</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Historial de préstamos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener historial de préstamos de un artículo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_item_loans</span><span class="p">(</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener historial de préstamos de un artículo.</span>
+
+<span class="sd">    - **item_id**: ID del artículo</span>
+<span class="sd">    - **skip**: Registros a saltar</span>
+<span class="sd">    - **limit**: Límite de registros</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Verificar que el artículo existe</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Artículo no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.loans</span><span class="w"> </span><span class="kn">import</span> <span class="n">loan</span> <span class="k">as</span> <span class="n">crud_loan</span>
+    <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_by_item</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="4-router-de-prestamos-approutersloanspy">4. Router de Préstamos (<code>app/routers/loans.py</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.loans</span><span class="w"> </span><span class="kn">import</span> <span class="n">loan</span> <span class="k">as</span> <span class="n">crud_loan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.loan</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">LoanCreate</span><span class="p">,</span> 
+    <span class="n">LoanResponse</span><span class="p">,</span> 
+    <span class="n">LoanUpdate</span><span class="p">,</span> 
+    <span class="n">LoanReturn</span><span class="p">,</span>
+    <span class="n">LoanStatus</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/loans&quot;</span><span class="p">,</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;loans&quot;</span><span class="p">],</span>
+    <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="mi">404</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Préstamo no encontrado&quot;</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">LoanResponse</span><span class="p">,</span> 
+    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Crear préstamo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Crear un nuevo préstamo de artículo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_loan</span><span class="p">(</span>
+    <span class="n">loan</span><span class="p">:</span> <span class="n">LoanCreate</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un nuevo préstamo.</span>
+
+<span class="sd">    - **user_id**: ID del usuario que solicita el préstamo</span>
+<span class="sd">    - **item_id**: ID del artículo a prestar</span>
+<span class="sd">    - **due_date**: Fecha de vencimiento del préstamo</span>
+<span class="sd">    - **notes**: Notas adicionales (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">create_loan</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">loan</span><span class="o">=</span><span class="n">loan</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span> 
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">LoanResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Listar préstamos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener lista de préstamos con filtros opcionales&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_loans</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LoanStatus</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por estado&quot;</span><span class="p">),</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por usuario&quot;</span><span class="p">),</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por artículo&quot;</span><span class="p">),</span>
+    <span class="n">overdue_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solo préstamos vencidos&quot;</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener lista de préstamos con filtros opcionales.</span>
+
+<span class="sd">    - **skip**: Registros a saltar</span>
+<span class="sd">    - **limit**: Límite de registros</span>
+<span class="sd">    - **status**: Filtrar por estado específico</span>
+<span class="sd">    - **user_id**: Filtrar por usuario específico</span>
+<span class="sd">    - **item_id**: Filtrar por artículo específico</span>
+<span class="sd">    - **overdue_only**: Solo préstamos vencidos</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">overdue_only</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_overdue_loans</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">user_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_by_user</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">item_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_by_item</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">status</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">LoanStatus</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_active_loans</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Para otros estados, usar filtro general</span>
+            <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_multi</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_multi</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/active&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">LoanResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Préstamos activos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener solo préstamos activos&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_active_loans</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener préstamos activos.</span>
+
+<span class="sd">    Útil para dashboards y reportes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_active_loans</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/overdue&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">LoanResponse</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Préstamos vencidos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener préstamos vencidos&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_overdue_loans</span><span class="p">(</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener préstamos vencidos.</span>
+
+<span class="sd">    Importante para seguimiento y gestión de devoluciones.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_overdue_loans</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{loan_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">LoanResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Obtener préstamo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Obtener un préstamo específico por ID&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_loan</span><span class="p">(</span>
+    <span class="n">loan_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtener un préstamo específico por ID.</span>
+
+<span class="sd">    Incluye información detallada del usuario y artículo.</span>
+
+<span class="sd">    - **loan_id**: ID único del préstamo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">loan</span> <span class="o">=</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get_with_details</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">loan_id</span><span class="o">=</span><span class="n">loan_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">loan</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Préstamo no encontrado&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">loan</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{loan_id}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">LoanResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Actualizar préstamo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Actualizar información de un préstamo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_loan</span><span class="p">(</span>
+    <span class="n">loan_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">loan_update</span><span class="p">:</span> <span class="n">LoanUpdate</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar un préstamo existente.</span>
+
+<span class="sd">    - **loan_id**: ID del préstamo a actualizar</span>
+<span class="sd">    - Solo se actualizarán los campos proporcionados</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">loan</span> <span class="o">=</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">loan_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">loan</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Préstamo no encontrado&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">db_obj</span><span class="o">=</span><span class="n">loan</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">loan_update</span><span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{loan_id}</span><span class="s2">/return&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">LoanResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Devolver préstamo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Procesar la devolución de un préstamo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">return_loan</span><span class="p">(</span>
+    <span class="n">loan_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">return_data</span><span class="p">:</span> <span class="n">LoanReturn</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Procesar la devolución de un préstamo.</span>
+
+<span class="sd">    - **loan_id**: ID del préstamo a devolver</span>
+<span class="sd">    - **return_date**: Fecha de devolución</span>
+<span class="sd">    - **notes**: Notas sobre la devolución (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">return_loan</span><span class="p">(</span>
+            <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">loan_id</span><span class="o">=</span><span class="n">loan_id</span><span class="p">,</span> <span class="n">return_data</span><span class="o">=</span><span class="n">return_data</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/</span><span class="si">{loan_id}</span><span class="s2">/extend&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">LoanResponse</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Extender préstamo&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Extender la fecha de vencimiento de un préstamo&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extend_loan</span><span class="p">(</span>
+    <span class="n">loan_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">new_due_date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extender la fecha de vencimiento de un préstamo.</span>
+
+<span class="sd">    - **loan_id**: ID del préstamo a extender</span>
+<span class="sd">    - **new_due_date**: Nueva fecha de vencimiento</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">extend_loan</span><span class="p">(</span>
+            <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">loan_id</span><span class="o">=</span><span class="n">loan_id</span><span class="p">,</span> <span class="n">new_due_date</span><span class="o">=</span><span class="n">new_due_date</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/update-overdue-status&quot;</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Actualizar estados vencidos&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Actualizar el estado de préstamos vencidos&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_overdue_status</span><span class="p">(</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actualizar el estado de préstamos vencidos.</span>
+
+<span class="sd">    Útil para ejecutar como tarea programada.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">updated_count</span> <span class="o">=</span> <span class="n">crud_loan</span><span class="o">.</span><span class="n">update_overdue_status</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Se actualizaron </span><span class="si">{</span><span class="n">updated_count</span><span class="si">}</span><span class="s2"> préstamos vencidos&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;updated_count&quot;</span><span class="p">:</span> <span class="n">updated_count</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h2 id="configuracion-en-mainpy">Configuración en main.py</h2>
+<h3 id="registrar-routers-en-la-aplicacion-principal">Registrar routers en la aplicación principal</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/main.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.middleware.cors</span><span class="w"> </span><span class="kn">import</span> <span class="n">CORSMiddleware</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.routers</span><span class="w"> </span><span class="kn">import</span> <span class="n">users</span><span class="p">,</span> <span class="n">categories</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">loans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+
+<span class="c1"># Crear tablas</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="c1"># Crear aplicación FastAPI</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sistema de Inventario API&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;API REST para gestión de inventario y préstamos&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+    <span class="n">docs_url</span><span class="o">=</span><span class="s2">&quot;/docs&quot;</span><span class="p">,</span>
+    <span class="n">redoc_url</span><span class="o">=</span><span class="s2">&quot;/redoc&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Configurar CORS</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+    <span class="n">CORSMiddleware</span><span class="p">,</span>
+    <span class="n">allow_origins</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">ALLOWED_HOSTS</span><span class="p">,</span>
+    <span class="n">allow_credentials</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">allow_methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+    <span class="n">allow_headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># Incluir routers</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">categories</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">loans</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1&quot;</span><span class="p">)</span>
+
+<span class="c1"># Endpoint raíz</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Sistema de Inventario API&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;docs&quot;</span><span class="p">:</span> <span class="s2">&quot;/docs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;redoc&quot;</span><span class="p">:</span> <span class="s2">&quot;/redoc&quot;</span>
+    <span class="p">}</span>
+
+<span class="c1"># Endpoint de salud</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">health_check</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;healthy&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="conceptos-importantes">Conceptos importantes</h2>
+<h3 id="1-codigos-de-estado-http">1. Códigos de estado HTTP</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Códigos más comunes en APIs REST</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_200_OK</span>          <span class="c1"># Éxito general</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span>     <span class="c1"># Recurso creado</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_204_NO_CONTENT</span>  <span class="c1"># Éxito sin contenido</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span> <span class="c1"># Error del cliente</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span> <span class="c1"># No autenticado</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span>   <span class="c1"># No autorizado</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span>   <span class="c1"># Recurso no encontrado</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_422_UNPROCESSABLE_ENTITY</span> <span class="c1"># Error de validación</span>
+<span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span> <span class="c1"># Error del servidor</span>
+</code></pre></div>
+<h3 id="2-parametros-de-consulta-query-parameters">2. Parámetros de consulta (Query Parameters)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Diferentes tipos de parámetros</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/items/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_items</span><span class="p">(</span>
+    <span class="c1"># Parámetro opcional con valor por defecto</span>
+    <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Registros a saltar&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Parámetro con validaciones</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Límite de registros&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Parámetro opcional sin valor por defecto</span>
+    <span class="n">category_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por categoría&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Parámetro requerido</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Término de búsqueda&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Parámetro booleano</span>
+    <span class="n">active_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solo activos&quot;</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h3 id="3-parametros-de-ruta-path-parameters">3. Parámetros de ruta (Path Parameters)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Parámetros en la URL</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>  <span class="c1"># Automáticamente validado como entero</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Con validaciones adicionales</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_user</span><span class="p">(</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">gt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID del usuario&quot;</span><span class="p">),</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h3 id="4-manejo-de-errores">4. Manejo de errores</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Patrón estándar para manejo de errores</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Usuario no encontrado&quot;</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span>
+
+<span class="c1"># Manejo de errores de validación</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">)</span>
+</code></pre></div>
+<h3 id="5-documentacion-automatica">5. Documentación automática</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Agregar metadatos para documentación</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;/users/&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">,</span>
+    <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Crear usuario&quot;</span><span class="p">,</span>                    <span class="c1"># Título corto</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Crear un nuevo usuario en el sistema&quot;</span><span class="p">,</span>  <span class="c1"># Descripción</span>
+    <span class="n">response_description</span><span class="o">=</span><span class="s2">&quot;Usuario creado exitosamente&quot;</span><span class="p">,</span>  <span class="c1"># Descripción de respuesta</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;users&quot;</span><span class="p">],</span>                           <span class="c1"># Agrupación</span>
+    <span class="n">responses</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">400</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Error de validación&quot;</span><span class="p">},</span>
+        <span class="mi">409</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Usuario ya existe&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserCreate</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un nuevo usuario.</span>
+
+<span class="sd">    - **username**: Nombre de usuario único</span>
+<span class="sd">    - **email**: Email único del usuario</span>
+<span class="sd">    - **full_name**: Nombre completo del usuario</span>
+<span class="sd">    - **phone**: Teléfono del usuario (opcional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h2 id="mejores-practicas">Mejores prácticas</h2>
+<h3 id="1-organizacion-de-endpoints">1. Organización de endpoints</h3>
+<ul>
+<li><strong>Usar prefijos</strong> consistentes (<code>/api/v1</code>)</li>
+<li><strong>Agrupar por entidad</strong> (users, items, etc.)</li>
+<li><strong>Seguir convenciones REST</strong> (GET, POST, PUT, DELETE)</li>
+<li><strong>Usar tags</strong> para documentación</li>
+</ul>
+<h3 id="2-validacion-de-entrada">2. Validación de entrada</h3>
+<ul>
+<li><strong>Validar parámetros</strong> con Query y Path</li>
+<li><strong>Usar esquemas Pydantic</strong> para request body</li>
+<li><strong>Manejar errores</strong> de validación apropiadamente</li>
+<li><strong>Proporcionar mensajes</strong> descriptivos</li>
+</ul>
+<h3 id="3-respuestas-consistentes">3. Respuestas consistentes</h3>
+<ul>
+<li><strong>Usar response_model</strong> para documentación</li>
+<li><strong>Códigos de estado</strong> apropiados</li>
+<li><strong>Estructura consistente</strong> en respuestas de error</li>
+<li><strong>Incluir metadatos</strong> útiles (paginación, totales)</li>
+</ul>
+<h3 id="4-performance">4. Performance</h3>
+<ul>
+<li><strong>Paginación</strong> en endpoints que retornan listas</li>
+<li><strong>Filtros opcionales</strong> para reducir datos</li>
+<li><strong>Lazy loading</strong> apropiado en relaciones</li>
+<li><strong>Límites razonables</strong> en parámetros</li>
+</ul>
+<h2 id="proximos-pasos">Próximos pasos</h2>
+<p>En el siguiente tema aprenderemos sobre middleware, autenticación y autorización para proteger nuestra API.</p>
+<hr />
+<p><strong>💡 Tips importantes</strong>:</p>
+<ol>
+<li><strong>Documentación automática</strong> - FastAPI genera docs automáticamente</li>
+<li><strong>Validación automática</strong> - Pydantic valida datos automáticamente</li>
+<li><strong>Códigos de estado</strong> - usar códigos HTTP apropiados</li>
+<li><strong>Manejo de errores</strong> - siempre manejar casos de error</li>
+<li><strong>Paginación</strong> - implementar en endpoints que retornan listas</li>
+</ol>
+<p><strong>🔗 Enlaces útiles</strong>:
+- <a href="https://fastapi.tiangolo.com/tutorial/path-params/">FastAPI Path Operations</a>
+- <a href="https://fastapi.tiangolo.com/tutorial/query-params/">Query Parameters</a>
+- <a href="https://fastapi.tiangolo.com/tutorial/body/">Request Body</a>
+- <a href="https://fastapi.tiangolo.com/tutorial/response-model/">Response Model</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

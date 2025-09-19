@@ -1,0 +1,2954 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/content/p4/">
+      
+      
+        <link rel="prev" href="../p3/">
+      
+      
+        <link rel="next" href="../p5/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Rutas y Parámetros en FastAPI - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rutas-y-parametros-en-fastapi" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rutas y Parámetros en FastAPI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorial/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo de la clase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-definicion-de-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 1. Definición de Rutas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-parametros-de-ruta-path-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 2. Parámetros de Ruta (Path Parameters)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 2. Parámetros de Ruta (Path Parameters)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-obtener-un-usuario-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo: Obtener un usuario por ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ventajas:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-parametros-de-consulta-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 3. Parámetros de Consulta (Query Parameters)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metodos-http-soportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 4. Métodos HTTP Soportados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-completo-api-fastapi-postman-con-json-y-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Tutorial Completo: API FastAPI + Postman con JSON y Query Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Tutorial Completo: API FastAPI + Postman con JSON y Query Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 1. Requisitos previos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-codigo-fastapi-actualizado-con-json-y-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 2. Código FastAPI actualizado (con JSON y Query Parameters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-iniciar-el-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▶️ 3. Iniciar el servidor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pruebas-en-postman-con-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 4. Pruebas en Postman (con JSON)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 4. Pruebas en Postman (con JSON)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-listar-todos-los-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 1. GET: Listar todos los items
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-con-query-parameter-filtrar-por-nombre" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔎 2. GET con Query Parameter: Filtrar por nombre
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-get-por-id-items1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 3. GET por ID: /items/1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-post-crear-item-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔷 4. POST: Crear item (JSON)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-put-actualizar-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔶 5. PUT: Actualizar completo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-patch-actualizar-parcialmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟡 6. PATCH: Actualizar parcialmente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-delete-eliminar-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔻 7. DELETE: Eliminar item
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-son-los-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 ¿Qué son los Query Parameters?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-este-enfoque" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ventajas de este enfoque
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-practica-gestion-de-productos-en-una-tienda-de-mascotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐾 Actividad Práctica: Gestión de Productos en una Tienda de Mascotas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐾 Actividad Práctica: Gestión de Productos en una Tienda de Mascotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-preparacion-del-entorno-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      📥 1. Preparación del entorno de trabajo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📥 1. Preparación del entorno de trabajo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-haz-un-fork-de-un-repositorio-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Paso 1: Haz un fork de un repositorio base
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-clona-tu-repositorio-el-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Paso 2: Clona tu repositorio (el fork)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-crea-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐍 Paso 3: Crea un entorno virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-instala-las-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Paso 4: Instala las dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-diligencia-el-archivo-infojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 Paso 5: Diligencia el archivo info.json
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-desarrollo-de-la-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ 2. Desarrollo de la API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 2. Desarrollo de la API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Estructura del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-tecnicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Requisitos técnicos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Requisitos técnicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelo-producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Modelo Producto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelo-productoparcial-para-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Modelo ProductoParcial (para PATCH)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-de-datos-simulada" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Base de datos simulada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pistas-para-ayudarte-sin-dar-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Pistas para ayudarte (sin dar la solución)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pruebas-recomendadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 3. Pruebas recomendadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      📤 4. Entrega
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo de la clase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-definicion-de-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 1. Definición de Rutas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-parametros-de-ruta-path-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 2. Parámetros de Ruta (Path Parameters)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 2. Parámetros de Ruta (Path Parameters)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-obtener-un-usuario-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo: Obtener un usuario por ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ventajas:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-parametros-de-consulta-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 3. Parámetros de Consulta (Query Parameters)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metodos-http-soportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 4. Métodos HTTP Soportados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-completo-api-fastapi-postman-con-json-y-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Tutorial Completo: API FastAPI + Postman con JSON y Query Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Tutorial Completo: API FastAPI + Postman con JSON y Query Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 1. Requisitos previos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-codigo-fastapi-actualizado-con-json-y-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 2. Código FastAPI actualizado (con JSON y Query Parameters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-iniciar-el-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▶️ 3. Iniciar el servidor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pruebas-en-postman-con-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 4. Pruebas en Postman (con JSON)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 4. Pruebas en Postman (con JSON)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-listar-todos-los-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 1. GET: Listar todos los items
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-con-query-parameter-filtrar-por-nombre" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔎 2. GET con Query Parameter: Filtrar por nombre
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-get-por-id-items1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 3. GET por ID: /items/1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-post-crear-item-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔷 4. POST: Crear item (JSON)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-put-actualizar-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔶 5. PUT: Actualizar completo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-patch-actualizar-parcialmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟡 6. PATCH: Actualizar parcialmente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-delete-eliminar-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔻 7. DELETE: Eliminar item
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-son-los-query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 ¿Qué son los Query Parameters?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-este-enfoque" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ventajas de este enfoque
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-practica-gestion-de-productos-en-una-tienda-de-mascotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐾 Actividad Práctica: Gestión de Productos en una Tienda de Mascotas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐾 Actividad Práctica: Gestión de Productos en una Tienda de Mascotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-preparacion-del-entorno-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      📥 1. Preparación del entorno de trabajo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📥 1. Preparación del entorno de trabajo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-haz-un-fork-de-un-repositorio-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Paso 1: Haz un fork de un repositorio base
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-clona-tu-repositorio-el-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Paso 2: Clona tu repositorio (el fork)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-crea-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐍 Paso 3: Crea un entorno virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-instala-las-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Paso 4: Instala las dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-diligencia-el-archivo-infojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 Paso 5: Diligencia el archivo info.json
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-desarrollo-de-la-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ 2. Desarrollo de la API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 2. Desarrollo de la API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Estructura del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-tecnicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Requisitos técnicos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Requisitos técnicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelo-producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Modelo Producto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelo-productoparcial-para-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Modelo ProductoParcial (para PATCH)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-de-datos-simulada" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Base de datos simulada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pistas-para-ayudarte-sin-dar-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Pistas para ayudarte (sin dar la solución)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pruebas-recomendadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 3. Pruebas recomendadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      📤 4. Entrega
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rutas-y-parametros-en-fastapi">Rutas y Parámetros en FastAPI</h1>
+<h3 id="objetivo-de-la-clase">🎯 <strong>Objetivo de la clase</strong></h3>
+<p>Aprender a definir rutas en FastAPI, manejar diferentes métodos HTTP y extraer datos de:
+- Parámetros de ruta
+- Parámetros de consulta</p>
+<p>Se enfatizará el uso del tipado de Python para obtener validación automática y documentación en Swagger.</p>
+<hr />
+<h2 id="1-definicion-de-rutas">🧩 <strong>1. Definición de Rutas</strong></h2>
+<p>En FastAPI, las rutas (o endpoints) se definen usando decoradores como <code>@app.get</code>, <code>@app.post</code>, etc., asociados a funciones.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mensaje&quot;</span><span class="p">:</span> <span class="s2">&quot;¡Bienvenido a la API!&quot;</span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>✅ FastAPI usa el <strong>método HTTP</strong> y la <strong>ruta</strong> para enrutar las solicitudes.</p>
+</blockquote>
+<hr />
+<h2 id="2-parametros-de-ruta-path-parameters">🔗 <strong>2. Parámetros de Ruta (Path Parameters)</strong></h2>
+<p>Son valores que forman parte de la URL y se usan para identificar recursos específicos.</p>
+<h3 id="ejemplo-obtener-un-usuario-por-id">Ejemplo: Obtener un usuario por ID</h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/usuarios/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_usuario</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Usuario </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>{user_id}</code> es un <strong>parámetro de ruta</strong>.</li>
+<li><code>user_id: int</code> indica que espera un número entero → FastAPI valida y convierte automáticamente.</li>
+</ul>
+<h3 id="ventajas">✅ Ventajas:</h3>
+<ul>
+<li>Validación automática: si se pasa <code>"abc"</code>, FastAPI responde con error 422.</li>
+<li>Documentación automática en <code>/docs</code>.</li>
+</ul>
+<hr />
+<h2 id="3-parametros-de-consulta-query-parameters">🔍 <strong>3. Parámetros de Consulta (Query Parameters)</strong></h2>
+<p>Son parámetros opcionales que vienen después del <code>?</code> en la URL.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/productos/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">listar_productos</span><span class="p">(</span><span class="n">categoria</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">en_stock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">limite</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">resultados</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;categoria&quot;</span><span class="p">:</span> <span class="n">categoria</span><span class="p">,</span>
+        <span class="s2">&quot;en_stock&quot;</span><span class="p">:</span> <span class="n">en_stock</span><span class="p">,</span>
+        <span class="s2">&quot;limite&quot;</span><span class="p">:</span> <span class="n">limite</span><span class="p">,</span>
+        <span class="s2">&quot;productos&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Laptop&quot;</span><span class="p">,</span> <span class="s2">&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">&quot;tecnología&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Teclado&quot;</span><span class="p">,</span> <span class="s2">&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">&quot;tecnología&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">resultados</span>
+</code></pre></div>
+<ul>
+<li>URL de ejemplo:<br />
+<code>http://localhost:8000/productos/?categoria=tecnología&amp;en_stock=true&amp;limite=5</code></li>
+</ul>
+<blockquote>
+<p>⚠️ Los parámetros de consulta son <strong>opcionales</strong> si tienen valor por defecto.</p>
+</blockquote>
+<hr />
+<h2 id="4-metodos-http-soportados">📡 <strong>4. Métodos HTTP Soportados</strong></h2>
+<p>FastAPI soporta todos los métodos comunes:</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Uso común</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>Leer datos</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>Crear datos</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td>Actualizar datos (completos)</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td>Actualizar datos (parciales)</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>Eliminar datos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tutorial-completo-api-fastapi-postman-con-json-y-query-parameters">🚀 Tutorial Completo: API FastAPI + Postman con JSON y Query Parameters</h2>
+<hr />
+<h3 id="1-requisitos-previos">🧰 1. Requisitos previos</h3>
+<p>Asegúrate de tener instalado:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>fastapi<span class="w"> </span>uvicorn
+</code></pre></div>
+<blockquote>
+<p>FastAPI incluye <code>pydantic</code>, así que no necesitas instalarlo por separado.</p>
+</blockquote>
+<hr />
+<h3 id="2-codigo-fastapi-actualizado-con-json-y-query-parameters">💻 2. Código FastAPI actualizado (con JSON y Query Parameters)</h3>
+<p>Guarda este código en un archivo llamado <code>main.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="c1"># Modelo base para items</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Item</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">precio</span><span class="p">:</span> <span class="nb">float</span>
+
+<span class="c1"># Modelo para actualización parcial</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ItemParcial</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">precio</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Base de datos simulada</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Manzana&quot;</span><span class="p">,</span> <span class="s2">&quot;precio&quot;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Banana&quot;</span><span class="p">,</span> <span class="s2">&quot;precio&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Naranja&quot;</span><span class="p">,</span> <span class="s2">&quot;precio&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># 🔹 GET: Listar todos los items + filtro por nombre (query parameter)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/items/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_items</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por nombre&quot;</span><span class="p">)):</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="n">items</span>
+    <span class="k">if</span> <span class="n">nombre</span><span class="p">:</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">nombre</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="n">resultado</span><span class="p">}</span>
+
+<span class="c1"># 🔹 GET: Obtener un item por ID</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/items/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Item no encontrado&quot;</span><span class="p">}</span>
+
+<span class="c1"># 🔷 POST: Crear un nuevo item (JSON)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/items/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">crear_item</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">):</span>
+    <span class="n">nuevo_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">nuevo_item</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">nuevo_id</span><span class="p">,</span> <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">nombre</span><span class="p">,</span> <span class="s2">&quot;precio&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">precio</span><span class="p">}</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nuevo_item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mensaje&quot;</span><span class="p">:</span> <span class="s2">&quot;Item creado&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="n">nuevo_item</span><span class="p">}</span>
+
+<span class="c1"># 🔶 PUT: Actualizar un item completo (JSON)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;/items/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">actualizar_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">:</span>
+            <span class="n">i</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">nombre</span>
+            <span class="n">i</span><span class="p">[</span><span class="s2">&quot;precio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">precio</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mensaje&quot;</span><span class="p">:</span> <span class="s2">&quot;Item actualizado&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Item no encontrado&quot;</span><span class="p">}</span>
+
+<span class="c1"># 🟡 PATCH: Actualizar parcialmente un item (JSON)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/items/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">actualizar_parcial</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">ItemParcial</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">nombre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">i</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">nombre</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">precio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">i</span><span class="p">[</span><span class="s2">&quot;precio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">precio</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mensaje&quot;</span><span class="p">:</span> <span class="s2">&quot;Item actualizado parcialmente&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Item no encontrado&quot;</span><span class="p">}</span>
+
+<span class="c1"># 🔻 DELETE: Eliminar un item</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/items/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">eliminar_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">item_id</span><span class="p">:</span>
+            <span class="n">items</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mensaje&quot;</span><span class="p">:</span> <span class="s2">&quot;Item eliminado&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Item no encontrado&quot;</span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="3-iniciar-el-servidor">▶️ 3. Iniciar el servidor</h3>
+<p>Desde la terminal:</p>
+<div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</code></pre></div>
+<p>Tu API estará disponible en:
+- <code>http://127.0.0.1:8000</code>
+- Documentación interactiva: <code>http://127.0.0.1:8000/docs</code></p>
+<hr />
+<h3 id="4-pruebas-en-postman-con-json">🧪 4. Pruebas en Postman (con JSON)</h3>
+<p>Abre <strong>Postman</strong> y sigue estos pasos.</p>
+<hr />
+<h4 id="1-get-listar-todos-los-items">🔹 1. GET: Listar todos los items</h4>
+<ul>
+<li><strong>Método:</strong> <code>GET</code></li>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/</code></li>
+<li><strong>Body:</strong> No necesario</li>
+<li><strong>Respuesta:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manzana&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Naranja&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="2-get-con-query-parameter-filtrar-por-nombre">🔎 2. GET con Query Parameter: Filtrar por nombre</h4>
+<ul>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/?nombre=ana</code></li>
+<li>Esto filtra los items cuyo nombre contenga "ana" (ej. "Banana")</li>
+</ul>
+<p>✅ Respuesta:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<blockquote>
+<p>Puedes probar con <code>?nombre=na</code>, <code>?nombre=zana</code>, etc.</p>
+</blockquote>
+<hr />
+<h4 id="3-get-por-id-items1">🔹 3. GET por ID: <code>/items/1</code></h4>
+<ul>
+<li><strong>Método:</strong> <code>GET</code></li>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/1</code></li>
+<li>Respuesta:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manzana&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="4-post-crear-item-json">🔷 4. POST: Crear item (JSON)</h4>
+<ul>
+<li><strong>Método:</strong> <code>POST</code></li>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/</code></li>
+<li><strong>Body → raw → JSON:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Papaya&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><strong>Headers (opcional pero recomendado):</strong></li>
+<li><code>Content-Type: application/json</code></li>
+</ul>
+<p>✅ Respuesta:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mensaje&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Item creado&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;item&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Papaya&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h4 id="5-put-actualizar-completo">🔶 5. PUT: Actualizar completo</h4>
+<ul>
+<li><strong>Método:</strong> <code>PUT</code></li>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/4</code></li>
+<li><strong>Body (JSON):</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mango&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span>
+<span class="p">}</span>
+</code></pre></div>
+✅ Respuesta:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mensaje&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Item actualizado&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;item&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mango&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="6-patch-actualizar-parcialmente">🟡 6. PATCH: Actualizar parcialmente</h4>
+<ul>
+<li><strong>Método:</strong> <code>PATCH</code></li>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/4</code></li>
+<li><strong>Body (solo precio):</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span>
+<span class="p">}</span>
+</code></pre></div>
+✅ Respuesta:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mensaje&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Item actualizado parcialmente&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;item&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mango&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="7-delete-eliminar-item">🔻 7. DELETE: Eliminar item</h4>
+<ul>
+<li><strong>Método:</strong> <code>DELETE</code></li>
+<li><strong>URL:</strong> <code>http://127.0.0.1:8000/items/4</code></li>
+<li>Respuesta:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;mensaje&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Item eliminado&quot;</span><span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<hr />
+<h3 id="que-son-los-query-parameters">🔍 ¿Qué son los Query Parameters?</h3>
+<p>Son parámetros que se agregan <strong>después del <code>?</code> en la URL</strong> y permiten filtrar, paginar o personalizar la respuesta.</p>
+<p>En este ejemplo:
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">obtener_items</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filtrar por nombre&quot;</span><span class="p">))</span>
+</code></pre></div></p>
+<ul>
+<li><code>nombre</code> es un <strong>query parameter opcional</strong></li>
+<li>Si se envía, filtra los items por nombre</li>
+<li>Ejemplo: <code>/items/?nombre=ana</code></li>
+</ul>
+<p>Puedes usar varios:
+<div class="highlight"><pre><span></span><code>/items/?nombre=na&amp;otro_param=valor
+</code></pre></div></p>
+<hr />
+<h3 id="ventajas-de-este-enfoque">✅ Ventajas de este enfoque</h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Beneficio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON en el body</td>
+<td>Estándar moderno, fácil de usar con frontend</td>
+</tr>
+<tr>
+<td>Pydantic + BaseModel</td>
+<td>Validación automática de datos</td>
+</tr>
+<tr>
+<td>Query Parameters</td>
+<td>Filtros flexibles sin cambiar la ruta</td>
+</tr>
+<tr>
+<td>Documentación automática</td>
+<td>Swagger UI en <code>/docs</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Perfecto. A continuación, te presento la <strong>versión final y completa de la actividad práctica</strong>, ahora con <strong>indicaciones detalladas para estudiantes</strong>, enfocada en <strong>resolución autónoma</strong> (sin dar la solución), e incluyendo:</p>
+<ul>
+<li>Crear un fork de un repositorio</li>
+<li>Trabajar con entorno virtual</li>
+<li>Instalar dependencias</li>
+<li>Editar archivo <code>info.json</code></li>
+<li>Desarrollar la API según los requisitos</li>
+</ul>
+<hr />
+<h2 id="actividad-practica-gestion-de-productos-en-una-tienda-de-mascotas">🐾 Actividad Práctica: Gestión de Productos en una Tienda de Mascotas</h2>
+<blockquote>
+<p><strong>Nivel:</strong> Intermedio<br />
+<strong>Duración estimada:</strong> 1.5 – 2 horas<br />
+<strong>Objetivo:</strong> Aplicar conocimientos de FastAPI, CRUD, JSON y parámetros de consulta en un proyecto realista, usando buenas prácticas de desarrollo.</p>
+</blockquote>
+<hr />
+<h3 id="1-preparacion-del-entorno-de-trabajo">📥 1. Preparación del entorno de trabajo</h3>
+<h4 id="paso-1-haz-un-fork-de-un-repositorio-base">🔗 Paso 1: Haz un <strong>fork</strong> de un repositorio base</h4>
+<ol>
+<li>
+<p>Ve al repositorio base proporcionado por tu instructor (ejemplo simulado):
+   <div class="highlight"><pre><span></span><code>https://github.com/jfinfosena/act_pap_s3.git
+</code></pre></div></p>
+</li>
+<li>
+<p>Haz clic en el botón <strong>"Fork"</strong> en la esquina superior derecha.</p>
+</li>
+<li>
+<p>Elige tu cuenta de GitHub como destino.</p>
+</li>
+<li>
+<p>Una vez creado, tendrás un repositorio en tu cuenta:
+   <div class="highlight"><pre><span></span><code>https://github.com/tu-usuario/act_pap_s3.git
+</code></pre></div></p>
+</li>
+</ol>
+<blockquote>
+<p>✅ Esto te permite trabajar sobre tu copia sin afectar el original.</p>
+</blockquote>
+<hr />
+<h4 id="paso-2-clona-tu-repositorio-el-fork">📦 Paso 2: Clona tu repositorio (el fork)</h4>
+<p>En tu máquina, abre una terminal y ejecuta:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tu-usuario/act_pap_s3.git
+<span class="nb">cd</span><span class="w"> </span>act_pap_s3
+</code></pre></div>
+<blockquote>
+<p>⚠️ Reemplaza <code>tu-usuario</code> con tu nombre de usuario de GitHub.</p>
+</blockquote>
+<hr />
+<h4 id="paso-3-crea-un-entorno-virtual">🐍 Paso 3: Crea un entorno virtual</h4>
+<p>Es importante aislar las dependencias del proyecto.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear entorno virtual</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+
+<span class="c1"># Activar entorno (Linux/Mac)</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+
+<span class="c1"># Activar entorno (Windows)</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
+<blockquote>
+<p>Verás <code>(.venv)</code> al inicio de tu terminal. ¡Estás listo!</p>
+</blockquote>
+<hr />
+<h4 id="paso-4-instala-las-dependencias">🔧 Paso 4: Instala las dependencias</h4>
+<p>El proyecto ya incluye un archivo <code>requirements.txt</code> con las dependencias necesarias.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<blockquote>
+<p>Esto instalará <code>fastapi</code> y <code>uvicorn</code> automáticamente.</p>
+</blockquote>
+<hr />
+<h4 id="paso-5-diligencia-el-archivo-infojson">📄 Paso 5: Diligencia el archivo <code>info.json</code></h4>
+<p>En la raíz del repositorio, encontrarás un archivo llamado:</p>
+<div class="highlight"><pre><span></span><code><span class="err">i</span><span class="kc">nf</span><span class="err">o.jso</span><span class="kc">n</span>
+</code></pre></div>
+<p>Ábrelo y <strong>completa los campos</strong> con tu información:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;identificacion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nombres&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;grupo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pap&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>✅ Este archivo será parte de tu entrega y ayudará a identificar tu trabajo.</p>
+</blockquote>
+<hr />
+<h3 id="2-desarrollo-de-la-api">🛠️ 2. Desarrollo de la API</h3>
+<p>Ahora sí, es momento de programar.</p>
+<h4 id="estructura-del-proyecto">📁 Estructura del proyecto</h4>
+<p>Tu repositorio debe tener estos archivos:</p>
+<div class="highlight"><pre><span></span><code>tienda-mascotas-base/
+│
+├── main.py          ← Aquí desarrollarás la API
+├── info.json        ← Ya lo completaste
+├── requirements.txt ← Con fastapi y uvicorn
+└── README.md        ← Instrucciones generales
+</code></pre></div>
+<hr />
+<h4 id="requisitos-tecnicos">🎯 Requisitos técnicos</h4>
+<p>Crea una API FastAPI que gestione productos de una tienda de mascotas. Debes implementar:</p>
+<h5 id="modelo-producto">✅ Modelo <code>Producto</code></h5>
+<p>Define un modelo Pydantic con:
+- <code>nombre: str</code>
+- <code>precio: float</code>
+- <code>categoria: str</code> (ej: "alimento", "juguetes", "accesorios")
+- <code>stock: int</code></p>
+<h5 id="modelo-productoparcial-para-patch">✅ Modelo <code>ProductoParcial</code> (para PATCH)</h5>
+<p>Todos los campos deben ser opcionales (<code>Optional</code>).</p>
+<h5 id="base-de-datos-simulada">✅ Base de datos simulada</h5>
+<p>Declara una lista <code>productos = [...]</code> con al menos 3 productos iniciales.</p>
+<h5 id="endpoints">✅ Endpoints</h5>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Ruta</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/productos/</code></td>
+<td>Listar todos los productos</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/productos/{producto_id}</code></td>
+<td>Obtener producto por ID</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/productos/?categoria=...</code></td>
+<td>Filtrar por categoría (query param)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/productos/?nombre=...</code></td>
+<td>Filtrar por nombre (búsqueda parcial, insensitive)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/productos/</code></td>
+<td>Crear nuevo producto (recibe JSON)</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/productos/{producto_id}</code></td>
+<td>Actualizar todos los campos del producto</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><code>/productos/{producto_id}</code></td>
+<td>Actualizar solo algunos campos (ej: solo el stock)</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/productos/{producto_id}</code></td>
+<td>Eliminar un producto</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="pistas-para-ayudarte-sin-dar-la-solucion">💡 Pistas para ayudarte (sin dar la solución)</h4>
+<ul>
+<li>Usa <code>Query(None)</code> para hacer los parámetros de consulta opcionales.</li>
+<li>Para búsquedas parciales, usa <code>if query in item["nombre"].lower()</code>.</li>
+<li>Recuerda que <code>PUT</code> reemplaza todo; <code>PATCH</code> solo actualiza lo enviado.</li>
+<li>Usa <code>pydantic.BaseModel</code> para validar el cuerpo de las solicitudes.</li>
+<li>Ejecuta el servidor con:<br />
+  <div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</code></pre></div></li>
+<li>Prueba todo en <strong>Postman</strong> o en <code>http://127.0.0.1:8000/docs</code></li>
+</ul>
+<hr />
+<h3 id="3-pruebas-recomendadas">🧪 3. Pruebas recomendadas</h3>
+<p>Antes de entregar, verifica que:</p>
+<ul>
+<li>Todos los endpoints funcionen correctamente.</li>
+<li>Los filtros por <code>nombre</code> y <code>categoria</code> devuelvan los resultados esperados.</li>
+<li>Puedas crear, modificar y eliminar productos.</li>
+<li>Los mensajes de error (<code>"Producto no encontrado"</code>) se muestren cuando corresponde.</li>
+</ul>
+<hr />
+<h3 id="4-entrega">📤 4. Entrega</h3>
+<p>Cuando termines:</p>
+<ol>
+<li>Asegúrate de que todo esté guardado.</li>
+<li>Haz commit y push a tu repositorio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: completa API de productos para tienda de mascotas&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<ol>
+<li>Entrega el <strong>enlace a tu repositorio fork</strong> en el sistema de tareas (Moodle, Classroom, etc.).</li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

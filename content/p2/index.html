@@ -1,0 +1,2981 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/content/p2/">
+      
+      
+        <link rel="prev" href="../p1/">
+      
+      
+        <link rel="next" href="../p3/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍 - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#entornos-virtuales-en-python-e-introduccion-a-fastapi-y-apis-rest" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorial/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-del-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo del Tutorial 🎯
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenido-del-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenido del Tutorial 📚
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenido del Tutorial 📚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-es-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es un Entorno Virtual? 🌐
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es un Entorno Virtual? 🌐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-usar-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué usar entornos virtuales? 🤔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-con-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo con entornos virtuales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-herramientas-para-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Herramientas para Entornos Virtuales 🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Herramientas para Entornos Virtuales 🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-venv-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      a) venv (Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-virtualenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      b) virtualenv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-otros-breve-mencion" class="md-nav__link">
+    <span class="md-ellipsis">
+      c) Otros (Breve mención)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-inicial-instalacion-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración Inicial: Instalación de Python 📦
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuración Inicial: Instalación de Python 📦">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de instalación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-crear-y-gestionar-entornos-virtuales-con-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Crear y Gestionar Entornos Virtuales con venv ⚙️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Crear y Gestionar Entornos Virtuales con venv ⚙️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear un entorno virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-activar-el-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Activar el entorno virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-instalar-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Instalar paquetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-desactivar-el-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Desactivar el entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-gestion-de-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de gestión de entornos virtuales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gestion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Gestión de Dependencias 📋
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Gestión de Dependencias 📋">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exportar-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exportar dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalar-dependencias-desde-requirementstxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalar dependencias desde requirements.txt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-uso-de-entornos-virtuales-en-proyectos-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Uso de Entornos Virtuales en Proyectos Reales 🖥️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Uso de Entornos Virtuales en Proyectos Reales 🖥️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-de-ejemplo-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código de ejemplo (main.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-fastapi-y-apis-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción a FastAPI y APIs REST 🌟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo de la Clase 🎯
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenido-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenido de la Clase 📚
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenido de la Clase 📚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-es-fastapi-ventajas-y-comparacion-con-otros-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es FastAPI? Ventajas y Comparación con Otros Frameworks 🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es FastAPI? Ventajas y Comparación con Otros Frameworks 🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-de-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de FastAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-elegir-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué elegir FastAPI? 🌈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacion-con-otros-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparación con otros frameworks 📊
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conceptos-de-apis-rest-metodos-http-endpoints-y-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Conceptos de APIs REST: Métodos HTTP, Endpoints y JSON 🌐
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Conceptos de APIs REST: Métodos HTTP, Endpoints y JSON 🌐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-clave-de-una-api-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Componentes clave de una API REST 📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-una-solicitud-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de una solicitud REST
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-solicitud-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de solicitud REST 🖥️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-instalacion-de-fastapi-uvicorn-y-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Instalación de FastAPI, Uvicorn y Python ⚙️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Instalación de FastAPI, Uvicorn y Python ⚙️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proceso-de-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proceso de configuración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-instalar-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Instalar Python 📦
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-crear-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear un entorno virtual 🌐
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-instalar-fastapi-y-uvicorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Instalar FastAPI y Uvicorn 📲
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-crear-tu-primera-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Crear tu primera API 🎉
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de la Clase 🖥️
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-del-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo del Tutorial 🎯
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenido-del-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenido del Tutorial 📚
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenido del Tutorial 📚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-es-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es un Entorno Virtual? 🌐
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es un Entorno Virtual? 🌐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-usar-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué usar entornos virtuales? 🤔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-con-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo con entornos virtuales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-herramientas-para-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Herramientas para Entornos Virtuales 🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Herramientas para Entornos Virtuales 🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-venv-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      a) venv (Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-virtualenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      b) virtualenv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-otros-breve-mencion" class="md-nav__link">
+    <span class="md-ellipsis">
+      c) Otros (Breve mención)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-inicial-instalacion-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración Inicial: Instalación de Python 📦
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuración Inicial: Instalación de Python 📦">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de instalación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-crear-y-gestionar-entornos-virtuales-con-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Crear y Gestionar Entornos Virtuales con venv ⚙️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Crear y Gestionar Entornos Virtuales con venv ⚙️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Crear un entorno virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-activar-el-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Activar el entorno virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-instalar-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Instalar paquetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-desactivar-el-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Desactivar el entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-gestion-de-entornos-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de gestión de entornos virtuales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gestion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Gestión de Dependencias 📋
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Gestión de Dependencias 📋">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exportar-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exportar dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalar-dependencias-desde-requirementstxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalar dependencias desde requirements.txt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-uso-de-entornos-virtuales-en-proyectos-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Uso de Entornos Virtuales en Proyectos Reales 🖥️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Uso de Entornos Virtuales en Proyectos Reales 🖥️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-de-ejemplo-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código de ejemplo (main.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-fastapi-y-apis-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción a FastAPI y APIs REST 🌟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo de la Clase 🎯
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenido-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenido de la Clase 📚
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenido de la Clase 📚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-es-fastapi-ventajas-y-comparacion-con-otros-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es FastAPI? Ventajas y Comparación con Otros Frameworks 🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es FastAPI? Ventajas y Comparación con Otros Frameworks 🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-de-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de FastAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-elegir-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué elegir FastAPI? 🌈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacion-con-otros-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparación con otros frameworks 📊
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conceptos-de-apis-rest-metodos-http-endpoints-y-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Conceptos de APIs REST: Métodos HTTP, Endpoints y JSON 🌐
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Conceptos de APIs REST: Métodos HTTP, Endpoints y JSON 🌐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-clave-de-una-api-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Componentes clave de una API REST 📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-una-solicitud-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de una solicitud REST
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-solicitud-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de solicitud REST 🖥️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-instalacion-de-fastapi-uvicorn-y-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Instalación de FastAPI, Uvicorn y Python ⚙️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Instalación de FastAPI, Uvicorn y Python ⚙️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proceso-de-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proceso de configuración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-instalar-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Instalar Python 📦
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-crear-un-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear un entorno virtual 🌐
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-instalar-fastapi-y-uvicorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Instalar FastAPI y Uvicorn 📲
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-crear-tu-primera-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Crear tu primera API 🎉
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de la Clase 🖥️
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="entornos-virtuales-en-python-e-introduccion-a-fastapi-y-apis-rest">Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍</h1>
+<p>¡Bienvenidos a este tutorial definitivo sobre <strong>entornos virtuales en Python</strong>! 🎉 Los entornos virtuales son una herramienta esencial para cualquier desarrollador de Python, ya que permiten aislar dependencias, gestionar proyectos y evitar conflictos entre paquetes. En este tutorial, aprenderás desde los conceptos básicos hasta técnicas avanzadas, con ejemplos prácticos, diagramas visuales y consejos útiles, todo presentado en un formato claro y atractivo. ¡Empecemos! 🚀</p>
+<hr />
+<h2 id="objetivo-del-tutorial">Objetivo del Tutorial 🎯</h2>
+<p>✅ <strong>Dominar los entornos virtuales en Python</strong><br />
+Al finalizar, podrás:</p>
+<ul>
+<li>Comprender qué son los entornos virtuales y por qué son importantes.</li>
+<li>Crear, activar, usar y eliminar entornos virtuales con <code>venv</code> y otras herramientas.</li>
+<li>Gestionar dependencias y exportar requisitos.</li>
+<li>Resolver problemas comunes y aplicar mejores prácticas.</li>
+</ul>
+<hr />
+<h2 id="contenido-del-tutorial">Contenido del Tutorial 📚</h2>
+<h3 id="1-que-es-un-entorno-virtual">1. ¿Qué es un Entorno Virtual? 🌐</h3>
+<p>Un <strong>entorno virtual</strong> en Python es un espacio aislado que contiene una copia del intérprete de Python y sus bibliotecas, permitiendo instalar paquetes específicos para un proyecto sin afectar otros proyectos o el sistema global. Imagina que cada entorno virtual es una "caja" independiente con su propio conjunto de herramientas.</p>
+<h4 id="por-que-usar-entornos-virtuales">¿Por qué usar entornos virtuales? 🤔</h4>
+<ul>
+<li><strong>Aislamiento</strong>: Evita conflictos entre versiones de paquetes (ej. <code>numpy 1.18</code> vs. <code>numpy 1.24</code>).</li>
+<li><strong>Organización</strong>: Mantiene las dependencias de cada proyecto separadas.</li>
+<li><strong>Portabilidad</strong>: Facilita compartir proyectos con archivos de requisitos.</li>
+<li><strong>Seguridad</strong>: Protege el sistema global de instalaciones no deseadas.</li>
+</ul>
+<h4 id="flujo-de-trabajo-con-entornos-virtuales">Flujo de trabajo con entornos virtuales</h4>
+<p>Este diagrama muestra cómo funcionan los entornos virtuales:</p>
+<pre class="mermaid"><code>graph TD
+    A[Sistema Global &lt;br&gt; Python 3.10] --&gt;|Sin entorno virtual| B[Proyecto A &lt;br&gt; numpy 1.18, pandas 1.3]
+    A --&gt;|Sin entorno virtual| C[Proyecto B &lt;br&gt; numpy 1.24, pandas 2.0]
+    B --&gt; D{Conflicto de versiones}
+    C --&gt; D
+    E[Entorno Virtual A &lt;br&gt; Python 3.10, numpy 1.18, pandas 1.3] --&gt;|Aislamiento| F[Proyecto A]
+    G[Entorno Virtual B &lt;br&gt; Python 3.10, numpy 1.24, pandas 2.0] --&gt;|Aislamiento| H[Proyecto B]</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Dato curioso</p>
+<p>Los entornos virtuales fueron introducidos en Python 3.3 con el módulo <code>venv</code>, aunque herramientas como <code>virtualenv</code> existían antes.</p>
+</div>
+<hr />
+<h3 id="2-herramientas-para-entornos-virtuales">2. Herramientas para Entornos Virtuales 🛠️</h3>
+<p>Python ofrece varias herramientas para crear entornos virtuales. Aquí exploramos las más comunes:</p>
+<h4 id="a-venv-recomendado">a) <code>venv</code> (Recomendado)</h4>
+<ul>
+<li>Incluido en Python 3.3+.</li>
+<li>Ligero, estándar y sin dependencias externas.</li>
+<li>Ideal para la mayoría de los proyectos.</li>
+</ul>
+<h4 id="b-virtualenv">b) <code>virtualenv</code></h4>
+<ul>
+<li>Herramienta de terceros más antigua.</li>
+<li>Compatible con Python 2 y versiones antiguas de Python 3.</li>
+<li>Ofrece características adicionales (ej. soporte para múltiples intérpretes).</li>
+</ul>
+<h4 id="c-otros-breve-mencion">c) Otros (Breve mención)</h4>
+<ul>
+<li><code>Conda</code>: Popular en ciencia de datos, gestiona entornos y paquetes no-Python.</li>
+<li><code>Poetry</code>/<code>Pipenv</code>: Combinan gestión de entornos y dependencias.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Usa <code>venv</code> para simplicidad y compatibilidad, a menos que necesites funciones específicas de otras herramientas.</p>
+</div>
+<hr />
+<h3 id="3-configuracion-inicial-instalacion-de-python">3. Configuración Inicial: Instalación de Python 📦</h3>
+<p>Antes de crear entornos virtuales, asegúrate de tener Python instalado.</p>
+<h4 id="pasos">Pasos</h4>
+<ol>
+<li><strong>Descarga Python</strong>:</li>
+<li>Visita <a href="https://www.python.org/downloads/">python.org</a> y descarga Python 3.7+.</li>
+<li>
+<p>En Windows, marca "Agregar Python al PATH" durante la instalación.</p>
+</li>
+<li>
+<p><strong>Verifica la instalación</strong>:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
+</code></pre></div>
+<p><strong>Salida esperada</strong>:
+<div class="highlight"><pre><span></span><code>Python 3.10.5
+</code></pre></div></p>
+<ol>
+<li><strong>Instala <code>pip</code></strong> (si no está incluido):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ensurepip<span class="w"> </span>--upgrade
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</code></pre></div>
+<h4 id="diagrama-de-instalacion">Diagrama de instalación</h4>
+<pre class="mermaid"><code>flowchart TD
+    A[Inicio] --&gt; B{¿Python instalado?}
+    B -- No --&gt; C[Descargar Python &lt;br&gt; python.org]
+    B -- Sí --&gt; D{¿pip instalado?}
+    C --&gt; E[Instalar Python &lt;br&gt; Agregar al PATH]
+    E --&gt; D
+    D -- No --&gt; F[Instalar pip &lt;br&gt; ensurepip]
+    D -- Sí --&gt; G[Listo para crear &lt;br&gt; entornos virtuales]
+    F --&gt; G</code></pre>
+<hr />
+<h3 id="4-crear-y-gestionar-entornos-virtuales-con-venv">4. Crear y Gestionar Entornos Virtuales con <code>venv</code> ⚙️</h3>
+<p>El módulo <code>venv</code> es la forma estándar de crear entornos virtuales en Python. A continuación, te guiamos paso a paso.</p>
+<h4 id="paso-1-crear-un-entorno-virtual">Paso 1: Crear un entorno virtual</h4>
+<ol>
+<li>Navega al directorio de tu proyecto:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>mi_proyecto
+</code></pre></div>
+<ol>
+<li>Crea un entorno virtual (llamado <code>venv</code> por convención):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</code></pre></div>
+<p>Esto crea una carpeta <code>.venv/</code> con:
+- Un intérprete de Python aislado.
+- Una copia de <code>pip</code>.
+- Directorios para paquetes (<code>site-packages</code>).</p>
+<h4 id="paso-2-activar-el-entorno-virtual">Paso 2: Activar el entorno virtual</h4>
+<p>Activa el entorno para que los comandos <code>python</code> y <code>pip</code> usen la versión aislada:</p>
+<ul>
+<li><strong>Windows</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
+<ul>
+<li><strong>Linux/macOS</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p><strong>Salida esperada</strong> (prompt cambia):
+<div class="highlight"><pre><span></span><code>(venv) user@machine:~/mi_proyecto$
+</code></pre></div></p>
+<h4 id="paso-3-instalar-paquetes">Paso 3: Instalar paquetes</h4>
+<p>Con el entorno activado, instala paquetes con <code>pip</code>:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>requests
+</code></pre></div>
+<p>Verifica los paquetes instalados:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>list
+</code></pre></div>
+<p><strong>Salida ejemplo</strong>:
+<div class="highlight"><pre><span></span><code>Package    Version
+---------- -------
+pip        22.3.1
+requests   2.28.1
+setuptools 65.5.0
+</code></pre></div></p>
+<h4 id="paso-4-desactivar-el-entorno">Paso 4: Desactivar el entorno</h4>
+<p>Para salir del entorno virtual:</p>
+<div class="highlight"><pre><span></span><code>deactivate
+</code></pre></div>
+<p>El prompt vuelve a la normalidad.</p>
+<h4 id="diagrama-de-gestion-de-entornos-virtuales">Diagrama de gestión de entornos virtuales</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    actor User
+    participant Sistema
+    User-&gt;&gt;Sistema: python -m venv .venv
+    Sistema--&gt;&gt;User: Entorno creado en .venv/
+    User-&gt;&gt;Sistema: source .venv/bin/activate
+    Sistema--&gt;&gt;User: Entorno activado
+    User-&gt;&gt;Sistema: pip install requests
+    Sistema--&gt;&gt;User: Paquete instalado en .venv/
+    User-&gt;&gt;Sistema: deactivate
+    Sistema--&gt;&gt;User: Entorno desactivado</code></pre>
+<div class="admonition success">
+<p class="admonition-title">¡Logro desbloqueado!</p>
+<p>Has creado y activado tu primer entorno virtual. ¡Estás listo para desarrollar proyectos aislados!</p>
+</div>
+<hr />
+<h3 id="5-gestion-de-dependencias">5. Gestión de Dependencias 📋</h3>
+<p>Para compartir tu proyecto, necesitas documentar las dependencias. Aquí te mostramos cómo hacerlo.</p>
+<h4 id="exportar-dependencias">Exportar dependencias</h4>
+<p>Crea un archivo <code>requirements.txt</code> con las dependencias instaladas:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p><strong>Contenido ejemplo</strong>:
+<div class="highlight"><pre><span></span><code>requests==2.28.1
+urllib3==1.26.12
+</code></pre></div></p>
+<h4 id="instalar-dependencias-desde-requirementstxt">Instalar dependencias desde <code>requirements.txt</code></h4>
+<p>En otro sistema o entorno, instala las dependencias:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Buena práctica</p>
+<p>Incluye <code>requirements.txt</code> en tu repositorio Git para facilitar la colaboración.</p>
+</div>
+<hr />
+<h3 id="6-uso-de-entornos-virtuales-en-proyectos-reales">6. Uso de Entornos Virtuales en Proyectos Reales 🖥️</h3>
+<p>Veamos un ejemplo práctico con un proyecto que usa FastAPI.</p>
+<h4 id="estructura-del-proyecto">Estructura del proyecto</h4>
+<div class="highlight"><pre><span></span><code>mi_proyecto/
+├── main.py
+├── requirements.txt
+├── .venv/
+</code></pre></div>
+<h4 id="codigo-de-ejemplo-mainpy">Código de ejemplo (<code>main.py</code>)</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;¡Hola, mundo!&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h4 id="pasos_1">Pasos</h4>
+<ol>
+<li>Crea el entorno virtual:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</code></pre></div>
+<ol>
+<li>Activa el entorno:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># Linux/macOS</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">     </span><span class="c1"># Windows</span>
+</code></pre></div>
+<ol>
+<li>Instala FastAPI y Uvicorn:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>fastapi<span class="w"> </span>uvicorn
+</code></pre></div>
+<ol>
+<li>Exporta las dependencias:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
+<ol>
+<li>Ejecuta la aplicación:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</code></pre></div>
+<p>Visita <code>http://127.0.0.1:8000</code> para ver la respuesta.</p>
+<div class="admonition note">
+<p class="admonition-title">Práctica recomendada</p>
+<p>Crea un entorno virtual por proyecto para mantener las dependencias organizadas.</p>
+</div>
+<hr />
+<h2 id="introduccion-a-fastapi-y-apis-rest">Introducción a FastAPI y APIs REST 🌟</h2>
+<p>¡Bienvenidos al curso de <strong>FastAPI</strong>! En esta primera clase, exploraremos los fundamentos de FastAPI, las APIs REST y cómo configurar tu entorno de desarrollo para crear APIs modernas y rápidas con Python. A través de explicaciones, ejemplos prácticos y diagramas visuales, estarás listo para construir tu primera API. ¡Empecemos! 🚀</p>
+<hr />
+<h2 id="objetivo-de-la-clase">Objetivo de la Clase 🎯</h2>
+<p>✅ <strong>Comprender FastAPI y configurar el entorno de desarrollo</strong><br />
+Al finalizar esta clase, entenderás qué es FastAPI, sus ventajas, los conceptos clave de las APIs REST y tendrás un entorno funcional para desarrollar aplicaciones.</p>
+<hr />
+<h2 id="contenido-de-la-clase">Contenido de la Clase 📚</h2>
+<h3 id="1-que-es-fastapi-ventajas-y-comparacion-con-otros-frameworks">1. ¿Qué es FastAPI? Ventajas y Comparación con Otros Frameworks 🛠️</h3>
+<p><strong>FastAPI</strong> es un framework web moderno para construir APIs con Python, diseñado para ser rápido, fácil de usar y compatible con estándares como <strong>ASGI</strong> (Asynchronous Server Gateway Interface). Creado por <strong>Sebastián Ramírez</strong>, FastAPI combina rendimiento, tipado y documentación automática, lo que lo hace ideal para proyectos de cualquier escala.</p>
+<h4 id="arquitectura-de-fastapi">Arquitectura de FastAPI</h4>
+<p>El siguiente diagrama muestra cómo FastAPI procesa solicitudes:</p>
+<pre class="mermaid"><code>graph TD
+    A["Cliente\n(Navegador, App)"] --&gt;|Solicitud HTTP| B["Uvicorn\n(Servidor ASGI)"]
+    B --&gt; C["FastAPI\n(Framework)"]
+    C --&gt; D["Starlette\n(Routing, Middlewares)"]
+    C --&gt; E["Pydantic\n(Validación de datos)"]
+    D --&gt; F["Endpoints\n(Lógica de negocio)"]
+    E --&gt; F
+    F --&gt;|Respuesta JSON| B
+    B --&gt;|Respuesta HTTP| A</code></pre>
+<h4 id="por-que-elegir-fastapi">¿Por qué elegir FastAPI? 🌈</h4>
+<ul>
+<li><strong>Rendimiento</strong>: Comparable con Node.js y Go, gracias a <strong>Starlette</strong> y <strong>Uvicorn</strong>.</li>
+<li><strong>Tipado y validación</strong>: Usa <strong>Pydantic</strong> para validar datos automáticamente.</li>
+<li><strong>Documentación automática</strong>: Genera interfaces con <strong>Swagger UI</strong> y <strong>ReDoc</strong>.</li>
+<li><strong>Asincronía</strong>: Soporta <code>async/await</code> para aplicaciones de alto rendimiento.</li>
+<li><strong>Simplicidad</strong>: Sintaxis clara y moderna.</li>
+</ul>
+<h4 id="comparacion-con-otros-frameworks">Comparación con otros frameworks 📊</h4>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Velocidad</th>
+<th>Tipado</th>
+<th>Documentación Automática</th>
+<th>Asincronía</th>
+<th>Curva de Aprendizaje</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FastAPI</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>Sí</td>
+<td>Sí (Swagger, ReDoc)</td>
+<td>Sí</td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Flask</strong></td>
+<td>⭐⭐⭐</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Django</strong></td>
+<td>⭐⭐⭐</td>
+<td>Parcial</td>
+<td>No</td>
+<td>Parcial</td>
+<td>Alta</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Dato curioso</p>
+<p>FastAPI se inspira en Flask, pero añade soporte asíncrono y validación automática, revolucionando el desarrollo de APIs en Python.</p>
+</div>
+<hr />
+<h3 id="2-conceptos-de-apis-rest-metodos-http-endpoints-y-json">2. Conceptos de APIs REST: Métodos HTTP, Endpoints y JSON 🌐</h3>
+<p>Una <strong>API REST</strong> (Representational State Transfer) es un estilo arquitectónico para diseñar aplicaciones web que permite la comunicación entre sistemas mediante HTTP. Es la base de muchas aplicaciones modernas, conectando frontends (como React) con backends.</p>
+<h4 id="componentes-clave-de-una-api-rest">Componentes clave de una API REST 📝</h4>
+<ul>
+<li><strong>Endpoints</strong>: URLs que representan recursos (ej. <code>/users</code>, <code>/projects/1</code>).</li>
+<li><strong>Métodos HTTP</strong>:</li>
+<li><code>GET</code>: Obtener datos.</li>
+<li><code>POST</code>: Crear recursos.</li>
+<li><code>PUT</code>/<code>PATCH</code>: Actualizar recursos.</li>
+<li><code>DELETE</code>: Eliminar recursos.</li>
+<li><strong>JSON</strong>: Formato para enviar y recibir datos.</li>
+<li><strong>Códigos de estado HTTP</strong>: Ej. <code>200 OK</code>, <code>404 Not Found</code>.</li>
+</ul>
+<h4 id="flujo-de-una-solicitud-rest">Flujo de una solicitud REST</h4>
+<p>Este diagrama ilustra el proceso de una solicitud REST:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Cliente
+    participant Servidor
+    Cliente-&gt;&gt;Servidor: GET /projects
+    Servidor-&gt;&gt;Cliente: 200 OK &lt;br&gt; { "projects": [...] }
+    Cliente-&gt;&gt;Servidor: POST /projects &lt;br&gt; { "name": "Proyecto A" }
+    Servidor-&gt;&gt;Cliente: 201 Created &lt;br&gt; { "id": 1, "name": "Proyecto A" }</code></pre>
+<h4 id="ejemplo-de-solicitud-rest">Ejemplo de solicitud REST 🖥️</h4>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/api/projects</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+</code></pre></div>
+<p><strong>Respuesta</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;projects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Proyecto A&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Proyecto B&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;completed&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Consejo práctico</p>
+<p>Aprende los códigos de estado HTTP más comunes (200, 201, 400, 404, 500) para depurar tus APIs eficazmente.</p>
+</div>
+<hr />
+<h3 id="3-instalacion-de-fastapi-uvicorn-y-python">3. Instalación de FastAPI, Uvicorn y Python ⚙️</h3>
+<p>Para desarrollar con FastAPI, necesitas un entorno configurado. A continuación, te guiamos paso a paso.</p>
+<h4 id="proceso-de-configuracion">Proceso de configuración</h4>
+<p>Este diagrama muestra los pasos para configurar el entorno:</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Inicio] --&gt; B{¿Python instalado?}
+    B -- No --&gt; C[Instalar Python 3.7+]
+    B -- Sí --&gt; D[Crear entorno virtual]
+    C --&gt; D
+    D --&gt; E[Activar entorno virtual]
+    E --&gt; F[Instalar FastAPI y Uvicorn]
+    F --&gt; G[Crear archivo main.py]
+    G --&gt; H[Ejecutar API con Uvicorn]
+    H --&gt; I[Probar API en navegador]</code></pre>
+<h4 id="paso-1-instalar-python">Paso 1: Instalar Python 📦</h4>
+<ol>
+<li>Descarga Python 3.7+ desde <a href="https://www.python.org/downloads/">python.org</a>.</li>
+<li>Verifica la instalación:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
+</code></pre></div>
+<h4 id="paso-2-crear-un-entorno-virtual">Paso 2: Crear un entorno virtual 🌐</h4>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</code></pre></div>
+<p>Activa el entorno:</p>
+<ul>
+<li><strong>Windows</strong>: <code>.venv\Scripts\activate</code></li>
+<li><strong>Linux/macOS</strong>: <code>source .venv/bin/activate</code></li>
+</ul>
+<h4 id="paso-3-instalar-fastapi-y-uvicorn">Paso 3: Instalar FastAPI y Uvicorn 📲</h4>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>fastapi<span class="w"> </span>uvicorn
+</code></pre></div>
+<h4 id="paso-4-crear-tu-primera-api">Paso 4: Crear tu primera API 🎉</h4>
+<p>Crea un archivo <code>main.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/projects&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_projects</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;projects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Proyecto A&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">}]}</span>
+</code></pre></div>
+<p>Ejecuta la API:</p>
+<div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</code></pre></div>
+<p>Visita <code>http://127.0.0.1:8000/projects</code> para ver la respuesta JSON o <code>http://127.0.0.1:8000/docs</code> para la documentación.</p>
+<div class="admonition success">
+<p class="admonition-title">¡Primer logro!</p>
+<p>Has creado tu primera API con FastAPI. ¡El cielo es el límite!</p>
+</div>
+<hr />
+<h2 id="practica-de-la-clase">Práctica de la Clase 🖥️</h2>
+<p>🎯 <strong>Tarea práctica</strong>:<br />
+Crea una API con un endpoint <code>/projects</code> que devuelva una lista de tres proyectos en JSON, cada uno con <code>id</code>, <code>name</code> y <code>status</code>.</p>
+<p><strong>Código de ejemplo</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/projects&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_projects</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;projects&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Proyecto A&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Proyecto B&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Proyecto C&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p><strong>Instrucciones</strong>:
+1. Guarda el código en <code>main.py</code>.
+2. Ejecuta con <code>uvicorn main:app --reload</code>.
+3. Verifica en <code>http://127.0.0.1:8000/projects</code>.
+4. Explora la documentación en <code>http://127.0.0.1:8000/docs</code>.</p>
+<hr />
+<h1 id="actividad-consumir-la-api-rest-desde-postman-thunder-client-y-una-pagina-web">Actividad: Consumir la API REST desde Postman, Thunder Client y una Página Web 🌐</h1>
+<p><strong>Objetivo</strong>:<br />
+Aprender a consumir una API REST (como el endpoint <code>/projects</code> de la Clase 1) utilizando <strong>Postman</strong>, <strong>Thunder Client</strong> (extensión de VS Code), y una página web básica con <strong>HTML/JavaScript</strong>, documentando el proceso y los resultados.</p>
+<h2 id="instrucciones">Instrucciones 📝</h2>
+<p>Investiga y prueba cómo consumir la API REST creada en la Clase 1 (<code>http://127.0.0.1:8000/projects</code>) utilizando tres métodos:</p>
+<ol>
+<li>
+<p><strong>Postman</strong>:</p>
+</li>
+<li>
+<p><strong>Thunder Client</strong> (extensión de VS Code):   </p>
+</li>
+<li>
+<p><strong>Página web con HTML/JavaScript</strong>:  </p>
+</li>
+</ol>
+<h2 id="entregables">Entregables 📦</h2>
+<ul>
+<li>Archivo <code>actividad.md</code> con la documentación y el párrafo de hallazgos.</li>
+<li>Capturas de pantalla de Postman y Thunder Client.</li>
+<li>Archivo <code>index.html</code> con el código JavaScript.</li>
+<li>Repositorio GitHub con todos los archivos.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

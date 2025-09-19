@@ -1,0 +1,2408 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/p1/">
+      
+      
+        <link rel="prev" href="../../activities/p1/">
+      
+      
+        <link rel="next" href="../p2/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>📘 Python - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📘 Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-lenguaje-interpretado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python - Lenguaje interpretado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabla-comparativa-lenguajes-compilados-vs-lenguajes-interpretados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla comparativa: Lenguajes compilados vs. Lenguajes interpretados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descargar Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sangrado-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sangrado en Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables en python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snake-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snake case
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constantes-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constantes en Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de datos en python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comentarios-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios en python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-funcion-print-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      La función print() de Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-funcion-input-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      La función input() en Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras-de-control-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de control condicionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras de control condicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-estructura-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      La estructura if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-estructura-elif" class="md-nav__link">
+    <span class="md-ellipsis">
+      La estructura elif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-estructura-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      La estructura else
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La estructura else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos-de-estructuras-de-control-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplos de estructuras de control condicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libro-recomendado-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libro recomendado de Python
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/09-testing-pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api1/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-lenguaje-interpretado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python - Lenguaje interpretado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabla-comparativa-lenguajes-compilados-vs-lenguajes-interpretados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla comparativa: Lenguajes compilados vs. Lenguajes interpretados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descargar Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sangrado-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sangrado en Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables en python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snake-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snake case
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constantes-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constantes en Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de datos en python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comentarios-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios en python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-funcion-print-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      La función print() de Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-funcion-input-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      La función input() en Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras-de-control-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de control condicionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras de control condicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-estructura-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      La estructura if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-estructura-elif" class="md-nav__link">
+    <span class="md-ellipsis">
+      La estructura elif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-estructura-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      La estructura else
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La estructura else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos-de-estructuras-de-control-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplos de estructuras de control condicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libro-recomendado-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libro recomendado de Python
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python">📘 Python</h1>
+<p>Python es un lenguaje de programación de alto nivel, de propósito general, que fue creado por Guido van Rossum en el año 1989. Es un lenguaje intuitivo, fácil de aprender y con una sintaxis clara y legible, que lo hace accesible tanto para principiantes como para programadores experimentados.</p>
+<p>Python se utiliza ampliamente en una gran variedad de aplicaciones, desde el desarrollo de aplicaciones web hasta la automatización de tareas, el análisis de datos y la inteligencia artificial. También es muy popular en la comunidad científica y en la investigación, gracias a la gran cantidad de bibliotecas y herramientas disponibles que lo hacen muy útil para el cálculo y la visualización de datos.</p>
+<p>Además de ser fácil de aprender y de utilizar, Python también es un lenguaje de código abierto, lo que significa que está disponible gratuitamente y que hay una gran comunidad de desarrolladores que contribuyen a su desarrollo y mejora.</p>
+<h2 id="python-lenguaje-interpretado">Python - Lenguaje interpretado</h2>
+<p>Python es un lenguaje de programación interpretado de alto nivel. Esto significa que no se traduce a código de máquina antes de ejecutarse. En su lugar, se ejecuta línea por línea por un intérprete. Este proceso de interpretación puede ser más lento que la ejecución de código compilado, pero tiene algunas ventajas. Por ejemplo, los programas interpretados pueden ser más fáciles de depurar y depurar. También pueden ser portables a diferentes plataformas, ya que no necesitan ser compilados para cada plataforma específica.</p>
+<h2 id="tabla-comparativa-lenguajes-compilados-vs-lenguajes-interpretados">Tabla comparativa: Lenguajes compilados vs. Lenguajes interpretados</h2>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Lenguajes compilados</th>
+<th>Lenguajes interpretados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ejemplos</strong></td>
+<td>C, C++, Rust, Go, Haskell</td>
+<td>Python, Ruby, JavaScript, PHP</td>
+</tr>
+<tr>
+<td><strong>Traducción</strong></td>
+<td>Se realiza una vez, antes de la ejecución</td>
+<td>Se realiza cada vez que se ejecuta el programa</td>
+</tr>
+<tr>
+<td><strong>Velocidad</strong></td>
+<td>Suelen ser más rápidos y eficientes</td>
+<td>Suelen ser más lentos y consumir más recursos</td>
+</tr>
+<tr>
+<td><strong>Portabilidad</strong></td>
+<td>Dependen de la plataforma y el compilador</td>
+<td>Son independientes de la plataforma y el intérprete</td>
+</tr>
+<tr>
+<td><strong>Depuración</strong></td>
+<td>Es más difícil encontrar y corregir errores</td>
+<td>Es más fácil encontrar y corregir errores</td>
+</tr>
+<tr>
+<td><strong>Flexibilidad</strong></td>
+<td>Suelen ser más rígidos y estrictos</td>
+<td>Suelen ser más dinámicos y flexibles</td>
+</tr>
+<tr>
+<td><strong>Control</strong></td>
+<td>Permiten un mayor control sobre el hardware</td>
+<td>Abstraen el hardware y lo gestionan automáticamente</td>
+</tr>
+<tr>
+<td><strong>Tamaño</strong></td>
+<td>Suelen generar archivos ejecutables más grandes</td>
+<td>Suelen generar archivos de código fuente más pequeños</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://ed.team/blog/lenguajes-de-programacion-compilados-vs-interpretados">Más información acerca de lenguajes interpretados</a></p>
+<h2 id="instalacion-de-python">Instalación de Python</h2>
+<p>La instalación de Python depende del sistema operativo que esté utilizando. Aquí se describen los pasos para instalar Python en los sistemas operativos más comunes:</p>
+<ul>
+<li>Windows: Descargue el instalador de Python desde el sitio web oficial de Python (https://www.python.org/downloads/).
+  Ejecute el instalador y siga las instrucciones en pantalla para instalar Python en su computadora.
+  Verifique que Python está instalado correctamente abriendo el símbolo del sistema y escribiendo python y presionando Enter.</li>
+<li>macOS: Descargue el instalador de Python desde el sitio web oficial de Python (https://www.python.org/downloads/).
+  Ejecute el instalador y siga las instrucciones en pantalla para instalar Python en su computadora.
+  Verifique que Python está instalado correctamente abriendo la terminal y escribiendo python y presionando Enter.</li>
+<li>Linux: La mayoría de las distribuciones de Linux ya vienen con Python preinstalado. Para verificar si Python está instalado, abra una terminal y escriba python y presione Enter.</li>
+</ul>
+<p>Si no está instalado, puede instalar Python desde los repositorios de software de su distribución de Linux. Por ejemplo, en Ubuntu, puede instalar Python escribiendo sudo apt-get install python en una terminal.
+Una vez que Python esté instalado, puede comenzar a escribir y ejecutar programas en Python utilizando un editor de texto o un entorno de desarrollo integrado (IDE). Hay muchas opciones disponibles, incluyendo IDLE (incluido con la instalación de Python), PyCharm, Visual Studio Code, entre otros.</p>
+<h2 id="descargar-python">Descargar Python</h2>
+<iframe width="929" height="514" src="https://www.youtube.com/embed/m5i-Pq-z9w8" title="🔴CÓMO Descargar e Instalar Python3 - 2022 👉 en Windows 11" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="sangrado-en-python">Sangrado en Python</h2>
+<p>Sangrado (o indentación) es un espacio en blanco al comienzo de una línea de código que se usa para resaltar la estructura y la organización del código. El sangrado hace que el código sea más legible visualmente agrupando líneas relacionadas.</p>
+<p>Es una forma de organizar visualmente el código para facilitar su lectura. Se utilizan espacios o tabs para "sangrar" <code>(indentar)</code> determinadas líneas de código.</p>
+<p>Python requiere sangrado de forma estricta, de tal manera que el sangrado indica la estructura y bloques de código. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Verdadero&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falso&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Aquí el sangrado indica que la línea print("Verdadero") está dentro del bloque if, mientras que la línea print("Falso") está dentro del bloque else.</p>
+<p>Otro ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>  <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<p>La línea print(i) está sangrada debajo del bucle for, indicando que se ejecutará en cada iteración.</p>
+<p>Algunos puntos sobre el sangrado en Python:</p>
+<ul>
+<li>
+<p>Es obligatorio. Python usa el sangrado para determinar la estructura del código.</p>
+</li>
+<li>
+<p>Es estricto. El sangrado debe ser consistente dentro de un bloque, usar espacios no tabs.</p>
+</li>
+<li>
+<p>Se recomiendan 4 espacios, aunque Python también acepta tabs.</p>
+</li>
+<li>
+<p>No puede mezclar espacios y tabs dentro de un bloque.</p>
+</li>
+</ul>
+<p>El sangrado hace que el código Python sea más legible visualmente, ayudando a agrupar líneas relacionadas y resaltando la estructura anidada. Por eso es una parte importante del estilo de codificación en Python.</p>
+<h2 id="variables-en-python">Variables en python</h2>
+<p>En Python, las variables son usadas para almacenar información y pueden ser referenciadas por un nombre.</p>
+<p>Para crear una variable en Python, simplemente asignamos un valor a un nombre. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Juan&quot;</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mi nombre es&quot;</span><span class="p">,</span> <span class="n">nombre</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tengo&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="p">,</span> <span class="s2">&quot;años&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>:::info Reglas</p>
+<p>En Python, hay ciertas reglas que deben seguirse al crear identificadores de variables:</p>
+<ul>
+<li>
+<p>Deben comenzar con una letra o un guión bajo.</p>
+</li>
+<li>
+<p>No pueden comenzar con un número.</p>
+</li>
+<li>
+<p>No pueden contener espacios en blanco.</p>
+</li>
+<li>
+<p>No pueden ser una palabra reservada en Python (por ejemplo, "if", "else", "for", etc.).</p>
+</li>
+<li>
+<p>Deben ser únicos y significativos.</p>
+</li>
+<li>
+<p>Deben ser descriptivos y en minúsculas, separando palabras con guiones bajos.</p>
+</li>
+</ul>
+<p>:::</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Identificadores válidos</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Juan&quot;</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">_nombre_completo</span> <span class="o">=</span> <span class="s2">&quot;Juan Pérez&quot;</span>
+<span class="c1">#Identificadores inválidos</span>
+<span class="mi">123</span><span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Juan&quot;</span> <span class="c1"># Comienza con un número</span>
+<span class="n">nombre</span><span class="o">-</span><span class="n">completo</span> <span class="o">=</span> <span class="s2">&quot;Juan Pérez&quot;</span> <span class="c1"># Contiene un guión</span>
+<span class="k">if</span> <span class="o">=</span> <span class="s2">&quot;condicional&quot;</span> <span class="c1"># Es una palabra reservada</span>
+</code></pre></div>
+<h2 id="snake-case">Snake case</h2>
+<p>El snake case es una convención de nomenclatura muy utilizada en Python para nombrar variables, funciones y módulos. Aquí tienes una explicación más detallada:</p>
+<ol>
+<li>Definición: Snake case consiste en escribir palabras en minúsculas, separándolas con guiones bajos (_).</li>
+<li>Uso en Python:<ul>
+<li>Variables: mi_variable, contador, nombre_usuario</li>
+<li>Funciones: calcular_promedio(), obtener_datos(), imprimir_resultado()</li>
+<li>Módulos: utilidades.py, procesamiento_datos.py</li>
+</ul>
+</li>
+<li>Ejemplos:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Variables</span>
+<span class="n">numero_de_usuarios</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">nombre_completo</span> <span class="o">=</span> <span class="s2">&quot;Juan Pérez&quot;</span>
+
+<span class="c1"># Función</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calcular_area_rectangulo</span><span class="p">(</span><span class="n">largo</span><span class="p">,</span> <span class="n">ancho</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">largo</span> <span class="o">*</span> <span class="n">ancho</span>
+
+<span class="c1"># Llamada a función</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">calcular_area_rectangulo</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># En una clase</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProcesadorTexto</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texto_actual</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">contar_palabras</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texto_actual</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</code></pre></div>
+<ol>
+<li>Ventajas:<ul>
+<li>Mejora la legibilidad del código</li>
+<li>Es consistente con la filosofía de Python de código explícito y claro</li>
+<li>Facilita la distinción entre variables/funciones y clases (que usan PascalCase)</li>
+</ul>
+</li>
+<li>Cuándo no usar snake case:<ul>
+<li>Nombres de clases (usar PascalCase)</li>
+<li>Constantes (usar MAYÚSCULAS_CON_GUIONES_BAJOS)</li>
+</ul>
+</li>
+<li>Consideraciones:<ul>
+<li>Evitar nombres de una sola letra, excepto para contadores o índices muy simples</li>
+<li>Usar nombres descriptivos pero no excesivamente largos</li>
+</ul>
+</li>
+</ol>
+<h2 id="constantes-en-python">Constantes en Python</h2>
+<p>Las constantes en Python son un concepto un poco diferente comparado con otros lenguajes de programación. </p>
+<ol>
+<li>Convención de nombrado:<ul>
+<li>Se escriben en MAYÚSCULAS_CON_GUIONES_BAJOS</li>
+<li>Ejemplo: MAX_VALUE, PI, DEFAULT_CONFIG</li>
+</ul>
+</li>
+<li>Declaración: En Python, técnicamente no existen constantes "verdaderas". Se usan variables regulares, pero por convención, se tratan como constantes.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># número entero</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># número flotante</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="n">j</span> <span class="c1"># número complejo</span>
+</code></pre></div>
+<h2 id="tipos-de-datos-en-python">Tipos de datos en python</h2>
+<p>En Python, existen diferentes tipos de datos que se pueden utilizar para almacenar información. Aquí hay algunos de los tipos de datos más comunes:</p>
+<ol>
+<li>Números: Python tiene soporte para números enteros (int), números flotantes (float) y números complejos (complex). Por ejemplo:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># número entero</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># número flotante</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="n">j</span> <span class="c1"># número complejo</span>
+</code></pre></div>
+<ol>
+<li>Cadenas: Las cadenas en Python se usan para representar texto y se escriben entre comillas simples o dobles. Por ejemplo:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;John Doe&quot;</span>
+<span class="n">apellido</span> <span class="o">=</span> <span class="s1">&#39;Smith&#39;</span>
+</code></pre></div>
+<ol>
+<li>Listas: Las listas en Python son secuencias ordenadas de valores, que pueden ser de cualquier tipo de datos. Por ejemplo:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">frutas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;manzana&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;pera&quot;</span><span class="p">]</span>
+<span class="n">numeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>Tuplas: Las tuplas son similares a las listas, pero son inmutables y no se pueden modificar una vez creadas. Por ejemplo:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">colores</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;rojo&quot;</span><span class="p">,</span> <span class="s2">&quot;verde&quot;</span><span class="p">,</span> <span class="s2">&quot;azul&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Diccionarios: Los diccionarios en Python son estructuras de datos no ordenadas que asocian claves con valores. Por ejemplo:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">persona</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;edad&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+ <span class="s2">&quot;ciudad&quot;</span><span class="p">:</span> <span class="s2">&quot;New York&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="comentarios-en-python">Comentarios en python</h2>
+<p>Los comentarios en Python son líneas de texto que se utilizan para describir el código y ayudar a otros programadores a comprenderlo. Los comentarios no son interpretados por Python y no tienen ningún impacto en el funcionamiento del programa.</p>
+<p>Hay dos maneras de crear comentarios en Python:</p>
+<ol>
+<li>Usando el carácter #:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Este es un comentario en una sola línea</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Este es un comentario en la misma línea que el código</span>
+</code></pre></div>
+<ol>
+<li>Usando tres comillas dobles:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Este es un comentario</span>
+<span class="sd">en varias líneas</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</code></pre></div>
+<h2 id="la-funcion-print-de-python">La función print() de Python</h2>
+<p>La función <code>print()</code> en Python es una herramienta fundamental para mostrar información en la pantalla. Es una función integrada que se utiliza para imprimir cadenas de texto, variables, valores y otras expresiones.</p>
+<p>Sintaxis básica:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">objeto</span><span class="p">)</span>
+</code></pre></div>
+<p>Parámetros:</p>
+<ul>
+<li>objeto: Puede ser una cadena de texto (entre comillas simples o dobles), una variable, una expresión, un objeto, etc.</li>
+</ul>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Imprimir una cadena de texto</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola mundo!&quot;</span><span class="p">)</span>
+<span class="c1"># Imprimir una variable</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Ana&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>
+<span class="c1"># Imprimir una expresión</span>
+<span class="n">suma</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">suma</span><span class="p">)</span>
+<span class="c1"># Imprimir múltiples objetos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El resultado es:&quot;</span><span class="p">,</span> <span class="n">suma</span><span class="p">,</span> <span class="s2">&quot;y el nombre es:&quot;</span><span class="p">,</span> <span class="n">nombre</span><span class="p">)</span>
+</code></pre></div>
+<p>Opciones adicionales:</p>
+<ul>
+<li>Separador: Se puede usar el argumento <code>sep</code> para especificar el separador entre los objetos que se imprimen. El valor por defecto es un espacio.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code>a,<span class="w"> </span>b,<span class="w"> </span>c
+</code></pre></div></p>
+<ul>
+<li>Fin de línea: El argumento <code>end</code> define el carácter que se imprime al final de la salida. El valor por defecto es un salto de línea (<code>\n</code>).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Primera línea&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Segunda línea&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Salida:</p>
+<div class="highlight"><pre><span></span><code>Primera<span class="w"> </span>línea<span class="w"> </span>Segunda<span class="w"> </span>línea
+</code></pre></div>
+<ul>
+<li>Formateo de cadenas f: Python 3.6 introdujo las cadenas f, que permiten formatear cadenas de forma más elegante.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hola, me llamo </span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> y tengo </span><span class="si">{</span><span class="n">edad</span><span class="si">}</span><span class="s2"> años.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Salida:</p>
+<div class="highlight"><pre><span></span><code>Hola,<span class="w"> </span>me<span class="w"> </span>llamo<span class="w"> </span>Ana<span class="w"> </span>y<span class="w"> </span>tengo<span class="w"> </span><span class="m">25</span><span class="w"> </span>años.
+</code></pre></div>
+<h2 id="la-funcion-input-en-python">La función <code>input()</code> en Python</h2>
+<p>La función <code>input()</code> en Python es indispensable para interactuar con el usuario y obtener información que introduzca por teclado.</p>
+<p>Sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="n">entrada</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+</code></pre></div>
+<p>Parámetros:</p>
+<ul>
+<li>prompt (opcional): Es una cadena de texto que se muestra al usuario antes de que introduzca la información. Esta cadena sirve para guiar al usuario sobre qué tipo de información se espera.</li>
+</ul>
+<p>Retorno:</p>
+<p>La función <code>input()</code> siempre devuelve un string, incluso si el usuario introduce un número. Esto significa que si necesita trabajar con la información como un número, deberá convertirla explícitamente usando funciones como <code>int()</code>, <code>float()</code>, etc.</p>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pedir el nombre del usuario</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;¿Cómo te llamas? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hola, </span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<span class="c1"># Solicitar dos números y sumarlos</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduce el primer número: &quot;</span><span class="p">))</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduce el segundo número: &quot;</span><span class="p">))</span>
+<span class="n">suma</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La suma es: </span><span class="si">{</span><span class="n">suma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Puntos a tener en cuenta:</p>
+<ul>
+<li>
+<p>La función <code>input()</code> siempre espera que el usuario pulse la tecla <code>Enter</code> para finalizar la entrada.</p>
+</li>
+<li>
+<p>Si no se proporciona un <code>prompt</code>, la función muestra un mensaje genérico como <code>Introduce un valor:</code>.</p>
+</li>
+<li>
+<p>Se recomienda usar el <code>prompt</code> para guiar al usuario y evitar confusiones.</p>
+</li>
+<li>
+<p>Para procesar la entrada como un tipo de dato específico, use funciones de conversión como <code>int()</code>, <code>float()</code>, etc.</p>
+</li>
+</ul>
+<h2 id="estructuras-de-control-condicionales">Estructuras de control condicionales</h2>
+<p>Los condicionales en Python permiten ejecutar código solo si se cumple una determinada condición. Esto es muy útil para controlar el flujo de un programa y tomar decisiones basadas en diferentes situaciones.</p>
+<h3 id="la-estructura-if">La estructura if</h3>
+<p>La estructura if es la estructura condicional más básica en Python. Se utiliza para evaluar una condición y ejecutar un bloque de código si la condición es verdadera.</p>
+<p>La sintaxis de la estructura if es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condición</span><span class="p">:</span>
+ <span class="c1"># Bloque de código que se ejecuta si la condición es verdadera</span>
+</code></pre></div>
+<p>Por ejemplo, el siguiente código imprime el mensaje "Eres mayor de edad" si la variable edad es mayor o igual a 18:</p>
+<div class="highlight"><pre><span></span><code><span class="n">edad</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eres mayor de edad&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="la-estructura-elif">La estructura elif</h3>
+<p>La estructura elif se utiliza para agregar condiciones adicionales a una estructura if. Se evalúan secuencialmente, y el bloque de código correspondiente a la primera condición que se cumple se ejecuta.</p>
+<p>La sintaxis de la estructura elif es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condición</span> <span class="mi">1</span><span class="p">:</span>
+ <span class="c1"># Bloque de código que se ejecuta si la condición 1 es verdadera</span>
+<span class="k">elif</span> <span class="n">condición</span> <span class="mi">2</span><span class="p">:</span>
+ <span class="c1"># Bloque de código que se ejecuta si la condición 2 es verdadera</span>
+</code></pre></div>
+<p>Por ejemplo, el siguiente código imprime el mensaje "Eres mayor de edad", "Eres adolescente" o "Eres menor de edad", dependiendo de la edad del usuario:</p>
+<div class="highlight"><pre><span></span><code><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eres mayor de edad&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">16</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eres adolescente&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eres menor de edad&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="la-estructura-else">La estructura else</h3>
+<p>La estructura else se utiliza para ejecutar un bloque de código si ninguna de las condiciones anteriores se cumple.</p>
+<p>La sintaxis de la estructura else es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condición</span> <span class="mi">1</span><span class="p">:</span>
+ <span class="c1"># Bloque de código que se ejecuta si la condición 1 es verdadera</span>
+<span class="k">elif</span> <span class="n">condición</span> <span class="mi">2</span><span class="p">:</span>
+ <span class="c1"># Bloque de código que se ejecuta si la condición 2 es verdadera</span>
+<span class="k">else</span><span class="p">:</span>
+ <span class="c1"># Bloque de código que se ejecuta si ninguna de las condiciones anteriores se cumple</span>
+</code></pre></div>
+<p>Por ejemplo, el siguiente código imprime el mensaje "Eres menor de edad" si la variable edad no es mayor o igual a 18:</p>
+<div class="highlight"><pre><span></span><code><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eres mayor de edad&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eres menor de edad&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="ejemplos-de-estructuras-de-control-condicionales">Ejemplos de estructuras de control condicionales</h4>
+<ol>
+<li>Comparar dos números</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a es mayor que b&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b es mayor que a&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a y b son iguales&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Comparar una cadena con un valor</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">cadena</span> <span class="o">=</span> <span class="s2">&quot;Hola&quot;</span>
+<span class="k">if</span> <span class="n">cadena</span> <span class="o">==</span> <span class="s2">&quot;Hola&quot;</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La cadena es &#39;Hola&#39;&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La cadena no es &#39;Hola&#39;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Validar un número</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">numero</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduce un número: &quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">numero</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">numero</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El número es positivo&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El número es negativo&quot;</span><span class="p">)</span>
+<span class="k">except</span>  <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El número introducido no es válido&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="libro-recomendado-de-python">Libro recomendado de Python</h2>
+<p><a class="md-button md-button--primary" href="https://ellibrodepython.com/">Bienvenid@ a El Libro De Python</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

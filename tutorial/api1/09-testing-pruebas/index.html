@@ -1,0 +1,3515 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfosena.github.io/25pap/tutorial/api1/09-testing-pruebas/">
+      
+      
+        <link rel="prev" href="../08-middleware-autenticacion/">
+      
+      
+        <link rel="next" href="../10-deployment-produccion/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Testing y Pruebas - Programación Avanzada Python Backend - FastAPI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#testing-y-pruebas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-header__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación Avanzada Python Backend - FastAPI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Testing y Pruebas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programación Avanzada Python Backend - FastAPI" class="md-nav__button md-logo" aria-label="Programación Avanzada Python Backend - FastAPI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Programación Avanzada Python Backend - FastAPI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI y APIs REST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos Virtuales en Python e Introducción a FastAPI y APIs REST 🐍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejericios de Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rutas y Parámetros en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos en FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumo de API con Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PI de Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clase 9: Streamlit Básico - Consumir API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actividad: Ejemplo de FastAPI con Tres Entidades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial Detallado, Extensivo y Completo de Pydantic en Español
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Tutorial de Fork en GitHub y Comandos Básicos de Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sistema de Inventario con FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sistema de Inventario con FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduccion-fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-instalacion-configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación y Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-base-datos-sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base de Datos y SQLAlchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-esquemas-pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Esquemas Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-endpoints-routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints y Routers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-middleware-autenticacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middleware, Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Testing y Pruebas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de pruebas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipos de pruebas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pruebas-unitarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pruebas unitarias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pruebas-de-integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pruebas de integración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pruebas-end-to-end-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Pruebas end-to-end (E2E)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno-de-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del entorno de testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración del entorno de testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-instalacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Instalación de dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-estructura-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Estructura de directorios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-de-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración de pytest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-fixtures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de fixtures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de fixtures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-base-conftestpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración base (conftest.py)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-unitarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas unitarias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas unitarias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-testing-de-operaciones-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Testing de operaciones CRUD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-testing-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Testing de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-de-integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas de integración
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas de integración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-testing-de-endpoints-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Testing de endpoints de usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-testing-de-endpoints-de-articulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Testing de endpoints de artículos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas de rendimiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas de rendimiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-testing-de-carga" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Testing de carga
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles-para-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos útiles para testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos útiles para testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ejecutar-todas-las-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Ejecutar todas las pruebas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-generar-reportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Generar reportes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Debugging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracion-con-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integración con CI/CD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integración con CI/CD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pre-commit-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pre-commit hooks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-organizacion-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Organización de pruebas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-datos-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Datos de prueba
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-assertions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Assertions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Coverage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-deployment-produccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment y Producción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejemplo Básico FastAPI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ejemplo Básico FastAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/01-introduccion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción y Conceptos Básicos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/02-configuracion-entorno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configuración del Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/03-estructura-proyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Estructura del Proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/04-base-datos-modelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Base de Datos y Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/05-esquemas-validacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Esquemas de Validación con Pydantic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/06-operaciones-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Operaciones CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/07-rutas-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Rutas y Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/08-aplicacion-principal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Aplicación Principal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/09-testing-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Testing y Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/10-documentacion-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Documentación y Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api2/11-Repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositorio del proyecto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de pruebas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipos de pruebas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pruebas-unitarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pruebas unitarias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pruebas-de-integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pruebas de integración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pruebas-end-to-end-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Pruebas end-to-end (E2E)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno-de-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del entorno de testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración del entorno de testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-instalacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Instalación de dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-estructura-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Estructura de directorios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-de-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración de pytest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-fixtures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de fixtures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de fixtures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-base-conftestpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración base (conftest.py)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-unitarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas unitarias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas unitarias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-testing-de-operaciones-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Testing de operaciones CRUD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-testing-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Testing de autenticación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-de-integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas de integración
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas de integración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-testing-de-endpoints-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Testing de endpoints de usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-testing-de-endpoints-de-articulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Testing de endpoints de artículos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas de rendimiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas de rendimiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-testing-de-carga" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Testing de carga
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles-para-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos útiles para testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos útiles para testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ejecutar-todas-las-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Ejecutar todas las pruebas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-generar-reportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Generar reportes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Debugging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracion-con-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integración con CI/CD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integración con CI/CD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pre-commit-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pre-commit hooks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-organizacion-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Organización de pruebas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-datos-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Datos de prueba
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-assertions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Assertions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Coverage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="testing-y-pruebas">Testing y Pruebas</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>El testing es una parte fundamental del desarrollo de software que nos permite:</p>
+<ul>
+<li><strong>Verificar</strong> que nuestro código funciona correctamente</li>
+<li><strong>Prevenir</strong> errores en producción</li>
+<li><strong>Facilitar</strong> refactoring y mantenimiento</li>
+<li><strong>Documentar</strong> el comportamiento esperado</li>
+<li><strong>Aumentar</strong> la confianza en nuestro código</li>
+</ul>
+<h2 id="tipos-de-pruebas">Tipos de pruebas</h2>
+<h3 id="1-pruebas-unitarias">1. Pruebas unitarias</h3>
+<ul>
+<li>Prueban <strong>funciones individuales</strong> o métodos</li>
+<li>Son <strong>rápidas</strong> y <strong>aisladas</strong></li>
+<li>No dependen de recursos externos</li>
+</ul>
+<h3 id="2-pruebas-de-integracion">2. Pruebas de integración</h3>
+<ul>
+<li>Prueban <strong>interacciones</strong> entre componentes</li>
+<li>Incluyen base de datos, APIs externas, etc.</li>
+<li>Son más <strong>lentas</strong> pero más <strong>realistas</strong></li>
+</ul>
+<h3 id="3-pruebas-end-to-end-e2e">3. Pruebas end-to-end (E2E)</h3>
+<ul>
+<li>Prueban <strong>flujos completos</strong> de usuario</li>
+<li>Simulan <strong>comportamiento real</strong></li>
+<li>Son las más <strong>lentas</strong> pero más <strong>completas</strong></li>
+</ul>
+<h2 id="configuracion-del-entorno-de-testing">Configuración del entorno de testing</h2>
+<h3 id="1-instalacion-de-dependencias">1. Instalación de dependencias</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pytest<span class="w"> </span>pytest-asyncio<span class="w"> </span>httpx<span class="w"> </span>pytest-cov
+</code></pre></div>
+<h3 id="2-estructura-de-directorios">2. Estructura de directorios</h3>
+<div class="highlight"><pre><span></span><code>proyecto/
+├── app/
+│   ├── main.py
+│   ├── models/
+│   ├── routers/
+│   └── ...
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py          # Configuración compartida
+│   ├── test_main.py         # Pruebas de la aplicación principal
+│   ├── unit/                # Pruebas unitarias
+│   │   ├── __init__.py
+│   │   ├── test_crud.py
+│   │   ├── test_auth.py
+│   │   └── test_utils.py
+│   └── integration/         # Pruebas de integración
+│       ├── __init__.py
+│       ├── test_users.py
+│       ├── test_items.py
+│       └── test_loans.py
+├── pytest.ini              # Configuración de pytest
+└── requirements-test.txt    # Dependencias de testing
+</code></pre></div>
+<h3 id="3-configuracion-de-pytest">3. Configuración de pytest</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># pytest.ini</span>
+<span class="k">[tool:pytest]</span>
+<span class="na">minversion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6.0</span>
+<span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">    </span><span class="na">-ra</span>
+<span class="w">    </span><span class="na">-q</span>
+<span class="w">    </span><span class="na">--strict-markers</span>
+<span class="w">    </span><span class="na">--strict-config</span>
+<span class="w">    </span><span class="na">--cov</span><span class="o">=</span><span class="s">app</span>
+<span class="w">    </span><span class="na">--cov-report</span><span class="o">=</span><span class="s">term-missing</span>
+<span class="w">    </span><span class="na">--cov-report</span><span class="o">=</span><span class="s">html</span>
+<span class="w">    </span><span class="na">--cov-fail-under</span><span class="o">=</span><span class="s">80</span>
+<span class="na">testpaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tests</span>
+<span class="na">python_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">test_*.py</span>
+<span class="na">python_classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Test*</span>
+<span class="na">python_functions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">test_*</span>
+<span class="na">markers</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">slow</span><span class="o">:</span><span class="w"> </span><span class="s">marks tests as slow (deselect with &#39;-m &quot;not slow&quot;&#39;)</span>
+<span class="w">    </span><span class="na">integration</span><span class="o">:</span><span class="w"> </span><span class="s">marks tests as integration tests</span>
+<span class="w">    </span><span class="na">unit</span><span class="o">:</span><span class="w"> </span><span class="s">marks tests as unit tests</span>
+<span class="w">    </span><span class="na">auth</span><span class="o">:</span><span class="w"> </span><span class="s">marks tests related to authentication</span>
+</code></pre></div>
+<h2 id="configuracion-de-fixtures">Configuración de fixtures</h2>
+<h3 id="1-configuracion-base-conftestpy">1. Configuración base (conftest.py)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/conftest.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaticPool</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.database.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_access_token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.user</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.category</span><span class="w"> </span><span class="kn">import</span> <span class="n">Category</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.item</span><span class="w"> </span><span class="kn">import</span> <span class="n">Item</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.loan</span><span class="w"> </span><span class="kn">import</span> <span class="n">Loan</span>
+
+<span class="c1"># Base de datos en memoria para testing</span>
+<span class="n">SQLALCHEMY_DATABASE_URL</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///:memory:&quot;</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="n">SQLALCHEMY_DATABASE_URL</span><span class="p">,</span>
+    <span class="n">connect_args</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;check_same_thread&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">poolclass</span><span class="o">=</span><span class="n">StaticPool</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">TestingSessionLocal</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span>
+    <span class="n">autocommit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+    <span class="n">autoflush</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+    <span class="n">bind</span><span class="o">=</span><span class="n">engine</span>
+<span class="p">)</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_session</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear una sesión de base de datos para testing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Crear todas las tablas</span>
+    <span class="n">BaseModel</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+    <span class="c1"># Crear sesión</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">TestingSessionLocal</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">session</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># Limpiar todas las tablas</span>
+        <span class="n">BaseModel</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">drop_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">db_session</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un cliente de testing con base de datos de prueba.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">override_get_db</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">db_session</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">dependency_overrides</span><span class="p">[</span><span class="n">get_db</span><span class="p">]</span> <span class="o">=</span> <span class="n">override_get_db</span>
+
+    <span class="k">with</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> <span class="k">as</span> <span class="n">test_client</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">test_client</span>
+
+    <span class="c1"># Limpiar overrides</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">dependency_overrides</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_user_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Datos de ejemplo para crear usuarios.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Test User&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hashed_password&quot;</span><span class="p">:</span> <span class="s2">&quot;$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW&quot;</span>  <span class="c1"># secret</span>
+    <span class="p">}</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_category_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Datos de ejemplo para crear categorías.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Electrónicos&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Dispositivos electrónicos&quot;</span>
+    <span class="p">}</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_item_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Datos de ejemplo para crear artículos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Laptop Dell&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Laptop para desarrollo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;serial_number&quot;</span><span class="p">:</span> <span class="s2">&quot;DL123456&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;category_id&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">sample_user_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un usuario de prueba en la base de datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">sample_user_data</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_category</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">sample_category_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear una categoría de prueba en la base de datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">Category</span><span class="p">(</span><span class="o">**</span><span class="n">sample_category_data</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">category</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_item</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">sample_item_data</span><span class="p">,</span> <span class="n">create_category</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un artículo de prueba en la base de datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_data</span> <span class="o">=</span> <span class="n">sample_item_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">item_data</span><span class="p">[</span><span class="s2">&quot;category_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_category</span><span class="o">.</span><span class="n">id</span>
+
+    <span class="n">item</span> <span class="o">=</span> <span class="n">Item</span><span class="p">(</span><span class="o">**</span><span class="n">item_data</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">auth_headers</span><span class="p">(</span><span class="n">create_user</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Headers de autenticación para requests.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span><span class="p">})</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">admin_user</span><span class="p">(</span><span class="n">db_session</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crear un usuario administrador.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">admin_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin User&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hashed_password&quot;</span><span class="p">:</span> <span class="s2">&quot;$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_superuser&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">admin_data</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db_session</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">admin_headers</span><span class="p">(</span><span class="n">admin_user</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Headers de autenticación para admin.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">admin_user</span><span class="o">.</span><span class="n">username</span><span class="p">})</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="pruebas-unitarias">Pruebas unitarias</h2>
+<h3 id="1-testing-de-operaciones-crud">1. Testing de operaciones CRUD</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/unit/test_crud.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.users</span><span class="w"> </span><span class="kn">import</span> <span class="n">user</span> <span class="k">as</span> <span class="n">crud_user</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.categories</span><span class="w"> </span><span class="kn">import</span> <span class="n">category</span> <span class="k">as</span> <span class="n">crud_category</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.crud.items</span><span class="w"> </span><span class="kn">import</span> <span class="n">item</span> <span class="k">as</span> <span class="n">crud_item</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.user</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserCreate</span><span class="p">,</span> <span class="n">UserUpdate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.category</span><span class="w"> </span><span class="kn">import</span> <span class="n">CategoryCreate</span><span class="p">,</span> <span class="n">CategoryUpdate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.schemas.item</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemCreate</span><span class="p">,</span> <span class="n">ItemUpdate</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestUserCRUD</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas para operaciones CRUD de usuarios.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación de usuario.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user_data</span> <span class="o">=</span> <span class="n">UserCreate</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;newuser&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;newuser@example.com&quot;</span><span class="p">,</span>
+            <span class="n">full_name</span><span class="o">=</span><span class="s2">&quot;New User&quot;</span><span class="p">,</span>
+            <span class="n">hashed_password</span><span class="o">=</span><span class="s2">&quot;hashedpassword&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">user_data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="s2">&quot;newuser&quot;</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="s2">&quot;newuser@example.com&quot;</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">full_name</span> <span class="o">==</span> <span class="s2">&quot;New User&quot;</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">created_at</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario por ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">create_user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_by_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario por username.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_username</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">create_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_by_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario por email.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_by_email</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">create_user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">email</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_update_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar actualización de usuario.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">update_data</span> <span class="o">=</span> <span class="n">UserUpdate</span><span class="p">(</span>
+            <span class="n">full_name</span><span class="o">=</span><span class="s2">&quot;Updated Name&quot;</span><span class="p">,</span>
+            <span class="n">phone</span><span class="o">=</span><span class="s2">&quot;9876543210&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">updated_user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">db_session</span><span class="p">,</span> 
+            <span class="n">db_obj</span><span class="o">=</span><span class="n">create_user</span><span class="p">,</span> 
+            <span class="n">obj_in</span><span class="o">=</span><span class="n">update_data</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">updated_user</span><span class="o">.</span><span class="n">full_name</span> <span class="o">==</span> <span class="s2">&quot;Updated Name&quot;</span>
+        <span class="k">assert</span> <span class="n">updated_user</span><span class="o">.</span><span class="n">phone</span> <span class="o">==</span> <span class="s2">&quot;9876543210&quot;</span>
+        <span class="k">assert</span> <span class="n">updated_user</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span>  <span class="c1"># No cambió</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar eliminación de usuario.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">create_user</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="n">deleted_user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">deleted_user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span>
+
+        <span class="c1"># Verificar que ya no existe</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">user</span> <span class="ow">is</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_multi_users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de múltiples usuarios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Crear varios usuarios</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">user_data</span> <span class="o">=</span> <span class="n">UserCreate</span><span class="p">(</span>
+                <span class="n">username</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;user</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">email</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;user</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">@example.com&quot;</span><span class="p">,</span>
+                <span class="n">full_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">hashed_password</span><span class="o">=</span><span class="s2">&quot;hashedpassword&quot;</span>
+            <span class="p">)</span>
+            <span class="n">crud_user</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">user_data</span><span class="p">)</span>
+
+        <span class="n">users</span> <span class="o">=</span> <span class="n">crud_user</span><span class="o">.</span><span class="n">get_multi</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestCategoryCRUD</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas para operaciones CRUD de categorías.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación de categoría.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">category_data</span> <span class="o">=</span> <span class="n">CategoryCreate</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Category&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test Description&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">category</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">category_data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">category</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test Category&quot;</span>
+        <span class="k">assert</span> <span class="n">category</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="s2">&quot;Test Description&quot;</span>
+        <span class="k">assert</span> <span class="n">category</span><span class="o">.</span><span class="n">id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_category_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_category</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de categoría por nombre.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">crud_category</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">create_category</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">category</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">category</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">create_category</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestItemCRUD</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas para operaciones CRUD de artículos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_category</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación de artículo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item_data</span> <span class="o">=</span> <span class="n">ItemCreate</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Item&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test Description&quot;</span><span class="p">,</span>
+            <span class="n">serial_number</span><span class="o">=</span><span class="s2">&quot;TEST123&quot;</span><span class="p">,</span>
+            <span class="n">category_id</span><span class="o">=</span><span class="n">create_category</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">)</span>
+
+        <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">item_data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test Item&quot;</span>
+        <span class="k">assert</span> <span class="n">item</span><span class="o">.</span><span class="n">serial_number</span> <span class="o">==</span> <span class="s2">&quot;TEST123&quot;</span>
+        <span class="k">assert</span> <span class="n">item</span><span class="o">.</span><span class="n">category_id</span> <span class="o">==</span> <span class="n">create_category</span><span class="o">.</span><span class="n">id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_item_by_serial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de artículo por número de serie.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_by_serial_number</span><span class="p">(</span>
+            <span class="n">db_session</span><span class="p">,</span> 
+            <span class="n">serial_number</span><span class="o">=</span><span class="n">create_item</span><span class="o">.</span><span class="n">serial_number</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">item</span><span class="o">.</span><span class="n">serial_number</span> <span class="o">==</span> <span class="n">create_item</span><span class="o">.</span><span class="n">serial_number</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_items_by_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">create_category</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de artículos por categoría.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Crear varios artículos en la misma categoría</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">item_data</span> <span class="o">=</span> <span class="n">ItemCreate</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Item </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Description </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">serial_number</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;SERIAL</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">category_id</span><span class="o">=</span><span class="n">create_category</span><span class="o">.</span><span class="n">id</span>
+            <span class="p">)</span>
+            <span class="n">crud_item</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">obj_in</span><span class="o">=</span><span class="n">item_data</span><span class="p">)</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="n">crud_item</span><span class="o">.</span><span class="n">get_by_category</span><span class="p">(</span><span class="n">db_session</span><span class="p">,</span> <span class="n">category_id</span><span class="o">=</span><span class="n">create_category</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">category_id</span> <span class="o">==</span> <span class="n">create_category</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="2-testing-de-autenticacion">2. Testing de autenticación</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/unit/test_auth.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">create_access_token</span><span class="p">,</span>
+    <span class="n">verify_token</span><span class="p">,</span>
+    <span class="n">get_user_from_token</span><span class="p">,</span>
+    <span class="n">verify_password</span><span class="p">,</span>
+    <span class="n">get_password_hash</span>
+<span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestJWTFunctions</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas para funciones JWT.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación de token de acceso.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">}</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_access_token_with_expiration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación de token con expiración personalizada.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">}</span>
+        <span class="n">expires_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">expires_delta</span><span class="p">)</span>
+
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">verify_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">payload</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;sub&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;testuser&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_verify_valid_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar verificación de token válido.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">}</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">verify_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">payload</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;sub&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;testuser&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;exp&quot;</span> <span class="ow">in</span> <span class="n">payload</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_verify_invalid_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar verificación de token inválido.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">invalid_token</span> <span class="o">=</span> <span class="s2">&quot;invalid.token.here&quot;</span>
+
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">verify_token</span><span class="p">(</span><span class="n">invalid_token</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_from_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario desde token.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;testuser&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">}</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">extracted_username</span> <span class="o">=</span> <span class="n">get_user_from_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">extracted_username</span> <span class="o">==</span> <span class="n">username</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_from_invalid_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario desde token inválido.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">invalid_token</span> <span class="o">=</span> <span class="s2">&quot;invalid.token.here&quot;</span>
+
+        <span class="n">username</span> <span class="o">=</span> <span class="n">get_user_from_token</span><span class="p">(</span><span class="n">invalid_token</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">username</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestPasswordFunctions</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas para funciones de contraseñas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_password_hashing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar hash de contraseña.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;testpassword123&quot;</span>
+
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">hashed</span> <span class="o">!=</span> <span class="n">password</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashed</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">assert</span> <span class="n">hashed</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;$2b$&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_password_verification_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar verificación exitosa de contraseña.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;testpassword123&quot;</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+
+        <span class="n">is_valid</span> <span class="o">=</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">hashed</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">is_valid</span> <span class="ow">is</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_password_verification_failure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar verificación fallida de contraseña.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;testpassword123&quot;</span>
+        <span class="n">wrong_password</span> <span class="o">=</span> <span class="s2">&quot;wrongpassword&quot;</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+
+        <span class="n">is_valid</span> <span class="o">=</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">wrong_password</span><span class="p">,</span> <span class="n">hashed</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">is_valid</span> <span class="ow">is</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_different_passwords_different_hashes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar que contraseñas diferentes generan hashes diferentes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">password1</span> <span class="o">=</span> <span class="s2">&quot;password123&quot;</span>
+        <span class="n">password2</span> <span class="o">=</span> <span class="s2">&quot;password456&quot;</span>
+
+        <span class="n">hash1</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password1</span><span class="p">)</span>
+        <span class="n">hash2</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password2</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">hash1</span> <span class="o">!=</span> <span class="n">hash2</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_same_password_different_hashes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar que la misma contraseña genera hashes diferentes (salt).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;testpassword123&quot;</span>
+
+        <span class="n">hash1</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="n">hash2</span> <span class="o">=</span> <span class="n">get_password_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+
+        <span class="c1"># Los hashes deben ser diferentes debido al salt</span>
+        <span class="k">assert</span> <span class="n">hash1</span> <span class="o">!=</span> <span class="n">hash2</span>
+
+        <span class="c1"># Pero ambos deben verificar correctamente</span>
+        <span class="k">assert</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">hash1</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">hash2</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="pruebas-de-integracion">Pruebas de integración</h2>
+<h3 id="1-testing-de-endpoints-de-usuarios">1. Testing de endpoints de usuarios</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/integration/test_users.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestUserEndpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas de integración para endpoints de usuarios.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_user_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación exitosa de usuario.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;newuser&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;newuser@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;New User&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;testpassword123&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/register&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">user_data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;newuser&quot;</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;newuser@example.com&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+        <span class="k">assert</span> <span class="s2">&quot;hashed_password&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span>  <span class="c1"># No debe exponer la contraseña</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_user_duplicate_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar error al crear usuario con username duplicado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>  <span class="c1"># Username ya existe</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;different@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Different User&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;testpassword123&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/register&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">user_data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+        <span class="k">assert</span> <span class="s2">&quot;ya está registrado&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_user_duplicate_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar error al crear usuario con email duplicado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;differentuser&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">create_user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>  <span class="c1"># Email ya existe</span>
+            <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Different User&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;testpassword123&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/register&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">user_data</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+        <span class="k">assert</span> <span class="s2">&quot;ya está registrado&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_users_without_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar acceso a usuarios sin autenticación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/users/&quot;</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_users_with_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuarios con autenticación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/users/&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario por ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/users/</span><span class="si">{</span><span class="n">create_user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_user_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario inexistente.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/users/999&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_update_user_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar actualización exitosa de usuario.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">update_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/users/</span><span class="si">{</span><span class="n">create_user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">update_data</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;full_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Updated Name&quot;</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;phone&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;9876543210&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_user_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">admin_headers</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar eliminación exitosa de usuario (solo admin).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/users/</span><span class="si">{</span><span class="n">create_user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">admin_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+        <span class="c1"># Verificar que el usuario ya no existe</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/users/</span><span class="si">{</span><span class="n">create_user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">admin_headers</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestUserAuthentication</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas de autenticación de usuarios.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar login exitoso.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">login_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;secret&quot;</span>  <span class="c1"># Contraseña del fixture</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;/api/v1/auth/login&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">login_data</span><span class="p">,</span>  <span class="c1"># OAuth2PasswordRequestForm usa form data</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="s2">&quot;access_token&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;token_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;bearer&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;expires_in&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_invalid_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar login con username inválido.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">login_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;nonexistent&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;secret&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;/api/v1/auth/login&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">login_data</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+        <span class="k">assert</span> <span class="s2">&quot;Credenciales incorrectas&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_invalid_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">create_user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar login con contraseña inválida.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">login_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">create_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;wrongpassword&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;/api/v1/auth/login&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">login_data</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+        <span class="k">assert</span> <span class="s2">&quot;Credenciales incorrectas&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_current_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario actual.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/me&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="s2">&quot;username&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+        <span class="k">assert</span> <span class="s2">&quot;email&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+        <span class="k">assert</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_current_user_invalid_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de usuario actual con token inválido.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">invalid_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer invalid_token&quot;</span><span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/me&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">invalid_headers</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+</code></pre></div>
+<h3 id="2-testing-de-endpoints-de-articulos">2. Testing de endpoints de artículos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/integration/test_items.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestItemEndpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas de integración para endpoints de artículos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_item_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_category</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación exitosa de artículo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Item&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Description&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;serial_number&quot;</span><span class="p">:</span> <span class="s2">&quot;TEST123&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;category_id&quot;</span><span class="p">:</span> <span class="n">create_category</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;/api/v1/items/&quot;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">item_data</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Test Item&quot;</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;serial_number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;TEST123&quot;</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">create_category</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">assert</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_item_duplicate_serial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar error al crear artículo con número de serie duplicado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Different Item&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Different Description&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;serial_number&quot;</span><span class="p">:</span> <span class="n">create_item</span><span class="o">.</span><span class="n">serial_number</span><span class="p">,</span>  <span class="c1"># Serial duplicado</span>
+            <span class="s2">&quot;category_id&quot;</span><span class="p">:</span> <span class="n">create_item</span><span class="o">.</span><span class="n">category_id</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;/api/v1/items/&quot;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">item_data</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+        <span class="k">assert</span> <span class="s2">&quot;ya existe&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de lista de artículos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/items/&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_item_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar obtención de artículo por ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/items/</span><span class="si">{</span><span class="n">create_item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">create_item</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">create_item</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_search_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar búsqueda de artículos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/items/search?q=</span><span class="si">{</span><span class="n">create_item</span><span class="o">.</span><span class="n">name</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">create_item</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_update_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">,</span> <span class="n">create_item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar actualización de artículo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">update_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Item&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Description&quot;</span>
+        <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/items/</span><span class="si">{</span><span class="n">create_item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="n">update_data</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Updated Item&quot;</span>
+        <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Updated Description&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">admin_headers</span><span class="p">,</span> <span class="n">create_item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar eliminación de artículo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/items/</span><span class="si">{</span><span class="n">create_item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">admin_headers</span>
+        <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+        <span class="c1"># Verificar que el artículo ya no existe</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/api/v1/items/</span><span class="si">{</span><span class="n">create_item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">admin_headers</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+</code></pre></div>
+<h2 id="pruebas-de-rendimiento">Pruebas de rendimiento</h2>
+<h3 id="1-testing-de-carga">1. Testing de carga</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># tests/performance/test_load.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">slow</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestPerformance</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pruebas de rendimiento y carga.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_concurrent_user_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar creación concurrente de usuarios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+            <span class="n">user_data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;user</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;user</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">@example.com&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;full_name&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;testpassword123&quot;</span>
+            <span class="p">}</span>
+
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/v1/auth/register&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">user_data</span><span class="p">)</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span>
+                <span class="s2">&quot;response_time&quot;</span><span class="p">:</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">,</span>
+                <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">index</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Crear 10 usuarios concurrentemente</span>
+        <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">create_user</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">futures</span><span class="p">]</span>
+
+        <span class="c1"># Verificar resultados</span>
+        <span class="n">successful_requests</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status_code&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">201</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">successful_requests</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span>
+
+        <span class="c1"># Verificar tiempos de respuesta</span>
+        <span class="n">avg_response_time</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;response_time&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">avg_response_time</span> <span class="o">&lt;</span> <span class="mf">1.0</span>  <span class="c1"># Menos de 1 segundo promedio</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_api_response_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">auth_headers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Probar tiempos de respuesta de la API.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">endpoints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;/api/v1/users/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/api/v1/categories/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/api/v1/items/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/api/v1/loans/&quot;</span>
+        <span class="p">]</span>
+
+        <span class="n">response_times</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">endpoint</span> <span class="ow">in</span> <span class="n">endpoints</span><span class="p">:</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth_headers</span><span class="p">)</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="n">response_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+            <span class="n">response_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response_time</span><span class="p">)</span>
+
+            <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+            <span class="k">assert</span> <span class="n">response_time</span> <span class="o">&lt;</span> <span class="mf">0.5</span>  <span class="c1"># Menos de 500ms</span>
+
+        <span class="n">avg_response_time</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">response_times</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">response_times</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">avg_response_time</span> <span class="o">&lt;</span> <span class="mf">0.3</span>  <span class="c1"># Menos de 300ms promedio</span>
+</code></pre></div>
+<h2 id="comandos-utiles-para-testing">Comandos útiles para testing</h2>
+<h3 id="1-ejecutar-todas-las-pruebas">1. Ejecutar todas las pruebas</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutar todas las pruebas</span>
+pytest
+
+<span class="c1"># Ejecutar con verbose</span>
+pytest<span class="w"> </span>-v
+
+<span class="c1"># Ejecutar con coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>app
+
+<span class="c1"># Ejecutar solo pruebas unitarias</span>
+pytest<span class="w"> </span>tests/unit/
+
+<span class="c1"># Ejecutar solo pruebas de integración</span>
+pytest<span class="w"> </span>tests/integration/
+
+<span class="c1"># Ejecutar pruebas específicas</span>
+pytest<span class="w"> </span>tests/unit/test_crud.py::TestUserCRUD::test_create_user
+
+<span class="c1"># Ejecutar pruebas con marcadores</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow&quot;</span><span class="w">  </span><span class="c1"># Excluir pruebas lentas</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;unit&quot;</span><span class="w">      </span><span class="c1"># Solo pruebas unitarias</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;auth&quot;</span><span class="w">      </span><span class="c1"># Solo pruebas de autenticación</span>
+</code></pre></div>
+<h3 id="2-generar-reportes">2. Generar reportes</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generar reporte HTML de coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>app<span class="w"> </span>--cov-report<span class="o">=</span>html
+
+<span class="c1"># Generar reporte XML para CI/CD</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>app<span class="w"> </span>--cov-report<span class="o">=</span>xml<span class="w"> </span>--junitxml<span class="o">=</span>test-results.xml
+
+<span class="c1"># Ejecutar con profiling</span>
+pytest<span class="w"> </span>--profile
+</code></pre></div>
+<h3 id="3-debugging">3. Debugging</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutar con debugging</span>
+pytest<span class="w"> </span>--pdb
+
+<span class="c1"># Parar en el primer fallo</span>
+pytest<span class="w"> </span>-x
+
+<span class="c1"># Mostrar output de print</span>
+pytest<span class="w"> </span>-s
+
+<span class="c1"># Ejecutar en paralelo</span>
+pytest<span class="w"> </span>-n<span class="w"> </span>auto
+</code></pre></div>
+<h2 id="integracion-con-cicd">Integración con CI/CD</h2>
+<h3 id="1-github-actions">1. GitHub Actions</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/test.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tests</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">develop</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.9</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.10</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python ${{ matrix.python-version }}</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v3</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m pip install --upgrade pip</span>
+<span class="w">        </span><span class="no">pip install -r requirements.txt</span>
+<span class="w">        </span><span class="no">pip install -r requirements-test.txt</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">pytest --cov=app --cov-report=xml --junitxml=test-results.xml</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload coverage to Codecov</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">codecov/codecov-action@v3</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./coverage.xml</span>
+<span class="w">        </span><span class="nt">fail_ci_if_error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h3 id="2-pre-commit-hooks">2. Pre-commit hooks</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># .pre-commit-config.yaml</span>
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tests</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+<span class="w">        </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">        </span><span class="nt">pass_filenames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">always_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check coverage</span>
+<span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest --cov=app --cov-fail-under=80</span>
+<span class="w">        </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">        </span><span class="nt">pass_filenames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">always_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h2 id="mejores-practicas">Mejores prácticas</h2>
+<h3 id="1-organizacion-de-pruebas">1. Organización de pruebas</h3>
+<ul>
+<li><strong>Separar</strong> por tipo (unit, integration, e2e)</li>
+<li><strong>Usar fixtures</strong> para datos de prueba</li>
+<li><strong>Nombrar</strong> descriptivamente</li>
+<li><strong>Documentar</strong> casos complejos</li>
+</ul>
+<h3 id="2-datos-de-prueba">2. Datos de prueba</h3>
+<ul>
+<li><strong>Usar factories</strong> para generar datos</li>
+<li><strong>Limpiar</strong> después de cada prueba</li>
+<li><strong>Aislar</strong> pruebas entre sí</li>
+<li><strong>Usar</strong> base de datos en memoria</li>
+</ul>
+<h3 id="3-assertions">3. Assertions</h3>
+<ul>
+<li><strong>Ser específico</strong> en las assertions</li>
+<li><strong>Verificar</strong> tanto éxito como fallo</li>
+<li><strong>Probar</strong> casos límite</li>
+<li><strong>Incluir</strong> mensajes descriptivos</li>
+</ul>
+<h3 id="4-coverage">4. Coverage</h3>
+<ul>
+<li><strong>Apuntar</strong> a 80%+ de coverage</li>
+<li><strong>No obsesionarse</strong> con 100%</li>
+<li><strong>Priorizar</strong> código crítico</li>
+<li><strong>Revisar</strong> reportes regularmente</li>
+</ul>
+<h2 id="proximos-pasos">Próximos pasos</h2>
+<p>En el siguiente tema aprenderemos sobre deployment y cómo llevar nuestra API a producción.</p>
+<hr />
+<p><strong>💡 Tips importantes</strong>:</p>
+<ol>
+<li><strong>Escribir pruebas primero</strong> (TDD) cuando sea posible</li>
+<li><strong>Mantener pruebas simples</strong> y enfocadas</li>
+<li><strong>Usar mocks</strong> para dependencias externas</li>
+<li><strong>Automatizar</strong> ejecución de pruebas</li>
+<li><strong>Revisar coverage</strong> regularmente</li>
+</ol>
+<p><strong>🔗 Enlaces útiles</strong>:
+- <a href="https://docs.pytest.org/">Pytest Documentation</a>
+- <a href="https://fastapi.tiangolo.com/tutorial/testing/">FastAPI Testing</a>
+- <a href="https://coverage.readthedocs.io/">Coverage.py</a>
+- <a href="https://docs.python-guide.org/writing/tests/">Testing Best Practices</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
